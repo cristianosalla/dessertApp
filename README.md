@@ -8,20 +8,21 @@
 <img src="https://github.com/cristianosalla/fetchCodeChallenge/blob/main/images/iphoneList.png" width=32% height=32%> <img src="https://github.com/cristianosalla/fetchCodeChallenge/blob/main/images/iphoneDetail.png" width=32% height=32%> <img src="https://github.com/cristianosalla/fetchCodeChallenge/blob/main/images/iphoneDetail2.png" width=32% height=32%>
 
 ### App Data Flow
-- The data flow follows the MVVM pattern. The data is requested by the `View` to the `ViewModel`. The View Model uses the `DataProvider` to download the data from the API. The `DataProvider` then sends the `Model` to the `ViewModel` and the data is presented in the `View`
+- The data flow follows the MVVM pattern. The data is requested by the `View` to the `ViewModel`. The View Model uses the `DataProvider` to download the data from the API. The `DataProvider` then sends the `Model` to the `ViewModel` and the data is presented in the `View`.
 
 ![alt text](https://github.com/cristianosalla/fetchCodeChallenge/blob/main/images/dataFlowMVVM.png)
 
 ### ViewModel
-- Responsible for all the business rules that will show in the view. Texts, images and all data.
+- Responsible to get the data and send to the view. Texts, images and etc.
 
 ### View
-- Only responsible for showing the elements in the screen. Keep observing for any possible change in the ViewModel to update the View
+- Only responsible for showing the elements in the screen. Keep observing for any possible change in the `ViewModel` to update the `View`.
 
 ### Model
-- Data provided from the API
+- Data provided by [The Meal DB](https://themealdb.com/api.php) API.
+
 ### Data Provider
-- Layer created to communicate with the API. This layer have all the endpoints that the application will need and is responsible to request the data to the API and set this data to models. Also, in case any error, the DataProvider will immediately return an error response.
+- Layer created to communicate with the API. The layer know all the endpoints and is responsible to request the data to the API to set the models. I created two methods for this project. `fetchObject<T: Decodable>` that can download the Details and the List model, depending on the `ViewModel`request. And also I created `fetchImageData`, the method to return image data to create the images in the `View`.
 
 ### Loading async images
 - Images are being loaded asyncronous in the list. As the user scrolls to the botton and the cell appears, the image of the dessert will load.
@@ -29,7 +30,7 @@
 <img src="https://github.com/cristianosalla/fetchCodeChallenge/blob/main/images/iphoneLoading.png" width=32% height=32%>
 
 ### Handling error
-- In case any error in the API or network errors, the user will see an alert and an option to try to get the data again.
+- In case of any error in the API or network, the user will see an alert and an option to try to get the data again.
 
 <img src="https://github.com/cristianosalla/fetchCodeChallenge/blob/main/images/iphoneErrorAlert.png" width=32% height=32%>
 
