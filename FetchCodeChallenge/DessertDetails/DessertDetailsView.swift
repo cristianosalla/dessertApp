@@ -19,9 +19,9 @@ struct DessertDetailsView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                TitleView(title: viewModel.title)
+                TitleView(title: viewModel.meal?.strMeal ?? "")
                 
-                DessertDetailsImageView(width: geometry.size.width, url: viewModel.url)
+                DessertDetailsImageView(width: geometry.size.width, url: URL(string: viewModel.meal?.strMealThumb ?? ""))
                 
                 DessertDetailsTextsView(viewModel: viewModel)
             }
