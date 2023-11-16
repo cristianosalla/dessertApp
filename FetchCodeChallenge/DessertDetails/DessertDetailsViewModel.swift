@@ -26,18 +26,19 @@ class DessertDetailsViewModel: ObservableObject {
     }
     
     func fetchDetails(id: String) {
-        dataProvider.fetchObject(from: DataProvider.Endpoint.objectId(id).url) { [weak self] (result: Result<MealsDetails, Error>) in
+        Task {
+            let result: Result<MealsDetails, Error> = await dataProvider.fetchObject(from: DataProvider.Endpoint.objectId(id).url)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let mealDetails):
                     guard let meal = mealDetails.meals.first else {
-                        self?.showAlert = true
+                        self.showAlert = true
                         return
                     }
                     
                     self.meal = meal
                 case .failure(_):
-                    self?.showAlert = true
+                    self.showAlert = true
                 }
             }
         }

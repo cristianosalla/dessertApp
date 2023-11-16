@@ -8,16 +8,38 @@
 import Foundation
 
 protocol ImageProviderProtocol {
-    func fetchImageData(thumbnailURLString: String, completion: @escaping (Result<Data, Error>) -> Void)
+    func fetchImageData(thumbnailURLString: String) async -> Result<Data, Error>
 }
 
 protocol ObjectProviderProtocol {
-    func fetchObject<T: Decodable>(from endpoint: URL, completion: @escaping (Result<T, Error>) -> Void)
+    func fetchObject<T: Decodable>(from endpoint: URL) async -> Result<T, Error>
+}
+
+protocol HTTPClient {
+    func get(url: URL) async -> Result<Data, Error>
+}
+
+extension URLSession: HTTPClient {
+    func get(url: URL) async -> Result<Data, Error> {
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return .success(data)
+        } catch {
+            return .failure(error)
+        }
+    }
 }
 
 // MARK: - Data Provider
 
 class DataProvider {
+    
+    var httpClient: HTTPClient
+    
+    init(httpClient: HTTPClient = URLSession.shared) {
+        self.httpClient = httpClient
+    }
+    
     
     enum Endpoint {
         case list
@@ -53,25 +75,19 @@ class DataProvider {
 
 extension DataProvider: ObjectProviderProtocol {
     
-    func fetchObject<T: Decodable>(from endpoint: URL, completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: endpoint) { data, response, error in
-            if let error {
-                completion(.failure(error))
-            } else {
-                guard let data else {
-                    completion(.failure(DataProviderError.noData))
-                    return
-                }
-                
-                
-                do {
-                    let decodedData = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(decodedData))
-                } catch(let error) {
-                    completion(.failure(error))
-                }
+    func fetchObject<T: Decodable>(from endpoint: URL) async -> Result<T, Error>  {
+        let result = await httpClient.get(url: endpoint)
+        switch result {
+        case .success(let data):
+            do {
+                let decoded = try JSONDecoder().decode(T.self, from: data)
+                return .success(decoded)
+            } catch(let error) {
+                return .failure(error)
             }
-        }.resume()
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }
 
@@ -79,24 +95,18 @@ extension DataProvider: ObjectProviderProtocol {
 
 extension DataProvider: ImageProviderProtocol {
     
-    func fetchImageData(thumbnailURLString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchImageData(thumbnailURLString: String) async -> Result<Data, Error> {
         guard let url = URL(string: thumbnailURLString) else {
-            completion(.failure(DataProviderError.url))
-            return
+            return .failure(DataProviderError.url)
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error {
-                completion(.failure(error))
-            } else {
-                guard let data else {
-                    completion(.failure(DataProviderError.noData))
-                    return
-                }
-                
-                completion(.success(data))
-            }
-        }.resume()
+        let result = await httpClient.get(url: url)
+        switch result {
+        case .success(let data):
+            return .success(data)
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }
 
