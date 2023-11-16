@@ -21,13 +21,9 @@ class DessertListViewModelTests: XCTestCase {
     }
     
     func testViewTexts() {
-        let expectation = XCTestExpectation(description: "View texts should match")
-        
         XCTAssertEqual(self.viewModel.alertText, "Couldn't load list of desserts.")
         XCTAssertEqual(self.viewModel.alertButton, "Try again")
         XCTAssertEqual(self.viewModel.title, "Dessert List")
-        
-        expectation.fulfill()
     }
     
     func testFetchListSuccess() {
