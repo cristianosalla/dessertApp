@@ -75,7 +75,7 @@ class DataProviderTests: XCTestCase {
     }
     
     func testFetchImageDataFailure() async {
-        let invalidThumbnailURL = "invalid thumbnail URL"
+        let invalidThumbnailURL = "http://www.fail.com"
         
         let client = MockHttpClientError()
         self.dataProvider = DataProvider(httpClient: client)
