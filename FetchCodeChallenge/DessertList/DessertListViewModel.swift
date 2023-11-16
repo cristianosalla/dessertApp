@@ -25,15 +25,17 @@ class DessertListViewModel: ObservableObject {
         fetchList()
     }
     
-    func fetchList(_ url: URL = DataProvider.Endpoint.list.url) {
+    func fetchList(_ url: URL = DataProvider.Endpoint.list.url, completion: (() -> ())? = nil) {
         Task {
             let result: Result<MealList, Error> = await dataProvider.fetchObject(from: url)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let meal):
                     self.meals = meal.meals.sorted{ $0.strMeal < $1.strMeal }
+                    completion?()
                 case .failure(_):
                     self.showAlert = true
+                    completion?()
                 }
             }
         }

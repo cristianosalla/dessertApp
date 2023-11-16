@@ -25,7 +25,7 @@ class DessertDetailsViewModel: ObservableObject {
         self.dataProvider = dataProvider
     }
     
-    func fetchDetails(id: String) {
+    func fetchDetails(id: String, completion: (() -> ())? = nil) {
         Task {
             let result: Result<MealsDetails, Error> = await dataProvider.fetchObject(from: DataProvider.Endpoint.objectId(id).url)
             DispatchQueue.main.async {
@@ -37,8 +37,10 @@ class DessertDetailsViewModel: ObservableObject {
                     }
                     
                     self.meal = meal
+                    completion?()
                 case .failure(_):
                     self.showAlert = true
+                    completion?()
                 }
             }
         }

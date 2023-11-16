@@ -23,6 +23,13 @@ struct MealDetail: Codable, Equatable {
     var strMealThumb: String
 
     var ingredientMeasure: [IngredientMeasure] = []
+    
+    init() {
+        self.idMeal = ""
+        self.strMeal = ""
+        self.strInstructions = ""
+        self.strMealThumb = ""
+    }
 
     private enum CodingKeys: CodingKey {
         case strIngredient(index: Int)
