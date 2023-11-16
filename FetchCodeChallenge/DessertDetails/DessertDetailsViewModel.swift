@@ -8,10 +8,8 @@
 import Foundation
 
 class DessertDetailsViewModel: ObservableObject {
-    @Published var title = ""
-    @Published var instructions = ""
-    @Published var url = URL(string: "")
-    @Published var ingredientsAndMeasures = [IngredientMeasure]()
+    
+    @Published var meal: MealDetail?
     
     @Published var showAlert = false
     
@@ -37,21 +35,13 @@ class DessertDetailsViewModel: ObservableObject {
                         return
                     }
                     
-                    self?.setDetails(meal: meal)
+                    self.meal = meal
                 case .failure(_):
                     self?.showAlert = true
                 }
             }
         }
     }
-    
-    func setDetails(meal: MealDetail) {
-        self.url = URL(string: meal.strMealThumb)
-        self.title = meal.strMeal
-        self.instructions = meal.strInstructions
-        self.ingredientsAndMeasures = meal.ingredientMeasure
-    }
-    
     
     func ingredientMeasureFormat(ingredient: String, measure: String) -> String {
         "• \(measure) \(ingredient)"
