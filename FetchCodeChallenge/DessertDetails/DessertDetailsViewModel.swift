@@ -13,6 +13,8 @@ class DessertDetailsViewModel: ObservableObject {
     
     @Published var showAlert = false
     
+    let id: String
+    
     let errorAlertText = "Couldn't load dessert details."
     let errorAlertButton = "Try again"
     
@@ -21,8 +23,9 @@ class DessertDetailsViewModel: ObservableObject {
     
     private var dataProvider: ObjectProviderProtocol
 
-    init(dataProvider: ObjectProviderProtocol = DataProvider()) {
+    init(id: String, dataProvider: ObjectProviderProtocol = DataProvider()) {
         self.dataProvider = dataProvider
+        self.id = id
     }
     
     func fetchDetails(id: String, completion: (() -> ())? = nil) {

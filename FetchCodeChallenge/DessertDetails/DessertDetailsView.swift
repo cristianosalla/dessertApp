@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct DessertDetailsView: View {
-    @StateObject private var viewModel = DessertDetailsViewModel()
+    @ObservedObject private var viewModel: DessertDetailsViewModel
     
-    var id: String
-    
-    init(id: String) {
-        self.id = id
+    init(viewModel: DessertDetailsViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -26,11 +24,11 @@ struct DessertDetailsView: View {
                 DessertDetailsTextsView(viewModel: viewModel)
             }
             .onAppear() {
-                viewModel.fetchDetails(id: id)
+                viewModel.fetchDetails(id: viewModel.id)
             }
             .alert(Text(viewModel.errorAlertText), isPresented: $viewModel.showAlert, actions: {
                 Button(viewModel.errorAlertButton) {
-                    viewModel.fetchDetails(id: id)
+                    viewModel.fetchDetails(id: viewModel.id)
                 }
             })
             

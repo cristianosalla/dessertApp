@@ -25,7 +25,7 @@ struct DessertListView: View {
                     
                     LazyVGrid(columns: [GridItem(), GridItem()]) {
                         ForEach(viewModel.meals, id: \.self) { meal in
-                            NavigationLink(destination: DessertDetailsView(id: meal.idMeal)) {
+                            NavigationLink(destination: DessertDetailsView(viewModel: DessertDetailsViewModel(id: meal.idMeal))) {
                                 ZStack(alignment: .bottom) {
                                     DessertListItemView(viewModel: DessertListItemViewModel(url: meal.strMealThumb, meal: meal.strMeal))
                                         .padding(4)

@@ -13,7 +13,7 @@ class DessertDetailsViewModelTests: XCTestCase {
     var viewModel: DessertDetailsViewModel!
 
     override func setUpWithError() throws {
-        viewModel = DessertDetailsViewModel()
+        viewModel = DessertDetailsViewModel(id: "")
     }
 
     override func tearDownWithError() throws {
@@ -44,7 +44,7 @@ class DessertDetailsViewModelTests: XCTestCase {
         let meal = MealDetail()
         let meals = MealsDetails(meals: [meal])
         
-        viewModel = DessertDetailsViewModel(dataProvider: MockObjectProviderSuccess(object: meals))
+        viewModel = DessertDetailsViewModel(id: "", dataProvider: MockObjectProviderSuccess(object: meals))
         viewModel.fetchDetails(id: dummyId) {
             XCTAssertNotNil(self.viewModel.meal, "Object should not be nil")
             XCTAssertFalse(self.viewModel.showAlert, "Should not show alert")
@@ -58,7 +58,7 @@ class DessertDetailsViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Fetch Details Expectation Failure")
 
         let dummyId = "1111"
-        self.viewModel = DessertDetailsViewModel(dataProvider: MockObjectProviderError())
+        self.viewModel = DessertDetailsViewModel(id: "", dataProvider: MockObjectProviderError())
         viewModel.fetchDetails(id: dummyId) {
             XCTAssertNil(self.viewModel.meal, "Object should be nil")
             XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
