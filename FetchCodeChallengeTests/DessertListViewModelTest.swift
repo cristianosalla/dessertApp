@@ -29,14 +29,17 @@ class DessertListViewModelTests: XCTestCase {
     func testFetchListSuccess() {
         let expectation = XCTestExpectation(description: "Fetch List Expectation Success")
         
-        self.viewModel.fetchList()
+        let meal = Meal.init(idMeal: "", strMeal: "", strMealThumb: "")
+        let list = MealList.init(meals: [meal])
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderSuccess(object: list))
+        
+        self.viewModel.fetchList() {
             XCTAssertFalse(self.viewModel.meals.isEmpty, "Fetched list should not be empty")
             expectation.fulfill()
         }
-
-        wait(for: [expectation], timeout: 5.0)
+        
+        wait(for: [expectation], timeout: 0.5)
     }
     
     func testFetchListFailure() {
@@ -47,13 +50,13 @@ class DessertListViewModelTests: XCTestCase {
             return
         }
         
-        self.viewModel.fetchList(url)
+        self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderError())
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        self.viewModel.fetchList(url) {
             XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
             expectation.fulfill()
         }
-
-        wait(for: [expectation], timeout: 5.0)
+        
+        wait(for: [expectation], timeout: 0.5)
     }
 }

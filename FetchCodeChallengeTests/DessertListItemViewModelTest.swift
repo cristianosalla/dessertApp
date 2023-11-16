@@ -24,25 +24,28 @@ class DessertListItemViewModelTest: XCTestCase {
     func testGetThumbSuccess() {
         let expectation = XCTestExpectation(description: "Get Thumb Expectation Success")
         
+        self.viewModel = DessertListItemViewModel(url: "http//url", meal: "", dataProvider: MockImageProviderSuccess())
+        
         viewModel.getThumb { data in
             XCTAssertNotNil(data, "Fetched image data should not be nil")
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 0.5)
     }
     
     func testGetThumbFailure() {
         let expectation = XCTestExpectation(description: "Get Thumb Expectation Failure")
         
         self.viewModel.url = "adxcbq1619787919.jpg"
-
+        self.viewModel = DessertListItemViewModel(url: "http//url", meal: "", dataProvider: MockImageProviderError())
+        
         viewModel.getThumb { data in
             XCTAssertNil(data, "Image should be nil")
             expectation.fulfill()
         }
-
-        wait(for: [expectation], timeout: 5.0)
+        
+        wait(for: [expectation], timeout: 0.5)
     }
 
 }

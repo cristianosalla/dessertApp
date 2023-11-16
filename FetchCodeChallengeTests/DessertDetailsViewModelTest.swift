@@ -40,32 +40,32 @@ class DessertDetailsViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Fetch Details Expectation Success")
 
         let dummyId = "53049"
-        viewModel.fetchDetails(id: dummyId)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        
+        let meal = MealDetail()
+        let meals = MealsDetails(meals: [meal])
+        
+        viewModel = DessertDetailsViewModel(dataProvider: MockObjectProviderSuccess(object: meals))
+        viewModel.fetchDetails(id: dummyId) {
             XCTAssertNotNil(self.viewModel.meal, "Object should not be nil")
             XCTAssertFalse(self.viewModel.showAlert, "Should not show alert")
-
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 0.5)
     }
     
     func testFetchFailure() {
         let expectation = XCTestExpectation(description: "Fetch Details Expectation Failure")
 
         let dummyId = "1111"
-        viewModel.fetchDetails(id: dummyId)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        self.viewModel = DessertDetailsViewModel(dataProvider: MockObjectProviderError())
+        viewModel.fetchDetails(id: dummyId) {
             XCTAssertNil(self.viewModel.meal, "Object should be nil")
             XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
-
             expectation.fulfill()
         }
-
-        wait(for: [expectation], timeout: 5.0)
+        
+        wait(for: [expectation], timeout: 0.5)
     }
     
 }

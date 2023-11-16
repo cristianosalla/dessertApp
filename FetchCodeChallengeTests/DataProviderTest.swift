@@ -9,33 +9,6 @@ import XCTest
 @testable import FetchCodeChallenge
 
 
-struct MockHttpClientSuccess<T: Encodable>: HTTPClient {
-    
-    var data: Data
-    
-    init(object: T) {
-        do {
-            self.data = try JSONEncoder().encode(object)
-        } catch {
-            self.data = Data()
-        }
-    }
-    
-    init(data: Data) {
-        self.data = data
-    }
-    
-    func get(url: URL) async -> Result<Data, Error> {
-        return .success(data)
-    }
-}
-
-struct MockHttpClientError: HTTPClient {
-    func get(url: URL) async -> Result<Data, Error> {
-        return .failure(DataProvider.DataProviderError.noData)
-    }
-}
-
 class DataProviderTests: XCTestCase {
 
     var dataProvider: DataProvider!
