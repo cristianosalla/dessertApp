@@ -32,11 +32,10 @@ class DessertListViewModel: ObservableObject {
                 switch result {
                 case .success(let meal):
                     self.meals = meal.meals.sorted{ $0.strMeal < $1.strMeal }
-                    completion?()
                 case .failure(_):
                     self.showAlert = true
-                    completion?()
                 }
+                completion?()
             }
         }
     }

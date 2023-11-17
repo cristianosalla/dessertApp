@@ -34,17 +34,15 @@ class DessertDetailsViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let mealDetails):
-                    guard let meal = mealDetails.meals.first else {
+                    if let meal = mealDetails.meals.first {
+                        self.meal = meal
+                    } else {
                         self.showAlert = true
-                        return
                     }
-                    
-                    self.meal = meal
-                    completion?()
                 case .failure(_):
                     self.showAlert = true
-                    completion?()
                 }
+                completion?()
             }
         }
     }

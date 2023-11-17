@@ -68,4 +68,22 @@ class DessertDetailsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 0.5)
     }
     
+    func testFetchEmptyArray() {
+        
+        let expectation = XCTestExpectation(description: "Fetch Details Array Empty")
+
+        
+        let meals = MealsDetails(meals: [])
+        
+        let dummyId = "1111"
+        self.viewModel = DessertDetailsViewModel(id: "", dataProvider: MockObjectProviderSuccess(object: meals))
+        viewModel.fetchDetails(id: dummyId) {
+            XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 0.5)
+        
+    }
+    
 }

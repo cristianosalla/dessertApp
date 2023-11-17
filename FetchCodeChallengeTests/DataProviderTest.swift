@@ -57,6 +57,27 @@ class DataProviderTests: XCTestCase {
         
     }
     
+    func testFetchListDecodeFailure() async {
+        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else {
+            XCTFail("Could not create URL")
+            return
+        }
+        
+        let mealObject = ""
+        let client = MockHttpClientSuccess(object: mealObject)
+        self.dataProvider = DataProvider(httpClient: client)
+        
+        let result: Result<Meal, Error> = await self.dataProvider.fetchObject(from: url)
+        switch result {
+        case .failure(let error):
+            XCTAssertNotNil(error, "Error should not be nil")
+        default:
+            XCTFail("Result should be success")
+        }
+        
+    }
+    
+    
     func testFetchImageDataSuccess() async {
         let validThumbnailURL = "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
         
@@ -88,4 +109,21 @@ class DataProviderTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testFetchImageDataUrlError() async {
+        let invalidThumbnailURL = "no url"
+        
+        let client = MockHttpClientError()
+        self.dataProvider = DataProvider(httpClient: client)
+        
+        let result = await dataProvider.fetchImageData(thumbnailURLString: invalidThumbnailURL)
+        switch result {
+        case .failure(let error):
+            XCTAssertNotNil(error, "Error should not be nil")
+        default:
+            XCTFail()
+        }
+    }
+    
+    
 }

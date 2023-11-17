@@ -29,8 +29,9 @@ class DessertListViewModelTests: XCTestCase {
     func testFetchListSuccess() {
         let expectation = XCTestExpectation(description: "Fetch List Expectation Success")
         
-        let meal = Meal.init(idMeal: "", strMeal: "", strMealThumb: "")
-        let list = MealList.init(meals: [meal])
+        let meal = Meal.init(idMeal: "", strMeal: "aaa", strMealThumb: "")
+        let meal2 = Meal.init(idMeal: "", strMeal: "bbb", strMealThumb: "")
+        let list = MealList.init(meals: [meal2, meal])
         
         self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderSuccess(object: list))
         
