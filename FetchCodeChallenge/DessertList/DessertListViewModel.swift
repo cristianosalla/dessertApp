@@ -25,7 +25,7 @@ class DessertListViewModel: ObservableObject {
         fetchList()
     }
     
-    func fetchList(_ url: URL = DataProvider.Endpoint.list.url, completion: (() -> ())? = nil) {
+    func fetchList(_ url: URL = Endpoint.list.url, completion: (() -> ())? = nil) {
         Task {
             let result: Result<MealList, Error> = await dataProvider.fetchObject(from: url)
             DispatchQueue.main.async {
