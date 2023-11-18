@@ -51,7 +51,7 @@ class DessertDetailsViewModelTests: XCTestCase {
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
     func testFetchFailure() {
@@ -65,7 +65,7 @@ class DessertDetailsViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
     func testFetchEmptyArray() {
@@ -82,7 +82,7 @@ class DessertDetailsViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
         
     }
     

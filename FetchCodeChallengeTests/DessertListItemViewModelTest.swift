@@ -31,7 +31,7 @@ class DessertListItemViewModelTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
     func testGetThumbFailure() {
@@ -45,7 +45,7 @@ class DessertListItemViewModelTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
 
 }

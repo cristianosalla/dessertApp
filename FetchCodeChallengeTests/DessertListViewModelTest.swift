@@ -40,7 +40,7 @@ class DessertListViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
     func testFetchListFailure() {
@@ -58,6 +58,6 @@ class DessertListViewModelTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
 }

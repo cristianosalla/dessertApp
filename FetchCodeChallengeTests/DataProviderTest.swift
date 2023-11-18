@@ -77,7 +77,6 @@ class DataProviderTests: XCTestCase {
         
     }
     
-    
     func testFetchImageDataSuccess() async {
         let validThumbnailURL = "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
         
@@ -124,6 +123,4 @@ class DataProviderTests: XCTestCase {
             XCTFail()
         }
     }
-    
-    
 }
