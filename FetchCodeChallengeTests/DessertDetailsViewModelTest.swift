@@ -86,4 +86,21 @@ class DessertDetailsViewModelTests: XCTestCase {
         
     }
     
+    func testFetchDetails() {
+        guard let fileURL = Bundle.main.url(forResource: "MealsDetails", withExtension: "json") else {
+            XCTFail()
+            return
+        }
+        
+        do {
+            let jsonData = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            let meals = try decoder.decode(MealsDetails.self, from: jsonData)
+            XCTAssertNotNil(meals)
+        } catch {
+            XCTFail()
+        }
+        
+    }
+    
 }

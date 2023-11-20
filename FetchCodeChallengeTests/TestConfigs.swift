@@ -8,5 +8,5 @@
 import Foundation
 
 class TestConfigs {
-    let timeout = 0.001
+    let timeout = 0.5
 }

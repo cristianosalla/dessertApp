@@ -60,4 +60,22 @@ class DessertListViewModelTests: XCTestCase {
         
         wait(for: [expectation], timeout: TestConfigs().timeout)
     }
+    
+    func testFetchListObject() {
+         
+        guard let fileURL = Bundle.main.url(forResource: "MealsList", withExtension: "json") else {
+            XCTFail()
+            return
+        }
+        
+        do {
+            let jsonData = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            let meals = try decoder.decode(MealList.self, from: jsonData)
+            XCTAssertNotNil(meals)
+        } catch {
+            XCTFail()
+        }
+    }
+    
 }
