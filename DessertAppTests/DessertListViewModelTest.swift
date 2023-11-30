@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import FetchCodeChallenge
+@testable import DessertApp
 
 class DessertListViewModelTests: XCTestCase {
 

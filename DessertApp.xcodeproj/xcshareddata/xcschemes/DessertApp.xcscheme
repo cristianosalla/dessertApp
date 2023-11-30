@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B4A56E52AF2BC34008F3F85"
-               BuildableName = "FetchCodeChallenge.app"
-               BlueprintName = "FetchCodeChallenge"
-               ReferencedContainer = "container:FetchCodeChallenge.xcodeproj">
+               BuildableName = "DessertApp.app"
+               BlueprintName = "DessertApp"
+               ReferencedContainer = "container:DessertApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5B4A56F52AF2BC36008F3F85"
+               BuildableName = "DessertAppTests.xctest"
+               BlueprintName = "DessertAppTests"
+               ReferencedContainer = "container:DessertApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,26 +40,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:FetchCodeChallenge.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5B4A56F52AF2BC36008F3F85"
-               BuildableName = "FetchCodeChallengeTests.xctest"
-               BlueprintName = "FetchCodeChallengeTests"
-               ReferencedContainer = "container:FetchCodeChallenge.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -62,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B4A56E52AF2BC34008F3F85"
-            BuildableName = "FetchCodeChallenge.app"
-            BlueprintName = "FetchCodeChallenge"
-            ReferencedContainer = "container:FetchCodeChallenge.xcodeproj">
+            BuildableName = "DessertApp.app"
+            BlueprintName = "DessertApp"
+            ReferencedContainer = "container:DessertApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -79,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5B4A56E52AF2BC34008F3F85"
-            BuildableName = "FetchCodeChallenge.app"
-            BlueprintName = "FetchCodeChallenge"
-            ReferencedContainer = "container:FetchCodeChallenge.xcodeproj">
+            BuildableName = "DessertApp.app"
+            BlueprintName = "DessertApp"
+            ReferencedContainer = "container:DessertApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

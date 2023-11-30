@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct FetchCodeChallengeApp: App {
+struct DessertApp: App {
     var body: some Scene {
         WindowGroup {
             DessertListView()

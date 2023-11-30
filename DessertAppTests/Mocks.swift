@@ -5,7 +5,7 @@
 //  Created by Cristiano Salla Lunardi on 11/15/23.
 //
 
-@testable import FetchCodeChallenge
+@testable import DessertApp
 import Foundation
 
 struct MockHttpClientSuccess<T: Encodable>: HTTPClient {
