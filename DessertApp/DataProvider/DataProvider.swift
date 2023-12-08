@@ -1,11 +1,11 @@
 import Foundation
 
 protocol ImageProviderProtocol {
-    func fetchImageData(thumbnailURLString: String) async -> Result<Data, Error>
+    func fetchImageData(thumbnailURLString: String) async throws -> Data
 }
 
 protocol ObjectProviderProtocol {
-    func fetchObject<T: Decodable>(from endpoint: URL) async -> Result<T, Error>
+    func fetchObject<T: Decodable>(from endpoint: URL) async throws -> T
 }
 
 // MARK: - Data Provider
@@ -21,6 +21,7 @@ class DataProvider {
     enum DataProviderError: Error {
         case noData
         case url
+        case decode
     }
 }
 
@@ -28,18 +29,14 @@ class DataProvider {
 
 extension DataProvider: ObjectProviderProtocol {
     
-    func fetchObject<T: Decodable>(from endpoint: URL) async -> Result<T, Error>  {
-        let result = await httpClient.get(url: endpoint)
-        switch result {
-        case .success(let data):
-            do {
-                let decoded = try JSONDecoder().decode(T.self, from: data)
-                return .success(decoded)
-            } catch(let error) {
-                return .failure(error)
-            }
-        case .failure(let error):
-            return .failure(error)
+    func fetchObject<T: Decodable>(from endpoint: URL) async throws -> T {
+        let result = try await httpClient.get(url: endpoint)
+        
+        do {
+            let decoded = try JSONDecoder().decode(T.self, from: result)
+            return decoded
+        } catch {
+            throw DataProviderError.decode
         }
     }
 }
@@ -48,17 +45,16 @@ extension DataProvider: ObjectProviderProtocol {
 
 extension DataProvider: ImageProviderProtocol {
     
-    func fetchImageData(thumbnailURLString: String) async -> Result<Data, Error> {
+    func fetchImageData(thumbnailURLString: String) async throws -> Data {
         guard let url = URL(string: thumbnailURLString) else {
-            return .failure(DataProviderError.url)
+            throw DataProviderError.url
         }
         
-        let result = await httpClient.get(url: url)
-        switch result {
-        case .success(let data):
-            return .success(data)
-        case .failure(let error):
-            return .failure(error)
+        do {
+            let result = try await httpClient.get(url: url)
+            return result
+        } catch(let error) {
+            throw error
         }
     }
 }

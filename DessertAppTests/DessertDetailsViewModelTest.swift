@@ -29,53 +29,44 @@ class DessertDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(formattedText, "• 120g Plain Flour")
     }
 
-    func testFetchDetailsSuccess() {
-        let expectation = XCTestExpectation(description: "Fetch Details Expectation Success")
-
+    func testFetchDetailsSuccess() async {
         let dummyId = "53049"
         
         let meal = MealDetail()
         let meals = MealsDetails(meals: [meal])
         
-        viewModel = DessertDetailsViewModel(id: "", dataProvider: MockObjectProviderSuccess(object: meals))
-        viewModel.fetchDetails(id: dummyId) {
+        viewModel = DessertDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderSuccess(object: meals))
+        
+        do {
+            await viewModel.fetchDetails()
             XCTAssertNotNil(self.viewModel.meal, "Object should not be nil")
             XCTAssertFalse(self.viewModel.showAlert, "Should not show alert")
-            expectation.fulfill()
         }
-
-        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
-    func testFetchFailure() {
-        let expectation = XCTestExpectation(description: "Fetch Details Expectation Failure")
-
+    func testFetchFailure() async {
         let dummyId = "1111"
-        self.viewModel = DessertDetailsViewModel(id: "", dataProvider: MockObjectProviderError())
-        viewModel.fetchDetails(id: dummyId) {
+        self.viewModel = DessertDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderError())
+        
+        do {
+            await viewModel.fetchDetails()
             XCTAssertNil(self.viewModel.meal, "Object should be nil")
             XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
-            expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
-    func testFetchEmptyArray() {
-        
-        let expectation = XCTestExpectation(description: "Fetch Details Array Empty")
-
+    func testFetchEmptyArray() async {
         
         let meals = MealsDetails(meals: [])
         
         let dummyId = "1111"
-        self.viewModel = DessertDetailsViewModel(id: "", dataProvider: MockObjectProviderSuccess(object: meals))
-        viewModel.fetchDetails(id: dummyId) {
-            XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
-            expectation.fulfill()
+        self.viewModel = DessertDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderSuccess(object: meals))
+        
+        do {
+            await viewModel.fetchDetails()
         }
         
-        wait(for: [expectation], timeout: TestConfigs().timeout)
+        XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
         
     }
     

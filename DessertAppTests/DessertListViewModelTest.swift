@@ -19,39 +19,26 @@ class DessertListViewModelTests: XCTestCase {
         XCTAssertEqual(self.viewModel.title, "Dessert List")
     }
     
-    func testFetchListSuccess() {
-        let expectation = XCTestExpectation(description: "Fetch List Expectation Success")
-        
+    func testFetchListSuccess() async {
         let meal = Meal.init(idMeal: "", strMeal: "aaa", strMealThumb: "")
         let meal2 = Meal.init(idMeal: "", strMeal: "bbb", strMealThumb: "")
         let list = MealList.init(meals: [meal2, meal])
         
         self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderSuccess(object: list))
         
-        self.viewModel.fetchList() {
+        do {
+            await viewModel.fetchList()
             XCTAssertFalse(self.viewModel.meals.isEmpty, "Fetched list should not be empty")
-            expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
-    func testFetchListFailure() {
-        let expectation = XCTestExpectation(description: "Fetch List Expectation Failure")
-
-        guard let url = URL(string: "http://dummyurl") else {
-            XCTFail()
-            return
-        }
-        
+    func testFetchListFailure() async {
         self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderError())
         
-        self.viewModel.fetchList(url) {
+        do {
+            await viewModel.fetchList()
             XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
-            expectation.fulfill()
         }
-        
-        wait(for: [expectation], timeout: TestConfigs().timeout)
     }
     
     func testFetchListObject() {

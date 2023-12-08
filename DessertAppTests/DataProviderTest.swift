@@ -24,30 +24,31 @@ class DataProviderTests: XCTestCase {
         let client = MockHttpClientSuccess(object: mealObject)
         self.dataProvider = DataProvider(httpClient: client)
         
-        let result: Result<Meal, Error> = await self.dataProvider.fetchObject(from: url)
-        switch result {
-        case .success(let meal):
+        
+        do {
+            let meal: Meal = try await self.dataProvider.fetchObject(from: url)
             XCTAssertEqual(mealObject, meal, "Should be the same object")
-        default:
+        } catch {
             XCTFail("Result should be success")
         }
     }
     
-    func testFetchListFailure() async {
+    func testFetchObjectFailure() async {
         guard let url = URL(string: "http://failurl") else {
             XCTFail("Could not create URL")
             return
         }
         
         self.dataProvider = DataProvider(httpClient: MockHttpClientError())
-        let result: Result<Data, Error> = await dataProvider.fetchObject(from: url)
-        switch result {
-        case .failure(let error):
-            XCTAssertNotNil(error, "Error should not be nil")
-        default:
-            XCTFail("Result should be failure")
+        
+        var errorResult: Error?
+        do {
+            let _: Data = try await dataProvider.fetchObject(from: url)
+        } catch(let error) {
+            errorResult = error
         }
         
+        XCTAssertNotNil(errorResult, "Error should not be nil")
     }
     
     func testFetchListDecodeFailure() async {
@@ -60,14 +61,17 @@ class DataProviderTests: XCTestCase {
         let client = MockHttpClientSuccess(object: mealObject)
         self.dataProvider = DataProvider(httpClient: client)
         
-        let result: Result<Meal, Error> = await self.dataProvider.fetchObject(from: url)
-        switch result {
-        case .failure(let error):
-            XCTAssertNotNil(error, "Error should not be nil")
-        default:
-            XCTFail("Result should be success")
+        var errorResult: DataProvider.DataProviderError?
+        do {
+            let _: Meal = try await dataProvider.fetchObject(from: url)
+        } catch(let error) {
+            if let err = error as? DataProvider.DataProviderError {
+                errorResult = err
+            }
         }
         
+        XCTAssertNotNil(errorResult, "Error should not be nil")
+        XCTAssertEqual(errorResult, DataProvider.DataProviderError.decode, "Should be decode error")
     }
     
     func testFetchImageDataSuccess() async {
@@ -77,12 +81,11 @@ class DataProviderTests: XCTestCase {
         let client = MockHttpClientSuccess<Data>(data: image)
         self.dataProvider = DataProvider(httpClient: client)
         
-        let result = await dataProvider.fetchImageData(thumbnailURLString: validThumbnailURL)
-        switch result {
-        case .success(let data):
-            XCTAssertEqual(image, data, "Should be the same object")
-        default:
-            XCTFail("Error trying to get image")
+        do {
+            let result = try await dataProvider.fetchImageData(thumbnailURLString: validThumbnailURL)
+            XCTAssertEqual(image, result, "Should be the same object")
+        } catch {
+            XCTFail()
         }
         
     }
@@ -93,13 +96,14 @@ class DataProviderTests: XCTestCase {
         let client = MockHttpClientError()
         self.dataProvider = DataProvider(httpClient: client)
         
-        let result = await dataProvider.fetchImageData(thumbnailURLString: invalidThumbnailURL)
-        switch result {
-        case .failure(let error):
-            XCTAssertNotNil(error, "Error should not be nil")
-        default:
-            XCTFail()
+        var errorResult: Error?
+        do {
+            let _ = try await dataProvider.fetchImageData(thumbnailURLString: invalidThumbnailURL)
+        } catch(let error) {
+            errorResult = error
         }
+        
+        XCTAssertNotNil(errorResult, "Error should not be nil")
     }
     
     func testFetchImageDataUrlError() async {
@@ -108,12 +112,16 @@ class DataProviderTests: XCTestCase {
         let client = MockHttpClientError()
         self.dataProvider = DataProvider(httpClient: client)
         
-        let result = await dataProvider.fetchImageData(thumbnailURLString: invalidThumbnailURL)
-        switch result {
-        case .failure(let error):
-            XCTAssertNotNil(error, "Error should not be nil")
-        default:
-            XCTFail()
+        var errorResult: DataProvider.DataProviderError?
+        do {
+            let _ = try await dataProvider.fetchImageData(thumbnailURLString: invalidThumbnailURL)
+        } catch(let error) {
+            if let err = error as? DataProvider.DataProviderError {
+                errorResult = err
+            }
         }
+        
+        XCTAssertNotNil(errorResult, "Error should not be nil")
+        XCTAssertEqual(errorResult, DataProvider.DataProviderError.url, "Should be URL error")
     }
 }

@@ -28,14 +28,7 @@ struct DessertListItemView: View {
         .cornerRadius(8)
         .shadow(color: .gray, radius: 4, x: 0, y: 4)
         .onAppear {
-            if image == nil {
-                viewModel.getThumb { data in
-                    if let data,
-                        let image = UIImage(data: data) {
-                        self.image = image
-                    }
-                }
-            }
+            getImage()
         }
         
         Text(viewModel.meal)
@@ -49,5 +42,16 @@ struct DessertListItemView: View {
             )
             .padding([.leading, .trailing, .bottom], 5)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    func getImage() {
+        if image == nil {
+            Task {
+                let data = try await viewModel.getThumb()
+                if let image = UIImage(data: data) {
+                    self.image = image
+                }
+            }
+        }
     }
 }

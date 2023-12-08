@@ -8,9 +8,11 @@ struct DessertListView: View {
             ProgressView()
                 .alert(Text(viewModel.alertText), isPresented: $viewModel.showAlert, actions: {
                     Button(viewModel.alertButton) {
-                        viewModel.fetchList()
+                        loadItems()
                     }
-                })
+                }).onAppear() {
+                    loadItems()
+                }
         } else {
             NavigationView {
                 ScrollView {
@@ -30,6 +32,12 @@ struct DessertListView: View {
                 }
             }
             .accentColor(.black)
+        }
+    }
+    
+    func loadItems() {
+        Task {
+            await viewModel.fetchList()
         }
     }
 }

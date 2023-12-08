@@ -15,28 +15,25 @@ class DessertDetailsViewModel: ObservableObject {
     let ingredientsTitle = "Ingredients"
     
     private var dataProvider: ObjectProviderProtocol
-
+    
     init(id: String, dataProvider: ObjectProviderProtocol = DataProvider()) {
         self.dataProvider = dataProvider
         self.id = id
     }
     
-    func fetchDetails(id: String, completion: (() -> ())? = nil) {
-        Task {
-            let result: Result<MealsDetails, Error> = await dataProvider.fetchObject(from: Endpoint.objectId(id).url)
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let mealDetails):
-                    if let meal = mealDetails.meals.first {
-                        self.meal = meal
-                    } else {
-                        self.showAlert = true
-                    }
-                case .failure(_):
-                    self.showAlert = true
-                }
-                completion?()
+    @MainActor
+    func fetchDetails() async {
+        let id = self.id
+        
+        do {
+            let result: MealsDetails = try await dataProvider.fetchObject(from: Endpoint.objectId(id).url)
+            if let meal = result.meals.first {
+                self.meal = meal
+            } else {
+                self.showAlert = true
             }
+        } catch {
+            self.showAlert = true
         }
     }
     

@@ -10,23 +10,36 @@ struct DessertDetailsView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                TitleView(title: viewModel.meal?.strMeal ?? "")
+                TitleView(title: title)
                 
-                DessertDetailsImageView(width: geometry.size.width, url: URL(string: viewModel.meal?.strMealThumb ?? ""))
+                DessertDetailsImageView(width: geometry.size.width, url: detailsURL)
                 
                 DessertDetailsTextsView(viewModel: viewModel)
             }
             .onAppear() {
-                viewModel.fetchDetails(id: viewModel.id)
+                fetchDetails()
             }
             .alert(Text(viewModel.errorAlertText), isPresented: $viewModel.showAlert, actions: {
                 Button(viewModel.errorAlertButton) {
-                    viewModel.fetchDetails(id: viewModel.id)
+                    fetchDetails()
                 }
             })
             
         }
-        .navigationBarTitle(Text(""), displayMode: .inline)
+        .navigationBarTitle(Text(String()), displayMode: .inline)
     }
     
+    var title: String {
+        viewModel.meal?.strMeal ?? String()
+    }
+    
+    var detailsURL: URL? {
+        URL(string: viewModel.meal?.strMealThumb ?? String())
+    }
+    
+    func fetchDetails() {
+        Task {
+            await viewModel.fetchDetails()
+        }
+    } 
 }

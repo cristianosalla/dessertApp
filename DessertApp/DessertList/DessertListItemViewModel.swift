@@ -15,18 +15,9 @@ class DessertListItemViewModel: ObservableObject {
         self.dataProvider = dataProvider
     }
     
-    func getThumb(completion: @escaping (Data?) -> Void) {
-        Task {
-            let result = await dataProvider.fetchImageData(thumbnailURLString: url)
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    completion(data)
-                case .failure(_):
-                    completion(nil)
-                }
-            }
-        }
+    func getThumb() async throws -> Data {
+        let result = try await dataProvider.fetchImageData(thumbnailURLString: url)
+        return result
     }
 }
 
