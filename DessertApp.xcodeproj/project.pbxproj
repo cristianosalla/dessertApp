@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B207E1D2B22BAC500FDB5F2 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B207E1C2B22BAC500FDB5F2 /* URLSession+Extension.swift */; };
 		5B3E90D72AF2C57000FB7532 /* DessertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90D62AF2C56F00FB7532 /* DessertListView.swift */; };
 		5B3E90D92AF2C6B200FB7532 /* DessertDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90D82AF2C6B200FB7532 /* DessertDetailsView.swift */; };
 		5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90DA2AF2CBB200FB7532 /* DataProvider.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		5B1364502B0BF55A00F974EB /* MealsList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealsList.json; sourceTree = "<group>"; };
+		5B207E1C2B22BAC500FDB5F2 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		5B3E90D62AF2C56F00FB7532 /* DessertListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListView.swift; sourceTree = "<group>"; };
 		5B3E90D82AF2C6B200FB7532 /* DessertDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailsView.swift; sourceTree = "<group>"; };
 		5B3E90DA2AF2CBB200FB7532 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		5B4755682AFB2D4D00158A4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5B207E1C2B22BAC500FDB5F2 /* URLSession+Extension.swift */,
 				5BA92BBF2AF5ED6800D9B6D2 /* Font+Extenstion.swift */,
 			);
 			path = Extensions;
@@ -321,6 +324,7 @@
 				5B3E90DF2AF2D08800FB7532 /* DessertListViewModel.swift in Sources */,
 				5B3E90D72AF2C57000FB7532 /* DessertListView.swift in Sources */,
 				5B3E90F82AF4447B00FB7532 /* DessertListItemView.swift in Sources */,
+				5B207E1D2B22BAC500FDB5F2 /* URLSession+Extension.swift in Sources */,
 				5B4A56EA2AF2BC34008F3F85 /* DessertApp.swift in Sources */,
 				5B3E90E12AF2E32A00FB7532 /* DessertDetailsViewModel.swift in Sources */,
 				5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */,
