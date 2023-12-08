@@ -11,9 +11,9 @@ struct DessertDetailsTextsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         
-        ForEach(viewModel.meal?.ingredientMeasure ?? [], id: \.self) { obj in
+        ForEach(viewModel.meal?.items ?? [], id: \.self) { obj in
             HStack {
-                Text(viewModel.ingredientMeasureFormat(ingredient: obj.ingredient, measure: obj.measure))
+                Text(viewModel.itemFormat(ingredient: obj.ingredient, measure: obj.measure))
                     .font(.dessertText)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 15)

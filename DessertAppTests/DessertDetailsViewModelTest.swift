@@ -24,7 +24,7 @@ class DessertDetailsViewModelTests: XCTestCase {
         let ingredient = "Plain Flour"
         let measure = "120g"
         
-        let formattedText = self.viewModel.ingredientMeasureFormat(ingredient: ingredient, measure: measure)
+        let formattedText = self.viewModel.itemFormat(ingredient: ingredient, measure: measure)
         
         XCTAssertEqual(formattedText, "• 120g Plain Flour")
     }

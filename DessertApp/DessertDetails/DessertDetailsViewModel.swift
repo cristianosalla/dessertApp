@@ -37,7 +37,7 @@ class DessertDetailsViewModel: ObservableObject {
         }
     }
     
-    func ingredientMeasureFormat(ingredient: String, measure: String) -> String {
+    func itemFormat(ingredient: String, measure: String) -> String {
         "• \(measure) \(ingredient)"
     }
     
