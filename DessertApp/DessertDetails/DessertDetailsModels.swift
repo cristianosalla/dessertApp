@@ -4,11 +4,6 @@ struct MealsDetails: Codable {
     let meals: [MealDetail]
 }
 
-struct IngredientMeasure: Codable, Equatable, Hashable {
-    let ingredient: String
-    let measure: String
-}
-
 struct MealDetail: Codable, Equatable {
     var idMeal: String
     var strMeal: String
