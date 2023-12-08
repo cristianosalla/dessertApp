@@ -1,10 +1,3 @@
-//
-//  DessertDetailsTexts.swift
-//  FetchCodeChallenge
-//
-//  Created by Cristiano Salla Lunardi on 11/2/23.
-//
-
 import SwiftUI
 
 struct DessertDetailsTextsView: View {

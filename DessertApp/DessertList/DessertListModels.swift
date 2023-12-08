@@ -1,10 +1,3 @@
-//
-//  DessertListModels.swift
-//  FetchCodeChallenge
-//
-//  Created by Cristiano Salla Lunardi on 11/7/23.
-//
-
 import Foundation
 
 struct MealList: Codable {

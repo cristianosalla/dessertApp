@@ -1,10 +1,3 @@
-//
-//  DataProviderTests.swift
-//  FetchCodeChallengeTests
-//
-//  Created by Cristiano Salla Lunardi on 11/3/23.
-//
-
 import XCTest
 @testable import DessertApp
 

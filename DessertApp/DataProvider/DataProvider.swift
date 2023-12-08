@@ -1,10 +1,3 @@
-//
-//  DataProvider.swift
-//  FetchCodeChallenge
-//
-//  Created by Cristiano Salla Lunardi on 11/1/23.
-//
-
 import Foundation
 
 protocol ImageProviderProtocol {

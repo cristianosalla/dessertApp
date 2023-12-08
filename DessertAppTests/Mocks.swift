@@ -1,10 +1,3 @@
-//
-//  Mocks.swift
-//  FetchCodeChallengeTests
-//
-//  Created by Cristiano Salla Lunardi on 11/15/23.
-//
-
 @testable import DessertApp
 import Foundation
 

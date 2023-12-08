@@ -1,10 +1,3 @@
-//
-//  DessertListItemViewModelTest.swift
-//  FetchCodeChallengeTests
-//
-//  Created by Cristiano Salla Lunardi on 11/8/23.
-//
-
 import XCTest
 @testable import DessertApp
 

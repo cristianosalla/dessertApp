@@ -1,10 +1,3 @@
-//
-//  Fonts.swift
-//  FetchCodeChallenge
-//
-//  Created by Cristiano Salla Lunardi on 11/3/23.
-//
-
 import SwiftUI
 
 extension Font {
