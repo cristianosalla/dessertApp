@@ -15,7 +15,9 @@ class Coordinator {
     }
     
     func goToDetails(id: String) -> some View {
-        return DessertDetailsView(viewModel: DessertDetailsViewModel(id: id))
+        let viewmodel = DessertDetailsViewModel(id: id)
+        let view = DessertDetailsView<DessertDetailsViewModel>(viewmodel, coordinator: self)
+        return view
     }
     
     func goToDessertList() -> some View {

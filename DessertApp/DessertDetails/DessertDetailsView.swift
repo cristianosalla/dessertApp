@@ -1,10 +1,24 @@
 import SwiftUI
 
-struct DessertDetailsView: View {
-    @ObservedObject private var viewModel: DessertDetailsViewModel
+protocol DessertDetailsViewModelProtocol: ObservableObject {
+    var alertText: String { get }
+    var alertButton: String { get }
+    var title: String { get }
+    var instructionsTitle: String { get }
+    var ingredientsTitle: String { get }
+    var showAlert: Bool { get set }
+    var meal: MealDetail? { get }
+    func fetchDetails() async
+    func itemFormat(ingredient: String, measure: String) -> String
+}
+
+struct DessertDetailsView<ViewModel: DessertDetailsViewModelProtocol>: View {
+    @ObservedObject private var viewModel: ViewModel
+    private var coordinator: Coordinator
     
-    init(viewModel: DessertDetailsViewModel) {
+    init(_ viewModel: ViewModel, coordinator: Coordinator) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
     }
     
     var body: some View {
@@ -19,8 +33,8 @@ struct DessertDetailsView: View {
             .onAppear() {
                 fetchDetails()
             }
-            .alert(Text(viewModel.errorAlertText), isPresented: $viewModel.showAlert, actions: {
-                Button(viewModel.errorAlertButton) {
+            .alert(Text(viewModel.alertText), isPresented: $viewModel.showAlert, actions: {
+                Button(viewModel.alertButton) {
                     fetchDetails()
                 }
             })
@@ -30,7 +44,7 @@ struct DessertDetailsView: View {
     }
     
     var title: String {
-        viewModel.meal?.strMeal ?? String()
+        viewModel.title
     }
     
     var detailsURL: URL? {

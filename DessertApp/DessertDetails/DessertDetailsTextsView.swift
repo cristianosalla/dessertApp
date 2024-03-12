@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct DessertDetailsTextsView: View {
+struct DessertDetailsTextsView<ViewModel: DessertDetailsViewModelProtocol>: View {
     
-    @StateObject var viewModel: DessertDetailsViewModel
+    @StateObject var viewModel: ViewModel
     
     var body: some View {
         
@@ -25,7 +25,7 @@ struct DessertDetailsTextsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
         
-        Text(viewModel.meal?.strInstructions ?? "")
+        Text(viewModel.meal?.strInstructions ?? String())
             .font(.dessertText)
             .padding([.leading, .trailing])
         
