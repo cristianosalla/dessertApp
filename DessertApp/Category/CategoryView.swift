@@ -1,13 +1,5 @@
-//
-//  CategoryView.swift
-//  DessertApp
-//
-//  Created by Cristiano Salla Lunardi on 3/12/24.
-//
-
 import Foundation
 import SwiftUI
-
 
 protocol CategoryViewModelProtocol: ObservableObject {
     var categories: [Categories] { get }
@@ -22,11 +14,11 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator
+    
     init(viewModel: ViewModel, coordinator: Coordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
     }
-    
     
     var body: some View {
         if viewModel.categories.isEmpty {
@@ -60,7 +52,6 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
             }
         }
     }
-    
     
     func loadItems() {
         Task {

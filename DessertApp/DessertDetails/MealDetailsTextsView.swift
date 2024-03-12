@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DessertDetailsTextsView<ViewModel: DessertDetailsViewModelProtocol>: View {
+struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     @StateObject var viewModel: ViewModel
     

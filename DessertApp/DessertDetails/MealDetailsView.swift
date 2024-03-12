@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol DessertDetailsViewModelProtocol: ObservableObject {
+protocol MealDetailsViewModelProtocol: ObservableObject {
     var alertText: String { get }
     var alertButton: String { get }
     var title: String { get }
@@ -12,7 +12,7 @@ protocol DessertDetailsViewModelProtocol: ObservableObject {
     func itemFormat(ingredient: String, measure: String) -> String
 }
 
-struct DessertDetailsView<ViewModel: DessertDetailsViewModelProtocol>: View {
+struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator
     
@@ -26,9 +26,9 @@ struct DessertDetailsView<ViewModel: DessertDetailsViewModelProtocol>: View {
             ScrollView {
                 TitleView(title: title)
                 
-                DessertDetailsImageView(width: geometry.size.width, url: detailsURL)
+                MealDetailsImageView(width: geometry.size.width, url: detailsURL)
                 
-                DessertDetailsTextsView(viewModel: viewModel)
+                MealDetailsTextsView(viewModel: viewModel)
             }
             .onAppear() {
                 fetchDetails()

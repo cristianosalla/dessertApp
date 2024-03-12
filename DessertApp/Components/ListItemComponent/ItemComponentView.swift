@@ -1,10 +1,3 @@
-//
-//  ItemComponentView.swift
-//  DessertApp
-//
-//  Created by Cristiano Salla Lunardi on 3/12/24.
-//
-
 import SwiftUI
 
 protocol ItemComponentViewModelProtocol: ObservableObject {

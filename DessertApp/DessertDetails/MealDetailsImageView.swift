@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DessertDetailsImageView: View {
+struct MealDetailsImageView: View {
     var width: CGFloat
     var url: URL?
     

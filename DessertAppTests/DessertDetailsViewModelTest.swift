@@ -3,10 +3,10 @@ import XCTest
 
 class DessertDetailsViewModelTests: XCTestCase {
 
-    var viewModel: DessertDetailsViewModel!
+    var viewModel: MealDetailsViewModel!
 
     override func setUpWithError() throws {
-        viewModel = DessertDetailsViewModel(id: "")
+        viewModel = MealDetailsViewModel(id: "")
     }
 
     override func tearDownWithError() throws {
@@ -35,7 +35,7 @@ class DessertDetailsViewModelTests: XCTestCase {
         let meal = MealDetail()
         let meals = MealsDetails(meals: [meal])
         
-        viewModel = DessertDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderSuccess(object: meals))
+        viewModel = MealDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderSuccess(object: meals))
         
         do {
             await viewModel.fetchDetails()
@@ -46,7 +46,7 @@ class DessertDetailsViewModelTests: XCTestCase {
     
     func testFetchFailure() async {
         let dummyId = "1111"
-        self.viewModel = DessertDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderError())
+        self.viewModel = MealDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderError())
         
         do {
             await viewModel.fetchDetails()
@@ -60,7 +60,7 @@ class DessertDetailsViewModelTests: XCTestCase {
         let meals = MealsDetails(meals: [])
         
         let dummyId = "1111"
-        self.viewModel = DessertDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderSuccess(object: meals))
+        self.viewModel = MealDetailsViewModel(id: dummyId, dataProvider: MockObjectProviderSuccess(object: meals))
         
         do {
             await viewModel.fetchDetails()

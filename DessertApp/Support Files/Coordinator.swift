@@ -21,14 +21,14 @@ class Coordinator {
     }
     
     func goToDetails(id: String) -> some View {
-        let viewmodel = DessertDetailsViewModel(id: id)
-        let view = DessertDetailsView<DessertDetailsViewModel>(viewmodel, coordinator: self)
+        let viewmodel = MealDetailsViewModel(id: id)
+        let view = MealDetailsView<MealDetailsViewModel>(viewmodel, coordinator: self)
         return view
     }
     
     func goToMealList(category: String) -> some View {
         let viewModel = MealListViewModel(category: category)
-        let view = DessertListView<MealListViewModel>(viewModel, self)
+        let view = MealListView<MealListViewModel>(viewModel, self)
         return view
     }
     

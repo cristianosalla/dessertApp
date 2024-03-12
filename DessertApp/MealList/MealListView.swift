@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol DessertListViewModelProtocol: ObservableObject {
+protocol MealListViewModelProtocol: ObservableObject {
     var alertText: String { get }
     var alertButton: String { get }
     var title: String { get }
@@ -9,7 +9,7 @@ protocol DessertListViewModelProtocol: ObservableObject {
     func fetchList() async
 }
 
-struct DessertListView<ViewModel: DessertListViewModelProtocol>: View {
+struct MealListView<ViewModel: MealListViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator
     
