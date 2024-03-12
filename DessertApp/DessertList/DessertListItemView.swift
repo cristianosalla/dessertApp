@@ -1,11 +1,17 @@
 import SwiftUI
 
-struct DessertListItemView: View {
-    @ObservedObject var viewModel: DessertListItemViewModel
+protocol DessertListItemViewModelProtocol: ObservableObject {
+    var url: String { get }
+    var meal: String { get }
+    func getThumb() async throws -> Data
+}
+
+struct DessertListItemView<ViewModel: DessertListItemViewModelProtocol>: View {
+    @ObservedObject var viewModel: ViewModel
 
     @State var image: UIImage?
     
-    init(viewModel: DessertListItemViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
     

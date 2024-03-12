@@ -1,8 +1,6 @@
 import SwiftUI
 
-class DessertListItemViewModel: ObservableObject {
-    
-    @Published var imageData: Data?
+class DessertListItemViewModel: DessertListItemViewModelProtocol {
     
     var url: String
     var meal: String
