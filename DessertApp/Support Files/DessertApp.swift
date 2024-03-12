@@ -4,7 +4,8 @@ import SwiftUI
 struct DessertApp: App {
     var body: some Scene {
         WindowGroup {
-            DessertListView()
+            let coordinator = Coordinator()
+            coordinator.goToDessertList()
         }
     }
 }

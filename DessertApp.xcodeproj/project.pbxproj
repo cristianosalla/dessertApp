@@ -26,6 +26,7 @@
 		5B5FCBFD2B191F6600EF8598 /* MealsDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */; };
 		5B5FCBFE2B191F6600EF8598 /* MealsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B1364502B0BF55A00F974EB /* MealsList.json */; };
 		5B62B7772AF9DEFD00D48633 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62B7762AF9DEFD00D48633 /* TitleView.swift */; };
+		5B77EFBE2BA0EA9D001CCB6D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFBD2BA0EA9D001CCB6D /* Coordinator.swift */; };
 		5B9191312B08622900248387 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9191302B08622900248387 /* Endpoint.swift */; };
 		5BA92BB62AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */; };
 		5BA92BBA2AF5C2A800D9B6D2 /* DataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */; };
@@ -67,6 +68,7 @@
 		5B4A56ED2AF2BC36008F3F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B4A56F62AF2BC36008F3F85 /* DessertAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B62B7762AF9DEFD00D48633 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		5B77EFBD2BA0EA9D001CCB6D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5B9191302B08622900248387 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = "<group>"; };
 		5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTest.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4A56E92AF2BC34008F3F85 /* DessertApp.swift */,
+				5B77EFBD2BA0EA9D001CCB6D /* Coordinator.swift */,
 				5B4A56ED2AF2BC36008F3F85 /* Assets.xcassets */,
 				5B4755692AFB2D6600158A4C /* Fonts */,
 			);
@@ -327,6 +330,7 @@
 				5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */,
 				5B3E90D92AF2C6B200FB7532 /* DessertDetailsView.swift in Sources */,
 				5BA92BC02AF5ED6800D9B6D2 /* Font+Extenstion.swift in Sources */,
+				5B77EFBE2BA0EA9D001CCB6D /* Coordinator.swift in Sources */,
 				5B3E90F42AF442D000FB7532 /* DessertDetailsImageView.swift in Sources */,
 				5B4755662AFB1A4C00158A4C /* DessertListModels.swift in Sources */,
 				5B3E90F62AF442D900FB7532 /* DessertDetailsTextsView.swift in Sources */,

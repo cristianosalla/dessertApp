@@ -1,30 +1,27 @@
 import SwiftUI
 
-class DessertListViewModel: ObservableObject {
+class DessertListViewModel: DessertListViewModelProtocol {
+    @Published var meals: [Meal] = [Meal]()
+    @Published var showAlert: Bool = false
     
-    @Published var meals = [Meal]()
-    
-    @Published var showAlert = false
-    
-    let alertText = "Couldn't load list of desserts."
-    let alertButton = "Try again"
-    
-    let title = "Dessert List"
+    var alertText: String { "Couldn't load list of desserts." }
+    var alertButton: String { "Try again" }
+    var title: String { "Dessert List" }
     
     private var dataProvider: ObjectProviderProtocol
-    
+    private var url = Endpoint.list.url
+
     init(dataProvider: ObjectProviderProtocol = DataProvider()) {
         self.dataProvider = dataProvider
     }
-    
+
     @MainActor
-    func fetchList(_ url: URL = Endpoint.list.url) async {
+    func fetchList() async {
         do {
-            let result: MealList = try await dataProvider.fetchObject(from: url)
+            let result: MealList = try await dataProvider.fetchObject(from: self.url)
             self.meals = result.meals.sorted{ $0.strMeal < $1.strMeal }
         } catch {
             self.showAlert = true
         }
     }
 }
-
