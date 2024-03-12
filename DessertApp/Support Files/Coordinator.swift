@@ -1,18 +1,7 @@
-//
-//  Coordinator.swift
-//  DessertApp
-//
-//  Created by Cristiano Salla Lunardi on 3/12/24.
-//
-
 import Foundation
 import SwiftUI
 
 class Coordinator {
-    
-    init() {
-        
-    }
     
     func goToCategory() -> some View {
         let viewModel = CategoryViewModel()

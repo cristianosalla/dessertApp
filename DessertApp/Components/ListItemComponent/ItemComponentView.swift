@@ -39,7 +39,7 @@ struct ItemComponentView<ViewModel: ItemComponentViewModelProtocol>: View {
         
         Text(viewModel.text)
             .lineLimit(1)
-            .font(.dessertText)
+            .font(.mealText)
             .foregroundColor(Color.white)
             .background(
                 Rectangle()

@@ -6,7 +6,7 @@ struct TitleView: View {
     
     var body: some View {
         Text(title)
-            .font(.dessertTitle)
+            .font(.mealTitle)
             .padding()
     }
 }

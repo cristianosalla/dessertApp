@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct DessertApp: App {
+struct MealApp: App {
     var body: some Scene {
         WindowGroup {
             let coordinator = Coordinator()
