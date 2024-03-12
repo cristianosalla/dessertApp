@@ -1,18 +1,20 @@
 import SwiftUI
 
-class DessertListViewModel: DessertListViewModelProtocol {
+class MealListViewModel: DessertListViewModelProtocol {
     @Published var meals: [Meal] = [Meal]()
     @Published var showAlert: Bool = false
     
     var alertText: String { "Couldn't load list of desserts." }
     var alertButton: String { "Try again" }
-    var title: String { "Dessert List" }
+    var title: String
     
     private var dataProvider: ObjectProviderProtocol
-    private var url = Endpoint.list.url
+    private var url: URL
 
-    init(dataProvider: ObjectProviderProtocol = DataProvider()) {
+    init(category: String, dataProvider: ObjectProviderProtocol = DataProvider()) {
+        self.url = Endpoint.list(category).url
         self.dataProvider = dataProvider
+        self.title = category + " List"
     }
 
     @MainActor

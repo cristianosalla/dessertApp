@@ -3,10 +3,10 @@ import XCTest
 
 class DessertListViewModelTests: XCTestCase {
 
-    var viewModel: DessertListViewModel!
+    var viewModel: MealListViewModel!
 
     override func setUpWithError() throws {
-        viewModel = DessertListViewModel()
+        viewModel = MealListViewModel()
     }
 
     override func tearDownWithError() throws {
@@ -24,7 +24,7 @@ class DessertListViewModelTests: XCTestCase {
         let meal2 = Meal.init(idMeal: "", strMeal: "bbb", strMealThumb: "")
         let list = MealList.init(meals: [meal2, meal])
         
-        self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderSuccess(object: list))
+        self.viewModel = MealListViewModel(dataProvider: MockObjectProviderSuccess(object: list))
         
         do {
             await viewModel.fetchList()
@@ -33,7 +33,7 @@ class DessertListViewModelTests: XCTestCase {
     }
     
     func testFetchListFailure() async {
-        self.viewModel = DessertListViewModel(dataProvider: MockObjectProviderError())
+        self.viewModel = MealListViewModel(dataProvider: MockObjectProviderError())
         
         do {
             await viewModel.fetchList()

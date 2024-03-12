@@ -1,14 +1,17 @@
 import Foundation
 
 enum Endpoint {
-    case list
+    case list(String)
     case objectId(String)
+    case category
     
     private var fullPath: String {
         var endpoint: String
         switch self {
-        case .list:
-            endpoint = "/filter.php?c=Dessert"
+        case .category:
+            endpoint = "/categories.php"
+        case .list(let category):
+            endpoint = "/filter.php?c=\(category)"
         case .objectId(let id):
             endpoint = "/lookup.php?i=\(id)"
         }

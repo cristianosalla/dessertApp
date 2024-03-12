@@ -29,24 +29,23 @@ struct DessertListView<ViewModel: DessertListViewModelProtocol>: View {
                     loadItems()
                 }
         } else {
-            NavigationView {
-                ScrollView {
-                    TitleView(title: viewModel.title)
-                    
-                    LazyVGrid(columns: [GridItem(), GridItem()]) {
-                        ForEach(viewModel.meals, id: \.self) { meal in
-                            NavigationLink(destination: coordinator.goToDetails(id: meal.idMeal)) {
-                                ZStack(alignment: .bottom) {
-                                    DessertListItemView(viewModel: DessertListItemViewModel(url: meal.strMealThumb, meal: meal.strMeal))
-                                        .padding(4)
-                                }
+            ScrollView {
+                TitleView(title: viewModel.title)
+                
+                LazyVGrid(columns: [GridItem(), GridItem()]) {
+                    ForEach(viewModel.meals, id: \.self) { meal in
+                        NavigationLink(destination: coordinator.goToDetails(id: meal.idMeal)) {
+                            ZStack(alignment: .bottom) {
+                                let viewModel = ItemComponentViewModel(url: meal.strMealThumb, text: meal.strMeal)
+                                let componentView = ItemComponentView(viewModel: viewModel)
+                                componentView
+                                    .padding(4)
                             }
                         }
                     }
-                    .padding([.leading, .trailing])
                 }
+                .padding([.leading, .trailing])
             }
-            .accentColor(.black)
         }
     }
     

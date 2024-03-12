@@ -1,12 +1,19 @@
+//
+//  ItemComponentView.swift
+//  DessertApp
+//
+//  Created by Cristiano Salla Lunardi on 3/12/24.
+//
+
 import SwiftUI
 
-protocol DessertListItemViewModelProtocol: ObservableObject {
+protocol ItemComponentViewModelProtocol: ObservableObject {
     var url: String { get }
-    var meal: String { get }
+    var text: String { get }
     func getThumb() async throws -> Data
 }
 
-struct DessertListItemView<ViewModel: DessertListItemViewModelProtocol>: View {
+struct ItemComponentView<ViewModel: ItemComponentViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
 
     @State var image: UIImage?
@@ -37,7 +44,7 @@ struct DessertListItemView<ViewModel: DessertListItemViewModelProtocol>: View {
             getImage()
         }
         
-        Text(viewModel.meal)
+        Text(viewModel.text)
             .lineLimit(1)
             .font(.dessertText)
             .foregroundColor(Color.white)

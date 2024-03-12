@@ -1,15 +1,15 @@
 import SwiftUI
 
-class DessertListItemViewModel: DessertListItemViewModelProtocol {
+class ItemComponentViewModel: ItemComponentViewModelProtocol {
     
     var url: String
-    var meal: String
+    var text: String
     
     private var dataProvider: ImageProviderProtocol
     
-    init(url: String, meal: String, dataProvider: ImageProviderProtocol = DataProvider()) {
+    init(url: String, text: String, dataProvider: ImageProviderProtocol = DataProvider()) {
         self.url = url
-        self.meal = meal
+        self.text = text
         self.dataProvider = dataProvider
     }
     
@@ -18,4 +18,3 @@ class DessertListItemViewModel: DessertListItemViewModelProtocol {
         return result
     }
 }
-

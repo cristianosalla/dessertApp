@@ -14,15 +14,21 @@ class Coordinator {
         
     }
     
+    func goToCategory() -> some View {
+        let viewModel = CategoryViewModel()
+        let view = CategoryView(viewModel: viewModel, coordinator: self)
+        return view
+    }
+    
     func goToDetails(id: String) -> some View {
         let viewmodel = DessertDetailsViewModel(id: id)
         let view = DessertDetailsView<DessertDetailsViewModel>(viewmodel, coordinator: self)
         return view
     }
     
-    func goToDessertList() -> some View {
-        let viewModel = DessertListViewModel()
-        let view = DessertListView<DessertListViewModel>(viewModel, self)
+    func goToMealList(category: String) -> some View {
+        let viewModel = MealListViewModel(category: category)
+        let view = DessertListView<MealListViewModel>(viewModel, self)
         return view
     }
     
