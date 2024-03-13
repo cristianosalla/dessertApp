@@ -7,7 +7,7 @@ class CoordinatorTests: XCTestCase {
     var coordinator: Coordinator!
     
     override func setUp() {
-        coordinator = Coordinator()
+        coordinator = Coordinator(provider: MockObjectProviderError())
     }
     
     override func tearDown() {
@@ -15,24 +15,15 @@ class CoordinatorTests: XCTestCase {
     }
     
     func testGoToCategory() {
-        guard coordinator.goToCategory() is CategoryView<CategoryViewModel> else {
-            XCTFail()
-            return
-        }
+        XCTAssertTrue(coordinator.goToCategory() is CategoryView<CategoryViewModel>)
     }
     
     func testGoToList() {
-        guard coordinator.goToMealList(category: "") is MealListView<MealListViewModel> else {
-            XCTFail()
-            return
-        }
+        XCTAssertTrue(coordinator.goToMealList(category: "") is MealListView<MealListViewModel>)
     }
     
     func testGoToDetail() {
-        guard coordinator.goToDetails(id: "") is MealDetailsView<MealDetailsViewModel> else {
-            XCTFail()
-            return
-        }
+        XCTAssertTrue(coordinator.goToDetails(id: "") is MealDetailsView<MealDetailsViewModel>)
     }
     
 }

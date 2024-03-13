@@ -6,7 +6,7 @@ class CategoryViewModelTests: XCTestCase {
     var viewModel: CategoryViewModel!
     
     override func setUpWithError() throws {
-        viewModel = CategoryViewModel()
+        viewModel = CategoryViewModel(dataProvider: MockObjectProviderError())
     }
     
     override func tearDownWithError() throws {

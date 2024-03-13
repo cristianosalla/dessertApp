@@ -6,7 +6,7 @@ class MealDetailsViewModelTests: XCTestCase {
     var viewModel: MealDetailsViewModel!
 
     override func setUpWithError() throws {
-        viewModel = MealDetailsViewModel(id: "")
+        viewModel = MealDetailsViewModel(id: "", dataProvider: MockObjectProviderError())
     }
 
     override func tearDownWithError() throws {

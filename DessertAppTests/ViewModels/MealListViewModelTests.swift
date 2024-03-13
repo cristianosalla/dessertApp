@@ -5,15 +5,12 @@ class MealListViewModelTests: XCTestCase {
 
     var viewModel: MealListViewModel!
 
-    override func setUpWithError() throws {
-        viewModel = MealListViewModel(category: "Dessert")
-    }
-
     override func tearDownWithError() throws {
         viewModel = nil
     }
     
     func testViewTexts() {
+        self.viewModel = MealListViewModel(category: "Dessert", dataProvider: MockObjectProviderError())
         XCTAssertEqual(self.viewModel.title, "Dessert List")
     }
     

@@ -7,7 +7,7 @@ class ItemComponentViewModelTest: XCTestCase {
 
     override func setUpWithError() throws {
         let url = "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
-        viewModel = ItemComponentViewModel(url: url, text: "Banana Pancakes")
+        viewModel = ItemComponentViewModel(url: url, text: "Banana Pancakes", dataProvider: MockImageProviderError())
     }
 
     override func tearDownWithError() throws {
