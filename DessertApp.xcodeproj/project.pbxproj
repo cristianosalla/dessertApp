@@ -31,13 +31,16 @@
 		5B77EFC52BA0F333001CCB6D /* CategoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFC42BA0F333001CCB6D /* CategoryModels.swift */; };
 		5B77EFC72BA0F704001CCB6D /* ItemComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFC62BA0F704001CCB6D /* ItemComponentView.swift */; };
 		5B77EFC92BA0F70B001CCB6D /* ItemComponentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFC82BA0F70B001CCB6D /* ItemComponentViewModel.swift */; };
+		5B77EFCC2BA143F3001CCB6D /* CategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFCB2BA143F3001CCB6D /* CategoryViewModelTests.swift */; };
+		5B77EFCE2BA14541001CCB6D /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B77EFCD2BA14541001CCB6D /* Category.json */; };
+		5B77EFCF2BA14610001CCB6D /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B77EFCD2BA14541001CCB6D /* Category.json */; };
 		5B9191312B08622900248387 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9191302B08622900248387 /* Endpoint.swift */; };
 		5BA92BB62AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */; };
 		5BA92BBA2AF5C2A800D9B6D2 /* DataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */; };
-		5BA92BBC2AF5EAFB00D9B6D2 /* DessertDetailsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BBB2AF5EAFB00D9B6D2 /* DessertDetailsViewModelTest.swift */; };
-		5BA92BBE2AF5EC8C00D9B6D2 /* DessertListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BBD2AF5EC8C00D9B6D2 /* DessertListViewModelTest.swift */; };
+		5BA92BBC2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BBB2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift */; };
+		5BA92BBE2AF5EC8C00D9B6D2 /* MealListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BBD2AF5EC8C00D9B6D2 /* MealListViewModelTests.swift */; };
 		5BA92BC02AF5ED6800D9B6D2 /* Font+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BBF2AF5ED6800D9B6D2 /* Font+Extenstion.swift */; };
-		5BAA72522AFC8486008469AA /* DessertListItemViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA72512AFC8486008469AA /* DessertListItemViewModelTest.swift */; };
+		5BAA72522AFC8486008469AA /* ItemComponentViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA72512AFC8486008469AA /* ItemComponentViewModelTest.swift */; };
 		5BBB25CD2B05CB9200FC0116 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB25CC2B05CB9200FC0116 /* Mocks.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,13 +79,15 @@
 		5B77EFC42BA0F333001CCB6D /* CategoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModels.swift; sourceTree = "<group>"; };
 		5B77EFC62BA0F704001CCB6D /* ItemComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentView.swift; sourceTree = "<group>"; };
 		5B77EFC82BA0F70B001CCB6D /* ItemComponentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentViewModel.swift; sourceTree = "<group>"; };
+		5B77EFCB2BA143F3001CCB6D /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
+		5B77EFCD2BA14541001CCB6D /* Category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Category.json; sourceTree = "<group>"; };
 		5B9191302B08622900248387 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = "<group>"; };
 		5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTest.swift; sourceTree = "<group>"; };
-		5BA92BBB2AF5EAFB00D9B6D2 /* DessertDetailsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailsViewModelTest.swift; sourceTree = "<group>"; };
-		5BA92BBD2AF5EC8C00D9B6D2 /* DessertListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListViewModelTest.swift; sourceTree = "<group>"; };
+		5BA92BBB2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		5BA92BBD2AF5EC8C00D9B6D2 /* MealListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModelTests.swift; sourceTree = "<group>"; };
 		5BA92BBF2AF5ED6800D9B6D2 /* Font+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extenstion.swift"; sourceTree = "<group>"; };
-		5BAA72512AFC8486008469AA /* DessertListItemViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DessertListItemViewModelTest.swift; sourceTree = "<group>"; };
+		5BAA72512AFC8486008469AA /* ItemComponentViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemComponentViewModelTest.swift; sourceTree = "<group>"; };
 		5BBB25CC2B05CB9200FC0116 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealsDetails.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,10 +217,12 @@
 			children = (
 				5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */,
 				5B1364502B0BF55A00F974EB /* MealsList.json */,
+				5B77EFCD2BA14541001CCB6D /* Category.json */,
 				5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */,
-				5BA92BBB2AF5EAFB00D9B6D2 /* DessertDetailsViewModelTest.swift */,
-				5BA92BBD2AF5EC8C00D9B6D2 /* DessertListViewModelTest.swift */,
-				5BAA72512AFC8486008469AA /* DessertListItemViewModelTest.swift */,
+				5B77EFCB2BA143F3001CCB6D /* CategoryViewModelTests.swift */,
+				5BA92BBB2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift */,
+				5BA92BBD2AF5EC8C00D9B6D2 /* MealListViewModelTests.swift */,
+				5BAA72512AFC8486008469AA /* ItemComponentViewModelTest.swift */,
 				5BBB25CC2B05CB9200FC0116 /* Mocks.swift */,
 			);
 			path = DessertAppTests;
@@ -322,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B5FCBFD2B191F6600EF8598 /* MealsDetails.json in Resources */,
+				5B77EFCF2BA14610001CCB6D /* Category.json in Resources */,
 				5B5FCBFE2B191F6600EF8598 /* MealsList.json in Resources */,
 				5B4A56EE2AF2BC36008F3F85 /* Assets.xcassets in Resources */,
 				5B3E90F12AF404C300FB7532 /* CreamCake.otf in Resources */,
@@ -334,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B5FCBFB2B191E5200EF8598 /* MealsDetails.json in Resources */,
+				5B77EFCE2BA14541001CCB6D /* Category.json in Resources */,
 				5B5FCBFC2B191E5200EF8598 /* MealsList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,10 +381,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BA92BBC2AF5EAFB00D9B6D2 /* DessertDetailsViewModelTest.swift in Sources */,
+				5BA92BBC2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift in Sources */,
 				5BA92BBA2AF5C2A800D9B6D2 /* DataProviderTest.swift in Sources */,
-				5BAA72522AFC8486008469AA /* DessertListItemViewModelTest.swift in Sources */,
-				5BA92BBE2AF5EC8C00D9B6D2 /* DessertListViewModelTest.swift in Sources */,
+				5BAA72522AFC8486008469AA /* ItemComponentViewModelTest.swift in Sources */,
+				5BA92BBE2AF5EC8C00D9B6D2 /* MealListViewModelTests.swift in Sources */,
+				5B77EFCC2BA143F3001CCB6D /* CategoryViewModelTests.swift in Sources */,
 				5BBB25CD2B05CB9200FC0116 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

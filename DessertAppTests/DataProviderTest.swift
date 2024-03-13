@@ -6,19 +6,12 @@ class DataProviderTests: XCTestCase {
 
     var dataProvider: DataProvider!
 
-    override func setUpWithError() throws {
-        dataProvider = DataProvider()
-    }
-
     override func tearDownWithError() throws {
         dataProvider = nil
     }
     
     func testFetchObjectSuccess() async {
-        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else {
-            XCTFail("Could not create URL")
-            return
-        }
+        let url = Endpoint.list("Dessert").url
         
         let mealObject = Meal(idMeal: "", strMeal: "", strMealThumb: "")
         let client = MockHttpClientSuccess(object: mealObject)
@@ -52,10 +45,7 @@ class DataProviderTests: XCTestCase {
     }
     
     func testFetchListDecodeFailure() async {
-        guard let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") else {
-            XCTFail("Could not create URL")
-            return
-        }
+        let url = Endpoint.list("Dessert").url
         
         let mealObject = ""
         let client = MockHttpClientSuccess(object: mealObject)
@@ -122,6 +112,6 @@ class DataProviderTests: XCTestCase {
         }
         
         XCTAssertNotNil(errorResult, "Error should not be nil")
-        XCTAssertEqual(errorResult, DataProvider.DataProviderError.url, "Should be URL error")
+        XCTAssertEqual(errorResult, DataProvider.DataProviderError.noData, "Should be URL error")
     }
 }

@@ -1,7 +1,7 @@
 import XCTest
 @testable import DessertApp
 
-class DessertDetailsViewModelTests: XCTestCase {
+class MealDetailsViewModelTests: XCTestCase {
 
     var viewModel: MealDetailsViewModel!
 
@@ -14,8 +14,8 @@ class DessertDetailsViewModelTests: XCTestCase {
     }
     
     func testViewTexts() {
-        XCTAssertEqual(self.viewModel.errorAlertText, "Couldn't load dessert details.")
-        XCTAssertEqual(self.viewModel.errorAlertButton, "Try again")
+        XCTAssertEqual(self.viewModel.alertText, "Couldn't load dessert details.")
+        XCTAssertEqual(self.viewModel.alertButton, "Try again")
         XCTAssertEqual(self.viewModel.instructionsTitle, "Instructions")
         XCTAssertEqual(self.viewModel.ingredientsTitle, "Ingredients")
     }

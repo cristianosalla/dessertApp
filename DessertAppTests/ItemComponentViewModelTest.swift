@@ -1,13 +1,13 @@
 import XCTest
 @testable import DessertApp
 
-class DessertListItemViewModelTest: XCTestCase {
+class ItemComponentViewModelTest: XCTestCase {
     
-    var viewModel: DessertListItemViewModel!
+    var viewModel: ItemComponentViewModel!
 
     override func setUpWithError() throws {
         let url = "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
-        viewModel = DessertListItemViewModel(url: url, meal: "Banana Pancakes")
+        viewModel = ItemComponentViewModel(url: url, text: "Banana Pancakes")
     }
 
     override func tearDownWithError() throws {
@@ -15,7 +15,7 @@ class DessertListItemViewModelTest: XCTestCase {
     }
     
     func testGetThumbSuccess() async {
-        self.viewModel = DessertListItemViewModel(url: "http//url", meal: "", dataProvider: MockImageProviderSuccess())
+        self.viewModel = ItemComponentViewModel(url: "http//url", text: "", dataProvider: MockImageProviderSuccess())
         
         let data = try? await viewModel.getThumb()
         XCTAssertNotNil(data, "Fetched image data should not be nil")
@@ -23,7 +23,7 @@ class DessertListItemViewModelTest: XCTestCase {
     
     func testGetThumbFailure() async {
         self.viewModel.url = "adxcbq1619787919.jpg"
-        self.viewModel = DessertListItemViewModel(url: "http//url", meal: "", dataProvider: MockImageProviderError())
+        self.viewModel = ItemComponentViewModel(url: "http//url", text: "", dataProvider: MockImageProviderError())
         
         let data = try? await viewModel.getThumb()
         XCTAssertNil(data, "Fetched image data should be nil")
