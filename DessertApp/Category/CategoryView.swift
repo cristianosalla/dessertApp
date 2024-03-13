@@ -26,7 +26,7 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
                 ScrollView {
                     TitleView(title: viewModel.title)
                     
-                    LazyVGrid(columns: [GridItem(), GridItem()]) {
+                    LazyVGrid(columns: [GridItem()]) {
                         ForEach(viewModel.categories, id: \.self) { category in
                             NavigationLink(destination: coordinator.goToMealList(category: category.strCategory)) {
                                 ZStack(alignment: .bottom) {
@@ -37,7 +37,14 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
                                 }
                             }
                         }
+                        .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+                            content
+                                .opacity(phase.isIdentity ? 1 : 0)
+                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                .blur(radius: phase.isIdentity ? 0 : 10)
+                        }
                     }
+                    
                     .padding([.leading, .trailing])
                 }
             }
