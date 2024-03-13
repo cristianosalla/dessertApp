@@ -20,20 +20,21 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                TitleView(title: title)
-                
-                MealDetailsImageView(width: geometry.size.width, url: detailsURL)
-                
-                MealDetailsTextsView(viewModel: viewModel)
-            }
-            .onAppear() {
-                fetchDetails()
-            }
-            EmptyListView(buttonAction: fetchDetails, isPresented: $viewModel.showAlert)            
+        if viewModel.meal == nil {
+            EmptyListView(buttonAction: fetchDetails, isPresented: $viewModel.showAlert)
+                .padding([.leading, .trailing])
+        } else {
+            GeometryReader { geometry in
+                ScrollView {
+                    TitleView(title: title)
+                    
+                    MealDetailsImageView(width: geometry.size.width, url: detailsURL)
+                    
+                    MealDetailsTextsView(viewModel: viewModel)
+                }
+            }.navigationBarTitle(Text(String()), displayMode: .inline)
         }
-        .navigationBarTitle(Text(String()), displayMode: .inline)
+        
     }
     
     var title: String {
