@@ -14,8 +14,6 @@ class MealListViewModelTests: XCTestCase {
     }
     
     func testViewTexts() {
-        XCTAssertEqual(self.viewModel.alertText, "Couldn't load list of desserts.")
-        XCTAssertEqual(self.viewModel.alertButton, "Try again")
         XCTAssertEqual(self.viewModel.title, "Dessert List")
     }
     

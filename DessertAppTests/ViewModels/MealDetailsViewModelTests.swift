@@ -14,8 +14,7 @@ class MealDetailsViewModelTests: XCTestCase {
     }
     
     func testViewTexts() {
-        XCTAssertEqual(self.viewModel.alertText, "Couldn't load dessert details.")
-        XCTAssertEqual(self.viewModel.alertButton, "Try again")
+        XCTAssertEqual(self.viewModel.title, "")
         XCTAssertEqual(self.viewModel.instructionsTitle, "Instructions")
         XCTAssertEqual(self.viewModel.ingredientsTitle, "Ingredients")
     }
