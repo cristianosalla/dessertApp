@@ -4,8 +4,6 @@ class MealListViewModel: MealListViewModelProtocol {
     @Published var meals: [Meal] = [Meal]()
     @Published var showAlert: Bool = false
     
-    var alertText: String { "Couldn't load list of desserts." }
-    var alertButton: String { "Try again" }
     var title: String
     
     private var dataProvider: ObjectProviderProtocol

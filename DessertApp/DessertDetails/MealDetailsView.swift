@@ -1,8 +1,6 @@
 import SwiftUI
 
 protocol MealDetailsViewModelProtocol: ObservableObject {
-    var alertText: String { get }
-    var alertButton: String { get }
     var title: String { get }
     var instructionsTitle: String { get }
     var ingredientsTitle: String { get }
@@ -33,12 +31,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
             .onAppear() {
                 fetchDetails()
             }
-            .alert(Text(viewModel.alertText), isPresented: $viewModel.showAlert, actions: {
-                Button(viewModel.alertButton) {
-                    fetchDetails()
-                }
-            })
-            
+            EmptyListView(buttonAction: fetchDetails, isPresented: $viewModel.showAlert)            
         }
         .navigationBarTitle(Text(String()), displayMode: .inline)
     }

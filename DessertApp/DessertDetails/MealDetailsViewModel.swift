@@ -1,8 +1,6 @@
 import Foundation
 
 class MealDetailsViewModel: MealDetailsViewModelProtocol {
-    var alertText: String { "Couldn't load dessert details." }
-    var alertButton: String { "Try again" }
     var title: String { return meal?.strMeal ?? "" }
     var instructionsTitle: String { "Instructions" }
     var ingredientsTitle: String { "Ingredients" }

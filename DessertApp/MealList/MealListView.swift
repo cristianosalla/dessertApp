@@ -1,8 +1,6 @@
 import SwiftUI
 
 protocol MealListViewModelProtocol: ObservableObject {
-    var alertText: String { get }
-    var alertButton: String { get }
     var title: String { get }
     var meals: [Meal] { get set }
     var showAlert: Bool { get set }
@@ -20,14 +18,7 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
     
     var body: some View {
         if viewModel.meals.isEmpty {
-            ProgressView()
-                .alert(Text(viewModel.alertText), isPresented: $viewModel.showAlert, actions: {
-                    Button(viewModel.alertButton) {
-                        loadItems()
-                    }
-                }).onAppear() {
-                    loadItems()
-                }
+            EmptyListView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
         } else {
             ScrollView {
                 TitleView(title: viewModel.title)

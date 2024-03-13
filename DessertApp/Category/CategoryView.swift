@@ -4,8 +4,6 @@ import SwiftUI
 protocol CategoryViewModelProtocol: ObservableObject {
     var categories: [Categories] { get }
     var showAlert: Bool { get set }
-    var alertText: String { get }
-    var alertButton: String { get }
     var title: String { get }
     func fetchList() async
 }
@@ -22,14 +20,7 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     var body: some View {
         if viewModel.categories.isEmpty {
-            ProgressView()
-                .alert(Text(viewModel.alertText), isPresented: $viewModel.showAlert, actions: {
-                    Button(viewModel.alertButton) {
-                        loadItems()
-                    }
-                }).onAppear() {
-                    loadItems()
-                }
+            EmptyListView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
         } else {
             NavigationView {
                 ScrollView {

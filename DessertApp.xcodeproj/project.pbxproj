@@ -35,6 +35,8 @@
 		5B77EFCE2BA14541001CCB6D /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B77EFCD2BA14541001CCB6D /* Category.json */; };
 		5B77EFCF2BA14610001CCB6D /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B77EFCD2BA14541001CCB6D /* Category.json */; };
 		5B77EFD22BA14695001CCB6D /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFD02BA14691001CCB6D /* CoordinatorTests.swift */; };
+		5B77EFD52BA151F3001CCB6D /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFD42BA151F3001CCB6D /* EmptyListView.swift */; };
+		5B77EFD72BA15214001CCB6D /* EmptyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFD62BA15213001CCB6D /* EmptyListViewModel.swift */; };
 		5B9191312B08622900248387 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9191302B08622900248387 /* Endpoint.swift */; };
 		5BA92BB62AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */; };
 		5BA92BBA2AF5C2A800D9B6D2 /* DataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */; };
@@ -83,6 +85,8 @@
 		5B77EFCB2BA143F3001CCB6D /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
 		5B77EFCD2BA14541001CCB6D /* Category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Category.json; sourceTree = "<group>"; };
 		5B77EFD02BA14691001CCB6D /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		5B77EFD42BA151F3001CCB6D /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		5B77EFD62BA15213001CCB6D /* EmptyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListViewModel.swift; sourceTree = "<group>"; };
 		5B9191302B08622900248387 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = "<group>"; };
 		5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTest.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5B62B7762AF9DEFD00D48633 /* TitleView.swift */,
+				5B77EFD32BA151DA001CCB6D /* EmptyList */,
 				5B77EFCA2BA0F7ED001CCB6D /* ListItemComponent */,
 			);
 			path = Components;
@@ -248,6 +253,15 @@
 				5B77EFC82BA0F70B001CCB6D /* ItemComponentViewModel.swift */,
 			);
 			path = ListItemComponent;
+			sourceTree = "<group>";
+		};
+		5B77EFD32BA151DA001CCB6D /* EmptyList */ = {
+			isa = PBXGroup;
+			children = (
+				5B77EFD42BA151F3001CCB6D /* EmptyListView.swift */,
+				5B77EFD62BA15213001CCB6D /* EmptyListViewModel.swift */,
+			);
+			path = EmptyList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,11 +373,13 @@
 			files = (
 				5B3E90DD2AF2CBDD00FB7532 /* MealDetailsModels.swift in Sources */,
 				5B3E90DF2AF2D08800FB7532 /* MealListViewModel.swift in Sources */,
+				5B77EFD52BA151F3001CCB6D /* EmptyListView.swift in Sources */,
 				5B3E90D72AF2C57000FB7532 /* MealListView.swift in Sources */,
 				5B207E1D2B22BAC500FDB5F2 /* URLSession+Extension.swift in Sources */,
 				5B77EFC92BA0F70B001CCB6D /* ItemComponentViewModel.swift in Sources */,
 				5B4A56EA2AF2BC34008F3F85 /* MealApp.swift in Sources */,
 				5B3E90E12AF2E32A00FB7532 /* MealDetailsViewModel.swift in Sources */,
+				5B77EFD72BA15214001CCB6D /* EmptyListViewModel.swift in Sources */,
 				5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */,
 				5B77EFC02BA0F169001CCB6D /* CategoryView.swift in Sources */,
 				5B3E90D92AF2C6B200FB7532 /* MealDetailsView.swift in Sources */,
