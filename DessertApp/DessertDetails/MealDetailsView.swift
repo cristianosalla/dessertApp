@@ -4,8 +4,8 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
     var title: String { get }
     var instructionsTitle: String { get }
     var ingredientsTitle: String { get }
-    var showAlert: Bool { get set }
     var meal: MealDetail? { get }
+    var showVideo: Bool { get }
     func fetchDetails() async
     func itemFormat(ingredient: String, measure: String) -> String
 }
@@ -13,6 +13,8 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
 struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator
+    
+    @State private var isPresentWebView = false
     
     init(_ viewModel: ViewModel, coordinator: Coordinator) {
         self.viewModel = viewModel
@@ -24,7 +26,12 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
             ScrollView {
                 TitleView(title: title)
                 
-                MealDetailsImageView(width: geometry.size.width, url: detailsURL)
+                ZStack {
+                    MealDetailsImageView(width: geometry.size.width, url: detailsURL)
+                    if viewModel.showVideo {
+                        PlayButtonView(title: viewModel.title, url: viewModel.meal?.strYoutube)
+                    }
+                }
                 
                 MealDetailsTextsView(viewModel: viewModel)
             }.onAppear() {

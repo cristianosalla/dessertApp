@@ -6,8 +6,7 @@ class MealDetailsViewModel: MealDetailsViewModelProtocol {
     var ingredientsTitle: String { "Ingredients" }
     
     @Published var meal: MealDetail?
-    
-    @Published var showAlert = false
+    @Published var showVideo: Bool = false
     
     let id: String
     private var dataProvider: ObjectProviderProtocol
@@ -20,16 +19,11 @@ class MealDetailsViewModel: MealDetailsViewModelProtocol {
     @MainActor
     func fetchDetails() async {
         let id = self.id
+        let url = Endpoint.objectId(id).url
         
-        do {
-            let result: MealsDetails = try await dataProvider.fetchObject(from: Endpoint.objectId(id).url)
-            if let meal = result.meals.first {
-                self.meal = meal
-            } else {
-                self.showAlert = true
-            }
-        } catch {
-            self.showAlert = true
+        if let result: MealsDetails = try? await dataProvider.fetchObject(from: url) {
+            self.meal = result.meals.first
+            showVideo = !result.meals[0].strYoutube.isEmpty
         }
     }
     

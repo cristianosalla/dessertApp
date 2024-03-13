@@ -9,6 +9,7 @@ struct MealDetail: Codable, Equatable {
     var strMeal: String
     var strInstructions: String
     var strMealThumb: String
+    var strYoutube: String
 
     var items: [Item] = []
     
@@ -22,6 +23,7 @@ struct MealDetail: Codable, Equatable {
         self.strMeal = ""
         self.strInstructions = ""
         self.strMealThumb = ""
+        self.strYoutube = ""
     }
     
     init(from decoder: Decoder) throws {
@@ -33,6 +35,7 @@ struct MealDetail: Codable, Equatable {
         strMeal = (mealDict["strMeal"] ?? "") ?? ""
         strInstructions = (mealDict["strInstructions"] ?? "") ?? ""
         strMealThumb = (mealDict["strMealThumb"] ?? "") ?? ""
+        strYoutube = (mealDict["strYoutube"] ?? "") ?? ""
         
         var index = 1
         var items = [Item]()
