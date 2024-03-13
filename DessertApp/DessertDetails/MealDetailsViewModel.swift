@@ -23,7 +23,9 @@ class MealDetailsViewModel: MealDetailsViewModelProtocol {
         
         if let result: MealsDetails = try? await dataProvider.fetchObject(from: url) {
             self.meal = result.meals.first
-            showVideo = !result.meals[0].strYoutube.isEmpty
+            if let youtube = self.meal?.strYoutube, !youtube.isEmpty {
+                showVideo = true
+            }
         }
     }
     

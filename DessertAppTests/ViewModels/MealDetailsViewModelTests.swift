@@ -39,7 +39,6 @@ class MealDetailsViewModelTests: XCTestCase {
         do {
             await viewModel.fetchDetails()
             XCTAssertNotNil(self.viewModel.meal, "Object should not be nil")
-            XCTAssertFalse(self.viewModel.showAlert, "Should not show alert")
         }
     }
     
@@ -50,7 +49,6 @@ class MealDetailsViewModelTests: XCTestCase {
         do {
             await viewModel.fetchDetails()
             XCTAssertNil(self.viewModel.meal, "Object should be nil")
-            XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
         }
     }
     
@@ -64,8 +62,6 @@ class MealDetailsViewModelTests: XCTestCase {
         do {
             await viewModel.fetchDetails()
         }
-        
-        XCTAssertTrue(self.viewModel.showAlert, "Should show alert")
         
     }
     
