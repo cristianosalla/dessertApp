@@ -21,7 +21,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     var body: some View {
         if viewModel.meal == nil {
-            EmptyListView(buttonAction: fetchDetails, isPresented: $viewModel.showAlert)
+            EmptyView(buttonAction: fetchDetails, isPresented: $viewModel.showAlert)
                 .padding([.leading, .trailing])
         } else {
             GeometryReader { geometry in

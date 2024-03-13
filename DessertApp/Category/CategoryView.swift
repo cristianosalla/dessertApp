@@ -20,7 +20,7 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     var body: some View {
         if viewModel.categories.isEmpty {
-            EmptyListView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+            EmptyView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
         } else {
             NavigationView {
                 ScrollView {

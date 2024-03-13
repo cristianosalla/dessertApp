@@ -18,7 +18,7 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
     
     var body: some View {
         if viewModel.meals.isEmpty {
-            EmptyListView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+            EmptyView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
         } else {
             ScrollView {
                 TitleView(title: viewModel.title)

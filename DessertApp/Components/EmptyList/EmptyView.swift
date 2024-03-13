@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct EmptyListView: View {
+struct EmptyView: View {
     
-    @ObservedObject var viewModel: EmptyListViewModel
+    @ObservedObject var viewModel: EmptyViewModel
     
     init(buttonAction: @escaping (() -> Void), isPresented: Binding<Bool>) {
-        let viewModel = EmptyListViewModel(buttonAcction: buttonAction, isPresented: isPresented)
+        let viewModel = EmptyViewModel(buttonAcction: buttonAction, isPresented: isPresented)
         self.viewModel = viewModel
     }
     
