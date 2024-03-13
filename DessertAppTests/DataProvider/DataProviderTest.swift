@@ -97,7 +97,7 @@ class DataProviderTests: XCTestCase {
     }
     
     func testFetchImageDataUrlError() async {
-        let invalidThumbnailURL = "no url"
+        let invalidThumbnailURL = ""
         
         let client = MockHttpClientError()
         self.dataProvider = DataProvider(httpClient: client)
@@ -112,6 +112,6 @@ class DataProviderTests: XCTestCase {
         }
         
         XCTAssertNotNil(errorResult, "Error should not be nil")
-        XCTAssertEqual(errorResult, DataProvider.DataProviderError.noData, "Should be URL error")
+        XCTAssertEqual(errorResult, DataProvider.DataProviderError.url, "Should be URL error")
     }
 }
