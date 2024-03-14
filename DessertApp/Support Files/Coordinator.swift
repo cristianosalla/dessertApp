@@ -3,28 +3,45 @@ import SwiftUI
 
 class Coordinator {
     
-    var provider: ObjectProviderProtocol
+    var objectProvider: ObjectProviderProtocol
+    var imageProvider: ImageProviderProtocol
     
-    init(provider: ObjectProviderProtocol = DataProvider()) {
-        self.provider = provider
+    init(objectProvider: ObjectProviderProtocol? = nil, imageProvider: ImageProviderProtocol? = nil) {
+        if let objectProvider {
+            self.objectProvider = objectProvider
+        } else {
+            self.objectProvider = DataProvider()
+        }
+        
+        if let imageProvider {
+            self.imageProvider = imageProvider
+        } else {
+            self.imageProvider = DataProvider()
+        }
     }
     
     func goToCategory() -> some View {
-        let viewModel = CategoryViewModel(dataProvider: provider)
+        let viewModel = CategoryViewModel(dataProvider: objectProvider)
         let view = CategoryView(viewModel: viewModel, coordinator: self)
         return view
     }
     
     func goToDetails(id: String) -> some View {
-        let viewmodel = MealDetailsViewModel(id: id, dataProvider: provider)
+        let viewmodel = MealDetailsViewModel(id: id, dataProvider: objectProvider)
         let view = MealDetailsView<MealDetailsViewModel>(viewmodel, coordinator: self)
         return view
     }
     
     func goToMealList(category: String) -> some View {
-        let viewModel = MealListViewModel(category: category, dataProvider: provider)
+        let viewModel = MealListViewModel(category: category, dataProvider: objectProvider)
         let view = MealListView<MealListViewModel>(viewModel, self)
         return view
+    }
+    
+    func createItem(url: String, text: String) -> some View {
+        let viewModel = ItemComponentViewModel(url: url, text: text, dataProvider: imageProvider)
+        let componentView = ItemComponentView(viewModel: viewModel)
+        return componentView
     }
     
 }

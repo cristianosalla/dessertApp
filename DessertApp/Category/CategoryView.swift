@@ -28,11 +28,9 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
                     
                     LazyVGrid(columns: [GridItem()]) {
                         ForEach(viewModel.categories, id: \.self) { category in
-                            NavigationLink(destination: coordinator.goToMealList(category: category.strCategory)) {
+                            NavigationLink(destination: LazyView( coordinator.goToMealList(category: category.strCategory))) {
                                 ZStack(alignment: .bottom) {
-                                    let viewModel = ItemComponentViewModel(url: category.strCategoryThumb, text: category.strCategory)
-                                    let componentView = ItemComponentView(viewModel: viewModel)
-                                    componentView
+                                    coordinator.createItem(url: category.strCategoryThumb, text: category.strCategory)
                                         .padding(4)
                                 }
                             }

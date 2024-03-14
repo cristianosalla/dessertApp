@@ -7,7 +7,7 @@ class CoordinatorTests: XCTestCase {
     var coordinator: Coordinator!
     
     override func setUp() {
-        coordinator = Coordinator(provider: MockObjectProviderError())
+        coordinator = Coordinator(objectProvider: MockObjectProviderError())
     }
     
     override func tearDown() {
