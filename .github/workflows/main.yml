@@ -18,8 +18,4 @@ jobs:
 
     - name: Build and Test
       run: |
-        xcodebuild \
-          -scheme DessertAppTests \
-          -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone' \
-          test
+          xcodebuild clean build analyze test -scheme RenetikEvent -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11' 
