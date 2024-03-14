@@ -7,6 +7,7 @@ protocol MealListViewModelProtocol: ObservableObject {
     func fetchList() async
 }
 
+@available(iOS 17.0, *)
 struct MealListView<ViewModel: MealListViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator

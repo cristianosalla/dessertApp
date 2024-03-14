@@ -10,6 +10,7 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
     func itemFormat(ingredient: String, measure: String) -> String
 }
 
+@available(iOS 17.0, *)
 struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator

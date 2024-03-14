@@ -19,13 +19,17 @@ struct PlayButtonView: View {
                 .shadow(radius: 3)
                 .opacity(0.7)
         }).sheet(isPresented: $isPresented) {
-            NavigationStack {
-                if let url = URL(string: url ?? "") {
-                    WebView(url: url)
-                        .ignoresSafeArea()
-                        .navigationTitle(title)
-                        .navigationBarTitleDisplayMode(.inline)
+            if #available(iOS 16.0, *) {
+                NavigationStack {
+                    if let url = URL(string: url ?? "") {
+                        WebView(url: url)
+                            .ignoresSafeArea()
+                            .navigationTitle(title)
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
                 }
+            } else {
+                // Fallback on earlier versions
             }
         }
         

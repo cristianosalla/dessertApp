@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 17.0, *)
 class Coordinator {
     
     var objectProvider: ObjectProviderProtocol

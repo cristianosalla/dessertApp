@@ -8,6 +8,7 @@ protocol CategoryViewModelProtocol: ObservableObject {
     func fetchList() async
 }
 
+@available(iOS 17.0, *)
 struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     @ObservedObject private var viewModel: ViewModel
