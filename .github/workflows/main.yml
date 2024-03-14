@@ -1,0 +1,25 @@
+name: Swift Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build and Test
+      run: |
+        xcodebuild \
+          -scheme DessertAppTests \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 12' \
+          test
