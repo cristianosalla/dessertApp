@@ -14,6 +14,8 @@ class DataProvider {
     
     var httpClient: HTTPClient
     
+    private var cache = NSCache<AnyObject, AnyObject>()
+    
     init(httpClient: HTTPClient = URLSession.shared) {
         self.httpClient = httpClient
     }
@@ -50,8 +52,14 @@ extension DataProvider: ImageProviderProtocol {
             throw DataProviderError.url
         }
         
+        if let cachedObject = cache.object(forKey: url as AnyObject),
+            let data = cachedObject as? Data {
+            return data
+        }
+        
         do {
             let result = try await httpClient.get(url: url)
+            cache.setObject(result as AnyObject, forKey: url as AnyObject)
             return result
         } catch(let error) {
             throw error
