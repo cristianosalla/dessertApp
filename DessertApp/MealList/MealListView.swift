@@ -17,11 +17,14 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
     }
     
     var body: some View {
+        TitleView(title: viewModel.title)
+            .onAppear() {
+                loadItems()
+            }
         if viewModel.meals.isEmpty {
             EmptyView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
         } else {
             ScrollView {
-                TitleView(title: viewModel.title)
                 
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(viewModel.meals, id: \.self) { meal in

@@ -4,10 +4,13 @@ enum Endpoint {
     case list(String)
     case objectId(String)
     case category
+    case search(String)
     
     private var fullPath: String {
         var endpoint: String
         switch self {
+        case .search(let search):
+            endpoint = "/search.php?s=\(search)"
         case .category:
             endpoint = "/categories.php"
         case .list(let category):

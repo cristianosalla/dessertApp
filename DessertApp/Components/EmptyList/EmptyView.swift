@@ -15,9 +15,7 @@ struct EmptyView: View {
                 Button(viewModel.alertButton) {
                     viewModel.buttonAcction()
                 }
-            }).onAppear() {
-                viewModel.buttonAcction()
-            }
+            })
     }
     
 }
