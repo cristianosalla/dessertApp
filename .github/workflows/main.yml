@@ -15,11 +15,17 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      
+
+    - name: Find Devices
+      run: xcrun simctl list devices
+
+    - name: Start iPhone 14 Simulator
+      run: xcrun simctl boot "iPhone 14" || echo "iPhone 14 simulator is already booted or unavailable"
+
     - name: Build and Test
       run: |
         xcodebuild \
           -scheme DessertAppTests \
           -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 15' \
+          -destination 'platform=iOS Simulator,name=iPhone 14' \
           test
