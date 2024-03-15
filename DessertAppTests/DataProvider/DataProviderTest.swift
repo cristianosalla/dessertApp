@@ -64,6 +64,68 @@ class DataProviderTests: XCTestCase {
         XCTAssertEqual(errorResult, DataProvider.DataProviderError.decode, "Should be decode error")
     }
     
+    func testSavingImage() async {
+        let validUrl = "http://url.com"
+        
+        let image = Data()
+        
+        let client = MockHttpClientSuccess<Data>(data: image)
+        let cache = NSCache<AnyObject, AnyObject>()
+        self.dataProvider = DataProvider(httpClient: client, cache: cache)
+        
+        do {
+            let result = try await dataProvider.fetchImageData(thumbnailURLString: validUrl)
+            XCTAssertEqual(image, result, "Should be the same object")
+            let cachedObject = cache.object(forKey: validUrl as AnyObject)
+            XCTAssertNotNil(cachedObject)
+            XCTAssertEqual(result, cachedObject as! Data)
+        } catch {
+            XCTFail()
+        }
+    }
+    
+    func testRetrievingImage() async {
+        let validUrl = "http://url.com"
+        
+        let image = Data(repeating: 10, count: 10)
+        let image2 = Data(repeating: 15, count: 15)
+        XCTAssertNotEqual(image, image2)
+        
+        let client = MockHttpClientSuccess<Data>(data: image)
+        let client2 = MockHttpClientSuccess<Data>(data: image2)
+        
+        let cache = NSCache<AnyObject, AnyObject>()
+        self.dataProvider = DataProvider(httpClient: client, cache: cache)
+        
+        do {
+            let result = try await dataProvider.fetchImageData(thumbnailURLString: validUrl)
+            XCTAssertEqual(result, image)
+            
+            dataProvider.httpClient = client2
+            let result2 = try await dataProvider.fetchImageData(thumbnailURLString: validUrl)
+            
+            XCTAssertEqual(result, result2)
+            XCTAssertNotEqual(result2, image2)
+        } catch {
+            XCTFail()
+        }
+    }
+    
+    func testReturnCachedImage() {
+        let validUrl = "http://url.com"
+        
+        let image = Data(repeating: 10, count: 10)
+        let cache = NSCache<AnyObject, AnyObject>()
+        
+        cache.setObject(image as AnyObject, forKey: validUrl as AnyObject)
+        
+        self.dataProvider = DataProvider(cache: cache)
+        let data = dataProvider.getCachedImage(url: validUrl)!
+        
+        XCTAssertNotNil(data)
+        XCTAssertEqual(image, data)
+    }
+    
     func testFetchImageDataSuccess() async {
         let validThumbnailURL = "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
         

@@ -13,11 +13,12 @@ protocol ObjectProviderProtocol {
 class DataProvider {
     
     var httpClient: HTTPClient
+    var cache: NSCache<AnyObject, AnyObject>
     
-    private var cache = NSCache<AnyObject, AnyObject>()
-    
-    init(httpClient: HTTPClient = URLSession.shared) {
+    init(httpClient: HTTPClient = URLSession.shared,
+         cache: NSCache<AnyObject, AnyObject> = NSCache<AnyObject, AnyObject>()) {
         self.httpClient = httpClient
+        self.cache = cache
     }
     
     enum DataProviderError: Error {
@@ -52,18 +53,26 @@ extension DataProvider: ImageProviderProtocol {
             throw DataProviderError.url
         }
         
-        if let cachedObject = cache.object(forKey: url as AnyObject),
-            let data = cachedObject as? Data {
+        if let data = getCachedImage(url: thumbnailURLString) {
             return data
         }
         
         do {
             let result = try await httpClient.get(url: url)
-            cache.setObject(result as AnyObject, forKey: url as AnyObject)
+            cache.setObject(result as AnyObject, forKey: thumbnailURLString as AnyObject)
             return result
         } catch(let error) {
             throw error
         }
+    }
+    
+    func getCachedImage(url: String) -> Data? {
+        if let cachedObject = cache.object(forKey: url as AnyObject),
+            let data = cachedObject as? Data {
+            return data
+        }
+        
+        return nil
     }
 }
 
