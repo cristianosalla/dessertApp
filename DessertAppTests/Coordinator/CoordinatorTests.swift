@@ -1,8 +1,6 @@
 import XCTest
 @testable import DessertApp
 
-
-@available(iOS 17.0, *)
 class CoordinatorTests: XCTestCase {
     
     var coordinator: Coordinator!

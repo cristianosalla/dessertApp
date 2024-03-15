@@ -8,7 +8,6 @@ protocol CategoryViewModelProtocol: ObservableObject {
     func fetchList() async
 }
 
-@available(iOS 17.0, *)
 struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     @ObservedObject private var viewModel: ViewModel
@@ -36,12 +35,12 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
                                 }
                             }
                         }
-                        .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
-                            content
-                                .opacity(phase.isIdentity ? 1 : 0)
-                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                                .blur(radius: phase.isIdentity ? 0 : 10)
-                        }
+//                        .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+//                            content
+//                                .opacity(phase.isIdentity ? 1 : 0)
+//                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
+//                                .blur(radius: phase.isIdentity ? 0 : 10)
+//                        }
                     }
                     
                     .padding([.leading, .trailing])
