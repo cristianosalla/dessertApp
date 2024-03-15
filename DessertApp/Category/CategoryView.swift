@@ -27,26 +27,47 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
                     TitleView(title: viewModel.title)
                     
                     LazyVGrid(columns: [GridItem()]) {
-                        ForEach(viewModel.categories, id: \.self) { category in
-                            NavigationLink(destination: LazyView( coordinator.goToMealList(category: category.strCategory))) {
-                                ZStack(alignment: .bottom) {
-                                    coordinator.createItem(url: category.strCategoryThumb, text: category.strCategory)
-                                        .padding(4)
-                                }
-                            }
+                        if #available(iOS 17.0, *) {
+                            listWithTransition()
+                        } else {
+                            list()
                         }
-//                        .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
-//                            content
-//                                .opacity(phase.isIdentity ? 1 : 0)
-//                                .scaleEffect(phase.isIdentity ? 1 : 0.75)
-//                                .blur(radius: phase.isIdentity ? 0 : 10)
-//                        }
                     }
                     
                     .padding([.leading, .trailing])
                 }
             }
         }
+    }
+    
+    func list() -> some View {
+        let view = ForEach(viewModel.categories, id: \.self) { category in
+            NavigationLink(destination: LazyView( coordinator.goToMealList(category: category.strCategory))) {
+                ZStack(alignment: .bottom) {
+                    coordinator.createItem(url: category.strCategoryThumb, text: category.strCategory)
+                        .padding(4)
+                }
+            }
+        }
+        return view
+    }
+    
+    @available(iOS 17.0, *)
+    func listWithTransition() -> some View {
+        let view = ForEach(viewModel.categories, id: \.self) { category in
+            NavigationLink(destination: LazyView( coordinator.goToMealList(category: category.strCategory))) {
+                ZStack(alignment: .bottom) {
+                    coordinator.createItem(url: category.strCategoryThumb, text: category.strCategory)
+                        .padding(4)
+                }
+            }
+        }.scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+            content
+                .opacity(phase.isIdentity ? 1 : 0)
+                .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                .blur(radius: phase.isIdentity ? 0 : 10)
+        }
+        return view
     }
     
     func loadItems() {
