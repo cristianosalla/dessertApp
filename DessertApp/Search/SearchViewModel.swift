@@ -9,9 +9,21 @@ class SearchViewModel: SearchViewModelProtocol {
     @Published var searchedMeals: [Meal] = []
     
     private var dataProvider: ObjectProviderProtocol
+    private var timerExecution: (() -> ()) = { }
     
-    init(dataProvider: ObjectProviderProtocol) {
+    init(dataProvider: ObjectProviderProtocol, timerExecution: (() -> ())? = nil) {
         self.dataProvider = dataProvider
+        
+        if let timerExecution {
+            self.timerExecution = timerExecution
+        } else {
+            self.timerExecution = {
+                Task {
+                    await self.fetchMeals(self.searchText)
+                }
+            }
+        }
+        
     }
     
     @MainActor
@@ -32,9 +44,7 @@ class SearchViewModel: SearchViewModelProtocol {
     
         if searchText.count > 3 {
             timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
-                Task {
-                    await self.fetchMeals(self.searchText)
-                }
+                self.timerExecution()
             })
         }
     }
