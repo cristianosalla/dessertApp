@@ -1,12 +1,11 @@
 import Foundation
 import SwiftUI
+import Combine
 
 protocol CategoryViewModelProtocol: ObservableObject {
     var categories: [Categories] { get }
-    var searchedMeals: [Meal] { get }
     var showAlert: Bool { get set }
     var title: String { get }
-    var searchText: String { get set }
     func fetchList() async
 }
 
@@ -31,21 +30,11 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
             NavigationView {
                 VStack {
                     TitleView(title: viewModel.title)
-                    
-                    TextField("Search: ", text: $viewModel.searchText)
-                        .padding()
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal)
                         
                     ScrollView {
-                            
-                        if viewModel.searchedMeals.isEmpty {
-                            list()
-                                .padding([.leading, .trailing])
-                        } else {
-                            searchList()
-                                .padding([.leading, .trailing])
-                        }
+                        list()
+                            .padding([.leading, .trailing])
+                        
                     }
                 }
             }
@@ -64,19 +53,6 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
             }
         }
         return view
-    }
-    
-    func searchList() -> some View {
-        LazyVGrid(columns: [GridItem(), GridItem()]) {
-            ForEach(viewModel.searchedMeals, id: \.self) { meal in
-                NavigationLink(destination: LazyView(coordinator.goToDetails(id: meal.idMeal))) {
-                    ZStack(alignment: .bottom) {
-                        coordinator.createItem(url: meal.strMealThumb, text: meal.strMeal)
-                            .padding(4)
-                    }
-                }
-            }
-        }
     }
     
 //    TODO: fix CI to accept iOS 17.0

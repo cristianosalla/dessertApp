@@ -5,7 +5,7 @@ struct MealApp: App {
     var body: some Scene {
         WindowGroup {
             let coordinator = Coordinator()
-            coordinator.goToCategory()
+            coordinator.goToTabBarView()
         }
     }
 }

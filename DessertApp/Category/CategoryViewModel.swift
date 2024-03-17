@@ -7,26 +7,6 @@ class CategoryViewModel: CategoryViewModelProtocol{
     @Published var categories: [Categories] = []
     @Published var searchedMeals: [Meal] = []
     
-    
-    private var timer: Timer?
-    
-    @Published var searchText: String = "" {
-        didSet {
-            timer?.invalidate()
-            if searchText.isEmpty {
-                self.searchedMeals = []
-            } else {
-                if searchText.count > 3 {
-                    timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
-                        Task {
-                            await self.fetchMeals(self.searchText)
-                        }
-                    })
-                }
-            }
-        }
-    }
-    
     var title: String { "Category List" }
     
     var dataProvider: ObjectProviderProtocol
@@ -45,13 +25,4 @@ class CategoryViewModel: CategoryViewModelProtocol{
         }
     }
     
-    @MainActor
-    func fetchMeals(_ search: String) async {
-        do {
-            let result: MealList = try await dataProvider.fetchObject(from: Endpoint.search(search).url)
-            self.searchedMeals = result.meals
-        } catch {
-            self.showAlert = true
-        }
-    }
 }

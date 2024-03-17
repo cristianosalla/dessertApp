@@ -38,6 +38,17 @@ class Coordinator {
         return view
     }
     
+    func goToSearchList() -> some View {
+        let viewModel = SearchViewModel(dataProvider: objectProvider)
+        let view = SearchView<SearchViewModel>(viewModel, self)
+        return view
+    }
+    
+    func goToTabBarView() -> some View {
+        let view = TabBarView(coordinator: self)
+        return view
+    }
+    
     func createItem(url: String, text: String) -> some View {
         let viewModel = ItemComponentViewModel(url: url, text: text, dataProvider: imageProvider)
         let componentView = ItemComponentView(viewModel: viewModel)

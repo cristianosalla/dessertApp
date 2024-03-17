@@ -49,6 +49,9 @@
 		5BA92BC02AF5ED6800D9B6D2 /* Font+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA92BBF2AF5ED6800D9B6D2 /* Font+Extenstion.swift */; };
 		5BAA72522AFC8486008469AA /* ItemComponentViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA72512AFC8486008469AA /* ItemComponentViewModelTest.swift */; };
 		5BBB25CD2B05CB9200FC0116 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB25CC2B05CB9200FC0116 /* Mocks.swift */; };
+		5BF555762BA6B00400133CC5 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF555752BA6B00400133CC5 /* TabBarView.swift */; };
+		5BF555782BA6B02600133CC5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF555772BA6B02600133CC5 /* SearchView.swift */; };
+		5BF5557B2BA6B1F000133CC5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5557A2BA6B1F000133CC5 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,9 @@
 		5BAA72512AFC8486008469AA /* ItemComponentViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemComponentViewModelTest.swift; sourceTree = "<group>"; };
 		5BBB25CC2B05CB9200FC0116 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealsDetails.json; sourceTree = "<group>"; };
+		5BF555752BA6B00400133CC5 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		5BF555772BA6B02600133CC5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5BF5557A2BA6B1F000133CC5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +226,9 @@
 			children = (
 				5B3E90E92AF401D900FB7532 /* Info.plist */,
 				5B4755672AFB2D3B00158A4C /* Components */,
+				5BF555752BA6B00400133CC5 /* TabBarView.swift */,
 				5B3E90E52AF3547900FB7532 /* DataProvider */,
+				5BF555792BA6B02E00133CC5 /* Search */,
 				5B77EFC12BA0F16E001CCB6D /* Category */,
 				5B3E90E22AF3543900FB7532 /* DessertDetails */,
 				5B3E90E32AF3544100FB7532 /* MealList */,
@@ -314,6 +322,15 @@
 				5B77EFCD2BA14541001CCB6D /* Category.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		5BF555792BA6B02E00133CC5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5BF555772BA6B02600133CC5 /* SearchView.swift */,
+				5BF5557A2BA6B1F000133CC5 /* SearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,12 +442,14 @@
 			files = (
 				5B3E90DD2AF2CBDD00FB7532 /* MealDetailsModels.swift in Sources */,
 				5BA62C482BA20ACB0094947D /* WebView.swift in Sources */,
+				5BF555762BA6B00400133CC5 /* TabBarView.swift in Sources */,
 				5B3E90DF2AF2D08800FB7532 /* MealListViewModel.swift in Sources */,
 				5B77EFD52BA151F3001CCB6D /* EmptyView.swift in Sources */,
 				5B3E90D72AF2C57000FB7532 /* MealListView.swift in Sources */,
 				5B207E1D2B22BAC500FDB5F2 /* URLSession+Extension.swift in Sources */,
 				5B77EFC92BA0F70B001CCB6D /* ItemComponentViewModel.swift in Sources */,
 				5B4A56EA2AF2BC34008F3F85 /* MealApp.swift in Sources */,
+				5BF5557B2BA6B1F000133CC5 /* SearchViewModel.swift in Sources */,
 				5B3E90E12AF2E32A00FB7532 /* MealDetailsViewModel.swift in Sources */,
 				5B77EFD72BA15214001CCB6D /* EmptyViewModel.swift in Sources */,
 				5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */,
@@ -441,6 +460,7 @@
 				5BA92BC02AF5ED6800D9B6D2 /* Font+Extenstion.swift in Sources */,
 				5B77EFC72BA0F704001CCB6D /* ItemComponentView.swift in Sources */,
 				5B77EFBE2BA0EA9D001CCB6D /* Coordinator.swift in Sources */,
+				5BF555782BA6B02600133CC5 /* SearchView.swift in Sources */,
 				5B77EFC52BA0F333001CCB6D /* CategoryModels.swift in Sources */,
 				5B3E90F42AF442D000FB7532 /* MealDetailsImageView.swift in Sources */,
 				5B4755662AFB1A4C00158A4C /* MealListModels.swift in Sources */,
