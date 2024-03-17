@@ -18,9 +18,9 @@ class SearchViewModelTests: XCTestCase {
     }
     
     func testSearchSuccess() async {
-        let meal = Meal.init(idMeal: "", strMeal: "aaa", strMealThumb: "")
-        let meal2 = Meal.init(idMeal: "", strMeal: "bbb", strMealThumb: "")
-        let list = MealList.init(meals: [meal2, meal])
+        let meal = Meal(idMeal: "", strMeal: "aaa", strMealThumb: "")
+        let meal2 = Meal(idMeal: "", strMeal: "bbb", strMealThumb: "")
+        let list = MealList(meals: [meal2, meal])
         
         self.viewModel = SearchViewModel(dataProvider: MockObjectProviderSuccess(object: list))
         
@@ -31,9 +31,9 @@ class SearchViewModelTests: XCTestCase {
     }
     
     func testSetSearchEmpty() {
-        let meal = Meal.init(idMeal: "", strMeal: "aaa", strMealThumb: "")
-        let meal2 = Meal.init(idMeal: "", strMeal: "bbb", strMealThumb: "")
-        let list = MealList.init(meals: [meal2, meal])
+        let meal = Meal(idMeal: "", strMeal: "aaa", strMealThumb: "")
+        let meal2 = Meal(idMeal: "", strMeal: "bbb", strMealThumb: "")
+        let list = MealList(meals: [meal2, meal])
         
         viewModel = SearchViewModel(dataProvider: MockObjectProviderSuccess(object: list))
         viewModel.searchedMeals = [meal, meal2]
