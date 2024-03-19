@@ -22,7 +22,8 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
                 loadItems()
             }
         if viewModel.meals.isEmpty {
-            EmptyView(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+            coordinator.createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+                .onAppear() { loadItems() }
         } else {
             ScrollView {
                 

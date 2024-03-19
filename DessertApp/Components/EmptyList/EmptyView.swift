@@ -1,11 +1,17 @@
 import SwiftUI
 
-struct EmptyView: View {
+protocol EmptyViewModelProtocol: ObservableObject {
+    var alertText: String { get }
+    var alertButton: String { get }
+    var isPresented: Binding<Bool> { get }
+    var buttonAcction: (() -> ()) { get }
+}
+
+struct EmptyView<ViewModel: EmptyViewModelProtocol>: View {
     
-    @ObservedObject var viewModel: EmptyViewModel
+    @ObservedObject var viewModel: ViewModel
     
-    init(buttonAction: @escaping (() -> Void), isPresented: Binding<Bool>) {
-        let viewModel = EmptyViewModel(buttonAcction: buttonAction, isPresented: isPresented)
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
     

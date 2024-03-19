@@ -23,9 +23,8 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     var body: some View {
         if viewModel.categories.isEmpty {
-            EmptyView(buttonAction: loadItems, isPresented: $viewModel.showAlert).onAppear() {
-                loadItems()
-            }
+            coordinator.createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+                .onAppear() { loadItems() }
         } else {
             NavigationView {
                 VStack {

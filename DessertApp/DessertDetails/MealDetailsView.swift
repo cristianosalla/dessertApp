@@ -29,7 +29,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
                 ZStack {
                     MealDetailsImageView(width: geometry.size.width, url: detailsURL)
                     if viewModel.showVideo {
-                        PlayButtonView(title: viewModel.title, url: viewModel.meal?.strYoutube)
+                        coordinator.goToPlayButton(title: viewModel.title, url: viewModel.meal?.strYoutube ?? "")
                     }
                 }
                 
