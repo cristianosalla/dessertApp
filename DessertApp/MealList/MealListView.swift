@@ -22,7 +22,7 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
                 loadItems()
             }
         if viewModel.meals.isEmpty {
-            coordinator.createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+            createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
                 .onAppear() { loadItems() }
         } else {
             ScrollView {
@@ -31,7 +31,7 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
                     ForEach(viewModel.meals, id: \.self) { meal in
                         NavigationLink(destination: LazyView(coordinator.goToDetails(id: meal.idMeal))) {
                             ZStack(alignment: .bottom) {
-                                coordinator.createItem(url: meal.strMealThumb, text: meal.strMeal)
+                                createItem(url: meal.strMealThumb, text: meal.strMeal)
                                     .padding(4)
                             }
                         }
@@ -46,5 +46,20 @@ struct MealListView<ViewModel: MealListViewModelProtocol>: View {
         Task {
             await viewModel.fetchList()
         }
+    }
+}
+
+extension MealListView {
+    
+    func createItem(url: String, text: String) -> some View {
+        let viewModel = ItemComponentViewModel(url: url, text: text)
+        let componentView = ItemComponentView(viewModel: viewModel)
+        return componentView
+    }
+    
+    func createEmpty(buttonAction: @escaping (() -> ()), isPresented: Binding<Bool>) -> some View {
+        let viewModel = EmptyViewModel(buttonAcction: buttonAction, isPresented: isPresented)
+        let emptyView = EmptyView(viewModel: viewModel)
+        return emptyView
     }
 }

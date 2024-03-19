@@ -6,18 +6,10 @@ class Coordinator {
     var objectProvider: ObjectProviderProtocol
     var imageProvider: ImageProviderProtocol
     
-    init(objectProvider: ObjectProviderProtocol? = nil, imageProvider: ImageProviderProtocol? = nil) {
-        if let objectProvider {
-            self.objectProvider = objectProvider
-        } else {
-            self.objectProvider = DataProvider()
-        }
-        
-        if let imageProvider {
-            self.imageProvider = imageProvider
-        } else {
-            self.imageProvider = DataProvider()
-        }
+    init(objectProvider: ObjectProviderProtocol? = nil,
+         imageProvider: ImageProviderProtocol? = nil) {
+        self.objectProvider = objectProvider ?? DataProvider()
+        self.imageProvider = imageProvider ?? DataProvider()
     }
     
     func goToCategory() -> some View {
@@ -48,25 +40,5 @@ class Coordinator {
         let view = TabBarView(coordinator: self)
         return view
     }
-    
-    func goToPlayButton(title: String, url: String) -> some View {
-        let viewModel = PlayButtonViewModel(title: title, url: url)
-        let view = PlayButtonView(viewModel: viewModel)
-        return view
-    }
-    
-    func createItem(url: String, text: String) -> some View {
-        let viewModel = ItemComponentViewModel(url: url, text: text, dataProvider: imageProvider)
-        let componentView = ItemComponentView(viewModel: viewModel)
-        return componentView
-    }
-    
-    func createEmpty(buttonAction: @escaping (() -> ()), isPresented: Binding<Bool>) -> some View {
-        let viewModel = EmptyViewModel(buttonAcction: buttonAction, isPresented: isPresented)
-        let emptyView = EmptyView(viewModel: viewModel)
-        return emptyView
-    }
-    
-    
     
 }

@@ -36,16 +36,26 @@ struct SearchView<ViewModel: SearchViewModelProtocol>:  View {
         }
     }
     
+    
+}
+
+extension SearchView {
     func searchList() -> some View {
         LazyVGrid(columns: [GridItem(), GridItem()]) {
             ForEach(viewModel.searchedMeals, id: \.self) { meal in
                 NavigationLink(destination: LazyView(coordinator.goToDetails(id: meal.idMeal))) {
                     ZStack(alignment: .bottom) {
-                        coordinator.createItem(url: meal.strMealThumb, text: meal.strMeal)
+                        createItem(url: meal.strMealThumb, text: meal.strMeal)
                             .padding(4)
                     }
                 }
             }
         }
+    }
+    
+    func createItem(url: String, text: String) -> some View {
+        let viewModel = ItemComponentViewModel(url: url, text: text)
+        let componentView = ItemComponentView(viewModel: viewModel)
+        return componentView
     }
 }

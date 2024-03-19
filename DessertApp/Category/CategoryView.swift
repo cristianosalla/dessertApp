@@ -23,7 +23,7 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
     
     var body: some View {
         if viewModel.categories.isEmpty {
-            coordinator.createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
+            createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
                 .onAppear() { loadItems() }
         } else {
             NavigationView {
@@ -45,7 +45,7 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
             ForEach(viewModel.categories, id: \.self) { category in
                 NavigationLink(destination: LazyView( coordinator.goToMealList(category: category.strCategory))) {
                     ZStack(alignment: .bottom) {
-                        coordinator.createItem(url: category.strCategoryThumb, text: category.strCategory)
+                        createItem(url: category.strCategoryThumb, text: category.strCategory)
                             .padding(4)
                     }
                 }
@@ -77,5 +77,19 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
         Task {
             await viewModel.fetchList()
         }
+    }
+}
+
+extension CategoryView {
+    func createItem(url: String, text: String) -> some View {
+        let viewModel = ItemComponentViewModel(url: url, text: text)
+        let componentView = ItemComponentView(viewModel: viewModel)
+        return componentView
+    }
+    
+    func createEmpty(buttonAction: @escaping (() -> ()), isPresented: Binding<Bool>) -> some View {
+        let viewModel = EmptyViewModel(buttonAcction: buttonAction, isPresented: isPresented)
+        let emptyView = EmptyView(viewModel: viewModel)
+        return emptyView
     }
 }

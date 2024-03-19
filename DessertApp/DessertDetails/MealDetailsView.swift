@@ -29,7 +29,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
                 ZStack {
                     MealDetailsImageView(width: geometry.size.width, url: detailsURL)
                     if viewModel.showVideo {
-                        coordinator.goToPlayButton(title: viewModel.title, url: viewModel.meal?.strYoutube ?? "")
+                        goToPlayButton(title: viewModel.title, url: viewModel.meal?.strYoutube ?? "")
                     }
                 }
                 
@@ -53,4 +53,12 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
             await viewModel.fetchDetails()
         }
     } 
+}
+
+extension MealDetailsView {
+    func goToPlayButton(title: String, url: String) -> some View {
+        let viewModel = PlayButtonViewModel(title: title, url: url)
+        let view = PlayButtonView(viewModel: viewModel)
+        return view
+    }
 }
