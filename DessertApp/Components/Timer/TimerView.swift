@@ -11,8 +11,12 @@ struct TimerView: View {
     @State private var elapsedTime: TimeInterval = 0
     @State private var timerIsRunning = false
     
+    @State private var timer: Timer?
+
     func startTimer() {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+        elapsedTime = progress.toTimeInterval()
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if isRunning {
                 elapsedTime -= 1
                 if elapsedTime <= 0  {
@@ -30,10 +34,6 @@ struct TimerView: View {
                 RingView(isRunning: $isRunning, progress: $progress, width: 128)
                 if isRunning {
                     Text(elapsedTime.toString())
-                        .onAppear() {
-                            elapsedTime = progress.toTimeInterval()
-                            self.startTimer()
-                        }
                 } else {
                     Text(progress.toTimeInterval().toString())
                 }
@@ -41,6 +41,7 @@ struct TimerView: View {
             
             Button(action: {
                 isRunning.toggle()
+                startTimer()
             }, label: {
                 Image(systemName: isRunning ? "stop.circle.fill" : "play.circle.fill")
                     .resizable()
