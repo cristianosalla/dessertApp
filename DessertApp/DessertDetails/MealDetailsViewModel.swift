@@ -30,7 +30,7 @@ class MealDetailsViewModel: MealDetailsViewModelProtocol {
     }
     
     func itemFormat(ingredient: String, measure: String) -> String {
-        "• \(measure) \(ingredient)"
+        "\(measure) \(ingredient)"
     }
     
 }
