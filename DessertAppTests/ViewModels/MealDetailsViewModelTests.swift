@@ -25,7 +25,7 @@ class MealDetailsViewModelTests: XCTestCase {
         
         let formattedText = self.viewModel.itemFormat(ingredient: ingredient, measure: measure)
         
-        XCTAssertEqual(formattedText, "• 120g Plain Flour")
+        XCTAssertEqual(formattedText, "120g Plain Flour")
     }
 
     func testFetchDetailsSuccess() async {
