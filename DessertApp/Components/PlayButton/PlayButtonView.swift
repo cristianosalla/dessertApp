@@ -7,6 +7,12 @@ protocol PlayButtonViewModelProtocol: ObservableObject {
     var iconName: String { get }
 }
 
+fileprivate enum Constants {
+    static let width: CGFloat = 100
+    static let shadowRadius: CGFloat = 3
+    static let opacity: CGFloat = 0.7
+}
+
 struct PlayButtonView<ViewModel: PlayButtonViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
@@ -23,10 +29,10 @@ struct PlayButtonView<ViewModel: PlayButtonViewModelProtocol>: View {
             Image(systemName: viewModel.iconName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
+                .frame(width: Constants.width, height: Constants.width)
                 .foregroundColor(.white)
-                .shadow(radius: 3)
-                .opacity(0.7)
+                .shadow(radius: Constants.shadowRadius)
+                .opacity(Constants.opacity)
         }).sheet(isPresented: $viewModel.isPresented) {
             if #available(iOS 16.0, *) {
                 NavigationStack {
