@@ -12,6 +12,7 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
 
 struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
+    @State var showTimer = false
     private var coordinator: Coordinator
     
     @State private var isPresentWebView = false
@@ -22,22 +23,33 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                DetailsTitleView(title: title)
-                
-                ZStack {
-                    MealDetailsImageView(width: geometry.size.width, url: detailsURL)
-                    if viewModel.showVideo {
-                        goToPlayButton(title: viewModel.title, url: viewModel.meal?.strYoutube ?? "")
+        ZStack {
+            
+            GeometryReader { geometry in
+                ScrollView {
+                    DetailsTitleView(title: title)
+                    
+                    ZStack {
+                        MealDetailsImageView(width: geometry.size.width, url: detailsURL)
+                        if viewModel.showVideo {
+                            goToPlayButton(title: viewModel.title, url: viewModel.meal?.strYoutube ?? "")
+                        }
                     }
+                    
+                    MealDetailsTextsView(viewModel: viewModel, showTimer: $showTimer)
+                }.onAppear() {
+                    fetchDetails()
                 }
-                
-                MealDetailsTextsView(viewModel: viewModel)
-            }.onAppear() {
-                fetchDetails()
+            }.navigationBarTitle(Text(String()), displayMode: .inline)
+            if showTimer {
+                Spacer()
+                TimerView()
+                    .frame(maxHeight: .infinity, alignment: .topTrailing)
+                    .shadow(radius: 3)
+                    .padding()
+                Spacer()
             }
-        }.navigationBarTitle(Text(String()), displayMode: .inline)
+        }
     }
     
     var title: String {

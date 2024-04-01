@@ -3,6 +3,7 @@ import SwiftUI
 struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     @StateObject var viewModel: ViewModel
+    @Binding var showTimer: Bool
     
     var body: some View {
         
@@ -13,13 +14,17 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                IngredientTimerView(viewModel: viewModel)
+                IngredientView(viewModel: viewModel)
                 
                 
                 Text(viewModel.instructionsTitle)
                     .font(.mealTitle2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
+                
+                Button("Set Timer") {
+                    self.showTimer.toggle()
+                }.padding()
                 
                 Text(viewModel.meal?.strInstructions ?? String())
                     .font(.mealText)
@@ -30,7 +35,7 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
     }
 }
 
-struct IngredientTimerView<ViewModel: MealDetailsViewModelProtocol>: View {
+struct IngredientView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     
@@ -56,10 +61,6 @@ struct IngredientTimerView<ViewModel: MealDetailsViewModelProtocol>: View {
                     }
                 }
             }
-            Spacer()
-            TimerView()
-                .frame(width: 120, height: .infinity, alignment: .bottom)
-                .padding()
         }
     }
     
