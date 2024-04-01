@@ -24,7 +24,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                TitleView(title: title)
+                DetailsTitleView(title: title)
                 
                 ZStack {
                     MealDetailsImageView(width: geometry.size.width, url: detailsURL)
