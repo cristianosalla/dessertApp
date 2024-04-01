@@ -46,6 +46,7 @@
 		5B87A8D72BA9FD7A007E9E73 /* PlayButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87A8D62BA9FD7A007E9E73 /* PlayButtonViewModel.swift */; };
 		5B9191312B08622900248387 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9191302B08622900248387 /* Endpoint.swift */; };
 		5B9B41DC2BB8B7BD006903AA /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B41DB2BB8B7BD006903AA /* CheckBoxView.swift */; };
+		5B9B41DE2BBA42BA006903AA /* PlayPauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B41DD2BBA42BA006903AA /* PlayPauseButtonView.swift */; };
 		5BA62C482BA20ACB0094947D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA62C472BA20ACB0094947D /* WebView.swift */; };
 		5BA62C4A2BA212420094947D /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA62C492BA212420094947D /* PlayButtonView.swift */; };
 		5BA92BB62AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */; };
@@ -124,6 +125,7 @@
 		5B87A8D62BA9FD7A007E9E73 /* PlayButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonViewModel.swift; sourceTree = "<group>"; };
 		5B9191302B08622900248387 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5B9B41DB2BB8B7BD006903AA /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		5B9B41DD2BBA42BA006903AA /* PlayPauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButtonView.swift; sourceTree = "<group>"; };
 		5BA62C472BA20ACB0094947D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebView.swift; path = DessertApp/Components/WebView.swift; sourceTree = SOURCE_ROOT; };
 		5BA62C492BA212420094947D /* PlayButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
 		5BA92BAD2AF5BFB600D9B6D2 /* SFUIDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Regular.otf"; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				5BCE8FD12BB4723C0082A044 /* RingView.swift */,
 				5B6A73E22BB687E600FC48B7 /* RingAnimationView.swift */,
 				5B6A73E02BB687AF00FC48B7 /* PickerTimeView.swift */,
+				5B9B41DD2BBA42BA006903AA /* PlayPauseButtonView.swift */,
 				5B4A05692BB51C0400E9F0B0 /* TimerView.swift */,
 			);
 			path = Timer;
@@ -498,6 +501,7 @@
 				5B3E90DD2AF2CBDD00FB7532 /* MealDetailsModels.swift in Sources */,
 				5BA62C482BA20ACB0094947D /* WebView.swift in Sources */,
 				5BF555762BA6B00400133CC5 /* TabBarView.swift in Sources */,
+				5B9B41DE2BBA42BA006903AA /* PlayPauseButtonView.swift in Sources */,
 				5B3E90DF2AF2D08800FB7532 /* MealListViewModel.swift in Sources */,
 				5B77EFD52BA151F3001CCB6D /* EmptyView.swift in Sources */,
 				5B3E90D72AF2C57000FB7532 /* MealListView.swift in Sources */,

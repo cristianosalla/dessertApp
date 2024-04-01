@@ -12,7 +12,7 @@ struct SearchView<ViewModel: SearchViewModelProtocol>:  View {
     @ObservedObject private var viewModel: ViewModel
     private var coordinator: Coordinator
     
-    @State private var searchText = ""
+    @State private var searchText = String()
     
     init(_ viewModel: ViewModel, _ coordinator: Coordinator) {
         self.viewModel = viewModel
