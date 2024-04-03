@@ -5,6 +5,7 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
     var instructionsTitle: String { get }
     var ingredientsTitle: String { get }
     var meal: MealDetail? { get }
+    var timerButtonText: String { get }
     var showTimer: Bool { get set }
     var showVideo: Bool { get }
     func fetchDetails() async

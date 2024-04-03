@@ -1,8 +1,10 @@
 import Foundation
 
 class MealDetailsViewModel: MealDetailsViewModelProtocol {
+    
     var title: String { return meal?.strMeal ?? "" }
     var instructionsTitle: String { "Instructions" }
+    var timerButtonText: String { return "Set Timer"}
     var ingredientsTitle: String { "Ingredients" }
     
     @Published var meal: MealDetail?

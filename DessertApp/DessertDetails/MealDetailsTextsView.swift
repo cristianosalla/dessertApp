@@ -15,7 +15,7 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
                 
                 IngredientView(viewModel: viewModel)
                 
-                Button("Set Timer") {
+                Button(viewModel.timerButtonText) {
                     viewModel.showTimer.toggle()
                 }.padding()
                 
