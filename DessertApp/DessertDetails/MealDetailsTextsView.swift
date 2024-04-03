@@ -4,6 +4,8 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     @StateObject var viewModel: ViewModel
     
+    let color = Color(#colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1))
+    
     var body: some View {
         
         ScrollView {
@@ -15,9 +17,17 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
                 
                 IngredientView(viewModel: viewModel)
                 
-                Button(viewModel.timerButtonText) {
+                Button(viewModel.timerButtonText()) {
                     viewModel.showTimer.toggle()
-                }.padding()
+                }
+                .frame(alignment: .leading)
+                .padding()
+                .background(
+                    Rectangle()
+                        .foregroundColor(color)
+                )
+                .cornerRadius(5.0)
+                .shadow(radius: 3)
                 
                 Text(viewModel.instructionsTitle)
                     .font(.mealTitle2)
