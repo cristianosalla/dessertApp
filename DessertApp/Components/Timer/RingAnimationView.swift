@@ -3,16 +3,15 @@ import SwiftUI
 struct RingAnimationView<ViewModel: TimerViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
+    @State var animate = false
+    
+    let sliderWidth: CGFloat
+    let lime = Color(#colorLiteral(red: 0.5563425422, green: 0.9793455005, blue: 0, alpha: 1))
     
     init(viewModel: ViewModel, sliderWidth: CGFloat) {
         self.viewModel = viewModel
         self.sliderWidth = sliderWidth
     }
-    
-    let sliderWidth: CGFloat
-    
-    @State var animate = false
-    let lime = Color(#colorLiteral(red: 0.5563425422, green: 0.9793455005, blue: 0, alpha: 1))
     
     var body: some View {
         Circle()

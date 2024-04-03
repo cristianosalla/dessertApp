@@ -4,13 +4,13 @@ import Combine
 protocol TimerViewModelProtocol: ObservableObject {
     var isRunning: Bool { get set }
     var progress: Double { get set }
-    var ringWidth: CGFloat { get set }
     var rotationAngle: Angle { get set }
     var elapsedTime: TimeInterval { get set }
     var timer: AnyCancellable? { get set }
     func setText() -> String
     func startTimer()
     func changeAngle(location: CGPoint)
+    func buttonActon()
 }
 
 struct TimerView<ViewModel: TimerViewModelProtocol>: View {
@@ -24,10 +24,9 @@ struct TimerView<ViewModel: TimerViewModelProtocol>: View {
     var body: some View {
         VStack {
             ZStack {
-                RingView(viewModel: viewModel, width: viewModel.ringWidth)
+                RingView(viewModel: viewModel)
                 Text(viewModel.setText())
             }
-            
             PlayPauseButtonView(viewModel: viewModel)
         }
     }

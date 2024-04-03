@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 fileprivate enum Constants {
     static let buttonWidth: CGFloat = 30
     static let shadowRadius: CGFloat = 3
@@ -15,15 +14,11 @@ fileprivate enum Strings {
 struct PlayPauseButtonView<ViewModel: TimerViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
-    
     @Namespace var namespace
     
     var body: some View {
         Button(action: {
-            viewModel.isRunning ? viewModel.isRunning = false : viewModel.startTimer()
+            viewModel.buttonActon()
         }, label: {
             Image(systemName: viewModel.isRunning ?  Strings.stopIcon : Strings.playIcon)
                 .resizable()

@@ -1,48 +1,54 @@
 import SwiftUI
 
+fileprivate enum Constants {
+    static let trim: CGFloat = 10
+    static let shadow: CGFloat = 0.3
+    static let color: Color = Color(hue: .zero, saturation: 0.5, brightness: 0.9)
+    static let frameFactor: CGFloat = 2.0
+    static let paddingFactor: CGFloat = 0.1
+}
+
 struct PickerTimeView<ViewModel: TimerViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
-
-    init(viewModel: ViewModel) {
+    
+    let width: CGFloat
+    let sliderWidth: CGFloat
+    let radius: CGFloat
+    
+    init(viewModel: ViewModel, width: CGFloat, sliderWidth: CGFloat, radius: CGFloat) {
         self.viewModel = viewModel
-    }
-    
-    let width: CGFloat = 128
-    
-    var sliderWidth: CGFloat {
-        return width * 0.1
-    }
-    var radius: CGFloat {
-        return (width/2.0) * 0.9
+        self.width = width
+        self.sliderWidth = sliderWidth
+        self.radius = radius
     }
     
     var body: some View {
         ZStack {
             
             Circle()
-                .trim(from: 0, to: viewModel.progress/10)
-                .stroke(Color(hue: 0.0, saturation: 0.5, brightness: 0.9),
+                .trim(from: .zero, to: viewModel.progress/Constants.trim)
+                .stroke(Constants.color,
                         style: StrokeStyle(lineWidth: sliderWidth, lineCap: .round)
                 )
-                .rotationEffect(Angle(degrees: -90))
+                .rotationEffect(Angle(degrees: -.ninety))
             
             Circle()
                 .fill(Color.white)
-                .shadow(radius: (sliderWidth * 0.3))
+                .shadow(radius: (sliderWidth * Constants.shadow))
                 .frame(width: sliderWidth, height: sliderWidth)
                 .offset(y: -radius)
                 .rotationEffect(viewModel.rotationAngle)
                 .gesture(
-                    DragGesture(minimumDistance: 0.0)
+                    DragGesture(minimumDistance: .zero)
                         .onChanged() { value in
                             viewModel.changeAngle(location: value.location)
                         }
                 )
         }
-        .frame(width: radius * 2.0, height: radius * 2.0, alignment: .center)
-        .padding(radius * 0.1)
-
+        .frame(width: radius * Constants.frameFactor, height: radius * Constants.frameFactor, alignment: .center)
+        .padding(radius * Constants.paddingFactor)
+        
     }
-   
+    
 }
