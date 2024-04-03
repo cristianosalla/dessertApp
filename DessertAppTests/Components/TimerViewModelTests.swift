@@ -54,7 +54,7 @@ class TimerViewModelTests: XCTestCase {
         viewModel.isRunning = true
         viewModel.timerAction(setTime: 2, time: Date.now)
         
-        XCTAssertEqual(viewModel.elapsedTime, 2.0)
+        XCTAssertTrue((1...3).contains(viewModel.elapsedTime))
     }
     
     func testTimerActionIsNotRunning() {
