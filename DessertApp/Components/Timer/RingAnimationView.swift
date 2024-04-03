@@ -10,7 +10,7 @@ struct RingAnimationView: View {
     
     var body: some View {
         Circle()
-            .trim(from: .zero, to: animate ? 1 : .zero)
+            .trim(from: .zero, to: animate ? .one : .zero)
             .stroke(
                 lime.gradient,
                 style: StrokeStyle(lineWidth: sliderWidth, lineCap: .round)
@@ -25,6 +25,6 @@ struct RingAnimationView: View {
             .onDisappear() {
                 animate = false
             }
-            .rotationEffect(.degrees(-90))
+            .rotationEffect(.degrees(-.ninety))
     }
 }
