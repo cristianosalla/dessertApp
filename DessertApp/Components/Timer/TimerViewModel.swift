@@ -16,19 +16,28 @@ class TimerViewModel: TimerViewModelProtocol {
     }
     
     func startTimer() {
-        self.isRunning = true
+        isRunning = true
+        elapsedTime = progress.toTimeInterval()
         let setTime = progress.toTimeInterval()
+        setTimer(setTime)
+    }
+    
+    func setTimer(_ setTime: TimeInterval) {
         let time = Date.now
-        self.elapsedTime = progress.toTimeInterval()
         
         self.timer = Timer.publish(every: .one, on: RunLoop.main, in: .common).autoconnect().sink(receiveValue: { [self] _ in
-            if self.isRunning {
-                self.elapsedTime = setTime - Date.now.timeIntervalSince(time)
-                isRunning = elapsedTime <= .zero ? false : true
-            } else {
-                timer?.cancel()
-            }
+            timerAction(setTime: setTime, time: time)
         })
+    }
+    
+    func timerAction(setTime: TimeInterval, time: Date) {
+        if self.isRunning {
+            elapsedTime = setTime - Date.now.timeIntervalSince(time)
+            isRunning = elapsedTime <= .zero ? false : true
+        } else {
+            timer?.cancel()
+            timer = nil
+        }
     }
     
     func changeAngle(location: CGPoint) {

@@ -23,6 +23,7 @@
 		5B4A56EA2AF2BC34008F3F85 /* MealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A56E92AF2BC34008F3F85 /* MealApp.swift */; };
 		5B4A56EE2AF2BC36008F3F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4A56ED2AF2BC36008F3F85 /* Assets.xcassets */; };
 		5B56C7462BBCE67400935CD9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56C7452BBCE67400935CD9 /* TimerViewModel.swift */; };
+		5B5B52382BBD813B00AC441A /* TimerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B52372BBD813B00AC441A /* TimerViewModelTests.swift */; };
 		5B5FCBFB2B191E5200EF8598 /* MealsDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */; };
 		5B5FCBFC2B191E5200EF8598 /* MealsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B1364502B0BF55A00F974EB /* MealsList.json */; };
 		5B5FCBFD2B191F6600EF8598 /* MealsDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */; };
@@ -108,6 +109,7 @@
 		5B4A56ED2AF2BC36008F3F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B4A56F62AF2BC36008F3F85 /* DessertAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B56C7452BBCE67400935CD9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		5B5B52372BBD813B00AC441A /* TimerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTests.swift; sourceTree = "<group>"; };
 		5B62B7762AF9DEFD00D48633 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		5B6A73DB2BB6740100FC48B7 /* Numbers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extension.swift"; sourceTree = "<group>"; };
 		5B6A73E02BB687AF00FC48B7 /* PickerTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTimeView.swift; sourceTree = "<group>"; };
@@ -288,10 +290,10 @@
 		5B6A73DF2BB6875F00FC48B7 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				5BCE8FD12BB4723C0082A044 /* RingView.swift */,
 				5B6A73E22BB687E600FC48B7 /* RingAnimationView.swift */,
 				5B6A73E02BB687AF00FC48B7 /* PickerTimeView.swift */,
 				5B9B41DD2BBA42BA006903AA /* PlayPauseButtonView.swift */,
+				5BCE8FD12BB4723C0082A044 /* RingView.swift */,
 				5B4A05692BB51C0400E9F0B0 /* TimerView.swift */,
 				5B56C7452BBCE67400935CD9 /* TimerViewModel.swift */,
 			);
@@ -332,6 +334,7 @@
 			children = (
 				5BAA72512AFC8486008469AA /* ItemComponentViewModelTest.swift */,
 				5B77EFDD2BA15C10001CCB6D /* EmptyViewModelTests.swift */,
+				5B5B52372BBD813B00AC441A /* TimerViewModelTests.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 			files = (
 				5BA92BBC2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift in Sources */,
 				5B77EFD22BA14695001CCB6D /* CoordinatorTests.swift in Sources */,
+				5B5B52382BBD813B00AC441A /* TimerViewModelTests.swift in Sources */,
 				5B77EFDE2BA15C10001CCB6D /* EmptyViewModelTests.swift in Sources */,
 				5BA92BBA2AF5C2A800D9B6D2 /* DataProviderTest.swift in Sources */,
 				5BAA72522AFC8486008469AA /* ItemComponentViewModelTest.swift in Sources */,
