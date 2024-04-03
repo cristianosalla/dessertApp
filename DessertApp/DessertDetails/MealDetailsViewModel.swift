@@ -7,6 +7,7 @@ class MealDetailsViewModel: MealDetailsViewModelProtocol {
     
     @Published var meal: MealDetail?
     @Published var showVideo: Bool = false
+    @Published var showTimer: Bool = false
     
     let id: String
     private var dataProvider: ObjectProviderProtocol

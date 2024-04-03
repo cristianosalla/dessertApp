@@ -3,7 +3,6 @@ import SwiftUI
 struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     @StateObject var viewModel: ViewModel
-    @Binding var showTimer: Bool
     
     var body: some View {
         
@@ -23,7 +22,7 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
                     .padding()
                 
                 Button("Set Timer") {
-                    self.showTimer.toggle()
+                    viewModel.showTimer.toggle()
                 }.padding()
                 
                 Text(viewModel.meal?.strInstructions ?? String())
