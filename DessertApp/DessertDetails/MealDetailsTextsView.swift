@@ -15,15 +15,15 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
                 
                 IngredientView(viewModel: viewModel)
                 
+                Button("Set Timer") {
+                    viewModel.showTimer.toggle()
+                }.padding()
                 
                 Text(viewModel.instructionsTitle)
                     .font(.mealTitle2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                Button("Set Timer") {
-                    viewModel.showTimer.toggle()
-                }.padding()
                 
                 Text(viewModel.meal?.strInstructions ?? String())
                     .font(.mealText)
