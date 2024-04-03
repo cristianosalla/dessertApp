@@ -1,5 +1,5 @@
 import SwiftUI
-
+import Combine
 
 struct TimerView: View {
     
@@ -12,21 +12,16 @@ struct TimerView: View {
     }
     
     @State var isRunning = false
-    @State var progress: Double = 0
+    @State var progress: Double = .zero
     
-    @State private var elapsedTime: TimeInterval = 0
-    @State private var timerIsRunning = false
-    @State private var timer: Timer?
-
+    @State private var elapsedTime: TimeInterval = .zero
+    @State private var timer: AnyCancellable?
+    
     var body: some View {
         VStack {
             ZStack {
                 RingView(isRunning: $isRunning, progress: $progress, width: Constants.ringWidth)
-                if isRunning {
-                    Text(elapsedTime.toString())
-                } else {
-                    Text(progress.toTimeInterval().toString())
-                }
+                Text(setText())
             }
             
             PlayPauseButtonView(isRunning: $isRunning, action: {
@@ -36,17 +31,24 @@ struct TimerView: View {
         }
     }
     
+    func setText() -> String {
+        return isRunning ? elapsedTime.toString() : progress.toTimeInterval().toString()
+    }
+    
     func startTimer() {
-        elapsedTime = progress.toTimeInterval()
-        self.timer?.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+        let setTime = progress.toTimeInterval()
+        let time = Date.now
+        self.elapsedTime = progress.toTimeInterval()
+        
+        self.timer = Timer.publish(every: .one, on: RunLoop.main, in: .common).autoconnect().sink(receiveValue: { _ in
             if isRunning {
-                elapsedTime -= 1
-                isRunning = elapsedTime <= 0 ? false : true
+                self.elapsedTime = setTime - Date.now.timeIntervalSince(time)
+                isRunning = elapsedTime <= .zero ? false : true
+                
             } else {
-                timer.invalidate()
+                timer?.cancel()
             }
-        }
+        })
     }
         
 }
