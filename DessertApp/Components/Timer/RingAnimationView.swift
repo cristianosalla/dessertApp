@@ -1,8 +1,14 @@
 import SwiftUI
 
-struct RingAnimationView: View {
+struct RingAnimationView<ViewModel: TimerViewModelProtocol>: View {
     
-    @Binding var progress: Double
+    @ObservedObject var viewModel: ViewModel
+    
+    init(viewModel: ViewModel, sliderWidth: CGFloat) {
+        self.viewModel = viewModel
+        self.sliderWidth = sliderWidth
+    }
+    
     let sliderWidth: CGFloat
     
     @State var animate = false
@@ -16,7 +22,7 @@ struct RingAnimationView: View {
                 style: StrokeStyle(lineWidth: sliderWidth, lineCap: .round)
             )
             .animation(
-                .linear(duration: progress.toTimeInterval()),
+                .linear(duration: viewModel.progress.toTimeInterval()),
                 value: animate
             )
             .onAppear() {

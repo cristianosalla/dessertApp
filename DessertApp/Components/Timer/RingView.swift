@@ -1,20 +1,16 @@
 import SwiftUI
 
-struct RingView: View {
+struct RingView<ViewModel: TimerViewModelProtocol>: View {
     
-    @State var rotationAngle = Angle(degrees: 0)
-    
-    var isRunning: Binding<Bool>
-    var progress: Binding<Double>
-    
+    @ObservedObject var viewModel: ViewModel
+        
     let width: CGFloat
     let radius: CGFloat
     let sliderWidth: CGFloat
     
-    init(isRunning: Binding<Bool>, progress: Binding<Double>, width: CGFloat) {
-        self.isRunning = isRunning
-        self.progress = progress
-        
+    init(viewModel: ViewModel, width: CGFloat) {
+        self.viewModel = viewModel
+
         self.width = width
         self.radius = (width/2.0) * 0.9
         self.sliderWidth = width * 0.1
@@ -27,10 +23,10 @@ struct RingView: View {
                 .foregroundStyle(.tertiary)
                 .frame(width: radius * 2.0, height: radius * 2.0, alignment: .center)
                 .overlay {
-                    if isRunning.wrappedValue {
-                        RingAnimationView(progress: progress, sliderWidth: sliderWidth)
+                    if viewModel.isRunning {
+                        RingAnimationView(viewModel: viewModel, sliderWidth: sliderWidth)
                     } else {
-                        PickerTimeView(rotationAngle: $rotationAngle, progress: progress, width: width)
+                        PickerTimeView(viewModel: viewModel)
                     }
                 }
         }

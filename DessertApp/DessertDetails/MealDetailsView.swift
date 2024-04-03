@@ -18,6 +18,8 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     
     @State private var isPresentWebView = false
     
+    @State private var timerView = TimerView()
+    
     init(_ viewModel: ViewModel, coordinator: Coordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -44,7 +46,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
             }.navigationBarTitle(Text(String()), displayMode: .inline)
             if viewModel.showTimer {
                 Spacer()
-                TimerView()
+                timerView
                     .frame(maxHeight: .infinity, alignment: .topTrailing)
                     .shadow(radius: 3)
                     .padding()

@@ -1,54 +1,34 @@
 import SwiftUI
 import Combine
 
-struct TimerView: View {
+protocol TimerViewModelProtocol: ObservableObject {
+    var isRunning: Bool { get set }
+    var progress: Double { get set }
+    var ringWidth: CGFloat { get set }
+    var rotationAngle: Angle { get set }
+    var elapsedTime: TimeInterval { get set }
+    var timer: AnyCancellable? { get set }
+    func setText() -> String
+    func startTimer()
+    func changeAngle(location: CGPoint)
+}
+
+struct TimerView<ViewModel: TimerViewModelProtocol>: View {
     
-    enum Constants {
-        static let defaultTimer: TimeInterval = 0
-        static let defaultProgress: Double = 0
-        static let scheduleTimeInterval: TimeInterval = 1
-        static let ringWidth: CGFloat = 128
-        static let buttonWidth: CGFloat = 30
+    @ObservedObject var viewModel: ViewModel
+    
+    init(viewModel: ViewModel = TimerViewModel()) {
+        self.viewModel = viewModel
     }
-    
-    @State var isRunning = false
-    @State var progress: Double = .zero
-    
-    @State private var elapsedTime: TimeInterval = .zero
-    @State private var timer: AnyCancellable?
     
     var body: some View {
         VStack {
             ZStack {
-                RingView(isRunning: $isRunning, progress: $progress, width: Constants.ringWidth)
-                Text(setText())
+                RingView(viewModel: viewModel, width: viewModel.ringWidth)
+                Text(viewModel.setText())
             }
             
-            PlayPauseButtonView(isRunning: $isRunning, action: {
-                isRunning.toggle()
-                startTimer()
-            })
+            PlayPauseButtonView(viewModel: viewModel)
         }
     }
-    
-    func setText() -> String {
-        return isRunning ? elapsedTime.toString() : progress.toTimeInterval().toString()
-    }
-    
-    func startTimer() {
-        let setTime = progress.toTimeInterval()
-        let time = Date.now
-        self.elapsedTime = progress.toTimeInterval()
-        
-        self.timer = Timer.publish(every: .one, on: RunLoop.main, in: .common).autoconnect().sink(receiveValue: { _ in
-            if isRunning {
-                self.elapsedTime = setTime - Date.now.timeIntervalSince(time)
-                isRunning = elapsedTime <= .zero ? false : true
-                
-            } else {
-                timer?.cancel()
-            }
-        })
-    }
-        
 }
