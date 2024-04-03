@@ -1,56 +1,54 @@
 import SwiftUI
 
-struct PickerTimeView: View {
+fileprivate enum Constants {
+    static let trim: CGFloat = 10
+    static let shadow: CGFloat = 0.3
+    static let color: Color = Color(hue: .zero, saturation: 0.5, brightness: 0.9)
+    static let frameFactor: CGFloat = 2.0
+    static let paddingFactor: CGFloat = 0.1
+}
+
+struct PickerTimeView<ViewModel: TimerViewModelProtocol>: View {
     
-    @Binding var rotationAngle: Angle
-    @Binding var progress: Double
-    
-    var progressFraction: Double {
-        return progress/10
-    }
+    @ObservedObject var viewModel: ViewModel
     
     let width: CGFloat
+    let sliderWidth: CGFloat
+    let radius: CGFloat
     
-    var sliderWidth: CGFloat {
-        return width * 0.1
-    }
-    var radius: CGFloat {
-        return (width/2.0) * 0.9
+    init(viewModel: ViewModel, width: CGFloat, sliderWidth: CGFloat, radius: CGFloat) {
+        self.viewModel = viewModel
+        self.width = width
+        self.sliderWidth = sliderWidth
+        self.radius = radius
     }
     
     var body: some View {
         ZStack {
             
             Circle()
-                .trim(from: 0, to: progressFraction)
-                .stroke(Color(hue: 0.0, saturation: 0.5, brightness: 0.9),
+                .trim(from: .zero, to: viewModel.progress/Constants.trim)
+                .stroke(Constants.color,
                         style: StrokeStyle(lineWidth: sliderWidth, lineCap: .round)
                 )
-                .rotationEffect(Angle(degrees: -90))
+                .rotationEffect(Angle(degrees: -.ninety))
             
             Circle()
                 .fill(Color.white)
-                .shadow(radius: (sliderWidth * 0.3))
+                .shadow(radius: (sliderWidth * Constants.shadow))
                 .frame(width: sliderWidth, height: sliderWidth)
                 .offset(y: -radius)
-                .rotationEffect(rotationAngle)
+                .rotationEffect(viewModel.rotationAngle)
                 .gesture(
-                    DragGesture(minimumDistance: 0.0)
+                    DragGesture(minimumDistance: .zero)
                         .onChanged() { value in
-                            changeAngle(location: value.location)
+                            viewModel.changeAngle(location: value.location)
                         }
                 )
         }
-        .frame(width: radius * 2.0, height: radius * 2.0, alignment: .center)
-        .padding(radius * 0.1)
-
+        .frame(width: radius * Constants.frameFactor, height: radius * Constants.frameFactor, alignment: .center)
+        .padding(radius * Constants.paddingFactor)
+        
     }
     
-    func changeAngle(location: CGPoint) {
-        let vector = CGVector(dx: location.x, dy: -location.y)
-        let angleRadians = atan2(vector.dx, vector.dy)
-        let positiveAngle = angleRadians < 0.0 ? angleRadians + (2.0 * .pi) : angleRadians
-        $progress.wrappedValue =  positiveAngle / 2.0 * .pi
-        $rotationAngle.wrappedValue = Angle(radians: positiveAngle)
-    }
 }

@@ -9,9 +9,16 @@ extension TimeInterval {
 }
 
 extension Double {
+    static let ninety = 90.0
+    static let one = 1.0
+    
     func toTimeInterval() -> TimeInterval {
         let clampedTime = min(max(self, 0), 10)
         let mappedTime = exp(clampedTime * log(7200) / 10)
         return TimeInterval(mappedTime)
     }
+}
+
+extension CGFloat {
+    static let one = 1.0
 }

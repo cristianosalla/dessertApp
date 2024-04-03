@@ -1,23 +1,24 @@
 import SwiftUI
 
-struct RingView: View {
+fileprivate enum Constants {
+    static let width: CGFloat = 128
+    static let sizeFactor: CGFloat = 2
+    static let radiusFactor: CGFloat = 0.45
+    static let sliderFactor: CGFloat = 0.1
+}
+
+struct RingView<ViewModel: TimerViewModelProtocol>: View {
     
-    @State var rotationAngle = Angle(degrees: 0)
+    @ObservedObject var viewModel: ViewModel
     
-    var isRunning: Binding<Bool>
-    var progress: Binding<Double>
+    var radius: CGFloat
+    var sliderWidth: CGFloat
     
-    let width: CGFloat
-    let radius: CGFloat
-    let sliderWidth: CGFloat
-    
-    init(isRunning: Binding<Bool>, progress: Binding<Double>, width: CGFloat) {
-        self.isRunning = isRunning
-        self.progress = progress
-        
-        self.width = width
-        self.radius = (width/2.0) * 0.9
-        self.sliderWidth = width * 0.1
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+
+        self.radius = Constants.width * Constants.radiusFactor
+        self.sliderWidth = Constants.width * Constants.sliderFactor
     }
     
     var body: some View {
@@ -25,16 +26,16 @@ struct RingView: View {
             Circle()
                 .stroke(style: StrokeStyle(lineWidth: sliderWidth))
                 .foregroundStyle(.tertiary)
-                .frame(width: radius * 2.0, height: radius * 2.0, alignment: .center)
+                .frame(width: radius * Constants.sizeFactor, height: radius * Constants.sizeFactor, alignment: .center)
                 .overlay {
-                    if isRunning.wrappedValue {
-                        RingAnimationView(progress: progress, sliderWidth: sliderWidth)
+                    if viewModel.isRunning {
+                        RingAnimationView(viewModel: viewModel, sliderWidth: sliderWidth)
                     } else {
-                        PickerTimeView(rotationAngle: $rotationAngle, progress: progress, width: width)
+                        PickerTimeView(viewModel: viewModel, width: Constants.width, sliderWidth: sliderWidth, radius: radius)
                     }
                 }
         }
-        .frame(width: width)
+        .frame(width: Constants.width)
     }
 }
 

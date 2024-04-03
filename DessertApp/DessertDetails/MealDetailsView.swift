@@ -5,6 +5,8 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
     var instructionsTitle: String { get }
     var ingredientsTitle: String { get }
     var meal: MealDetail? { get }
+    var timerButtonText: String { get }
+    var showTimer: Bool { get set }
     var showVideo: Bool { get }
     func fetchDetails() async
     func itemFormat(ingredient: String, measure: String) -> String
@@ -12,10 +14,11 @@ protocol MealDetailsViewModelProtocol: ObservableObject {
 
 struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
-    @State var showTimer = false
     private var coordinator: Coordinator
     
     @State private var isPresentWebView = false
+    
+    @State private var timerView = TimerView()
     
     init(_ viewModel: ViewModel, coordinator: Coordinator) {
         self.viewModel = viewModel
@@ -36,14 +39,14 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
                         }
                     }
                     
-                    MealDetailsTextsView(viewModel: viewModel, showTimer: $showTimer)
+                    MealDetailsTextsView(viewModel: viewModel)
                 }.onAppear() {
                     fetchDetails()
                 }
             }.navigationBarTitle(Text(String()), displayMode: .inline)
-            if showTimer {
+            if viewModel.showTimer {
                 Spacer()
-                TimerView()
+                timerView
                     .frame(maxHeight: .infinity, alignment: .topTrailing)
                     .shadow(radius: 3)
                     .padding()
