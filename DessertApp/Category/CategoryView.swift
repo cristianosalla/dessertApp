@@ -26,7 +26,7 @@ struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
             createEmpty(buttonAction: loadItems, isPresented: $viewModel.showAlert)
                 .onAppear() { loadItems() }
         } else {
-            NavigationView {
+            NavigationStack {
                 VStack {
                     TitleView(title: viewModel.title)
                         

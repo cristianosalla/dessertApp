@@ -20,7 +20,7 @@ struct SearchView<ViewModel: SearchViewModelProtocol>:  View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 TitleView(title: viewModel.title)
                 
