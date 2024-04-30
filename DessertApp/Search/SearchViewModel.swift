@@ -1,6 +1,6 @@
 import Foundation
 
-class SearchViewModel: SearchViewModelProtocol {
+class SearchViewModel: ObservableObject {
     var title: String = "Search List"
     
     private var timer: Timer?

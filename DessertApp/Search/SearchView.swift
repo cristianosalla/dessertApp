@@ -1,21 +1,14 @@
 import Foundation
 import SwiftUI
 
-protocol SearchViewModelProtocol: ObservableObject {
-    var title: String { get }
-    var searchText: String { get set }
-    var searchedMeals: [Meal] { get }
-}
-
-struct SearchView<ViewModel: SearchViewModelProtocol>:  View {
+struct SearchView:  View {
     
-    @ObservedObject private var viewModel: ViewModel
+    @EnvironmentObject var viewModel: SearchViewModel
     private var coordinator: Coordinator
     
     @State private var searchText = String()
     
-    init(_ viewModel: ViewModel, _ coordinator: Coordinator) {
-        self.viewModel = viewModel
+    init(_ coordinator: Coordinator) {
         self.coordinator = coordinator
     }
     

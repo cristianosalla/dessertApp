@@ -1,9 +1,8 @@
 import Foundation
 
-class CategoryViewModel: CategoryViewModelProtocol{
+class CategoryViewModel: ObservableObject {
     
     @Published var showAlert: Bool = false
-    
     @Published var categories: [Categories] = []
     @Published var searchedMeals: [Meal] = []
     

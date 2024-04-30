@@ -14,26 +14,26 @@ class Coordinator {
     
     func goToCategory() -> some View {
         let viewModel = CategoryViewModel(dataProvider: objectProvider)
-        let view = CategoryView(viewModel: viewModel, coordinator: self)
-        return view
+        let view = CategoryView(coordinator: self)
+        return view.environmentObject(viewModel)
     }
     
     func goToDetails(id: String) -> some View {
-        let viewmodel = MealDetailsViewModel(id: id, dataProvider: objectProvider)
+        let viewModel = MealDetailsViewModel(id: id, dataProvider: objectProvider)
         let view = MealDetailsView(coordinator: self)
-        return view.environmentObject(viewmodel)
+        return view.environmentObject(viewModel)
     }
     
     func goToMealList(category: String) -> some View {
         let viewModel = MealListViewModel(category: category, dataProvider: objectProvider)
-        let view = MealListView<MealListViewModel>(viewModel, self)
-        return view
+        let view = MealListView(self)
+        return view.environmentObject(viewModel)
     }
     
     func goToSearchList() -> some View {
         let viewModel = SearchViewModel(dataProvider: objectProvider)
-        let view = SearchView<SearchViewModel>(viewModel, self)
-        return view
+        let view = SearchView(self)
+        return view.environmentObject(viewModel)
     }
     
     func goToTabBarView() -> some View {

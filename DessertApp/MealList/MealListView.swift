@@ -1,18 +1,10 @@
 import SwiftUI
 
-protocol MealListViewModelProtocol: ObservableObject {
-    var title: String { get }
-    var meals: [Meal] { get set }
-    var showAlert: Bool { get set }
-    func fetchList() async
-}
-
-struct MealListView<ViewModel: MealListViewModelProtocol>: View {
-    @ObservedObject private var viewModel: ViewModel
+struct MealListView: View {
+    @EnvironmentObject private var viewModel: MealListViewModel
     private var coordinator: Coordinator
     
-    init(_ viewModel: ViewModel, _ coordinator: Coordinator) {
-        self.viewModel = viewModel
+    init(_ coordinator: Coordinator) {
         self.coordinator = coordinator
     }
     

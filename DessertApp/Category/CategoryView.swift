@@ -2,22 +2,14 @@ import Foundation
 import SwiftUI
 import Combine
 
-protocol CategoryViewModelProtocol: ObservableObject {
-    var categories: [Categories] { get }
-    var showAlert: Bool { get set }
-    var title: String { get }
-    func fetchList() async
-}
-
-struct CategoryView<ViewModel: CategoryViewModelProtocol>:  View {
+struct CategoryView:  View {
     
-    @ObservedObject private var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: CategoryViewModel
     private var coordinator: Coordinator
     
     @State private var searchText = ""
     
-    init(viewModel: ViewModel, coordinator: Coordinator) {
-        self.viewModel = viewModel
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
     

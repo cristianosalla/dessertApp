@@ -1,6 +1,6 @@
 import SwiftUI
 
-class MealListViewModel: MealListViewModelProtocol {
+class MealListViewModel: ObservableObject {
     @Published var meals: [Meal] = [Meal]()
     @Published var showAlert: Bool = false
     
