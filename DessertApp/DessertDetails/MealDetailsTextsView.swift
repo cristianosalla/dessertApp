@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
+struct MealDetailsTextsView: View {
     
-    @StateObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: MealDetailsViewModel
     
     let color = Color(#colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1))
     
@@ -15,7 +15,7 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 
-                IngredientView(viewModel: viewModel)
+                IngredientView()
                 
                 Button(viewModel.timerButtonText()) {
                     viewModel.showTimer.toggle()
@@ -44,17 +44,9 @@ struct MealDetailsTextsView<ViewModel: MealDetailsViewModelProtocol>: View {
     }
 }
 
-struct IngredientView<ViewModel: MealDetailsViewModelProtocol>: View {
+struct IngredientView: View {
     
-    @ObservedObject var viewModel: ViewModel
-    
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-        Task {
-            await viewModel.fetchDetails()
-        }
-    }
-
+    @EnvironmentObject var viewModel: MealDetailsViewModel
     @State private var isFilled = false
 
     var body: some View {
@@ -70,9 +62,10 @@ struct IngredientView<ViewModel: MealDetailsViewModelProtocol>: View {
                     }
                 }
             }
+        }.onAppear() {
+            Task {
+                await viewModel.fetchDetails()
+            }
         }
     }
-    
-    
-    
 }

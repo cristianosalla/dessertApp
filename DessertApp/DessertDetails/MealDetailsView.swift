@@ -1,27 +1,14 @@
 import SwiftUI
 
-protocol MealDetailsViewModelProtocol: ObservableObject {
-    var title: String { get }
-    var instructionsTitle: String { get }
-    var ingredientsTitle: String { get }
-    var meal: MealDetail? { get }
-    var showTimer: Bool { get set }
-    var showVideo: Bool { get }
-    func timerButtonText() -> String
-    func fetchDetails() async
-    func itemFormat(ingredient: String, measure: String) -> String
-}
-
-struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
-    @ObservedObject private var viewModel: ViewModel
+struct MealDetailsView: View {
+    @EnvironmentObject private var viewModel: MealDetailsViewModel
+    
     private var coordinator: Coordinator
     
     @State private var isPresentWebView = false
-    
     @State private var timerView = TimerView()
     
-    init(_ viewModel: ViewModel, coordinator: Coordinator) {
-        self.viewModel = viewModel
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
     
@@ -39,7 +26,7 @@ struct MealDetailsView<ViewModel: MealDetailsViewModelProtocol>: View {
                         }
                     }
                     
-                    MealDetailsTextsView(viewModel: viewModel)
+                    MealDetailsTextsView()
                 }.onAppear() {
                     fetchDetails()
                 }

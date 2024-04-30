@@ -18,4 +18,3 @@ struct MealDetailsImageView: View {
         .frame(width: self.width, height: self.width)
     }
 }
-

@@ -1,6 +1,6 @@
 import Foundation
 
-class MealDetailsViewModel: MealDetailsViewModelProtocol {
+class MealDetailsViewModel: ObservableObject {
     
     var title: String { return meal?.strMeal ?? "" }
     var instructionsTitle: String { "Instructions" }

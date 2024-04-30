@@ -20,8 +20,8 @@ class Coordinator {
     
     func goToDetails(id: String) -> some View {
         let viewmodel = MealDetailsViewModel(id: id, dataProvider: objectProvider)
-        let view = MealDetailsView<MealDetailsViewModel>(viewmodel, coordinator: self)
-        return view
+        let view = MealDetailsView(coordinator: self)
+        return view.environmentObject(viewmodel)
     }
     
     func goToMealList(category: String) -> some View {
