@@ -41,7 +41,6 @@
 		5B77EFCC2BA143F3001CCB6D /* CategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFCB2BA143F3001CCB6D /* CategoryViewModelTests.swift */; };
 		5B77EFCE2BA14541001CCB6D /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B77EFCD2BA14541001CCB6D /* Category.json */; };
 		5B77EFCF2BA14610001CCB6D /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B77EFCD2BA14541001CCB6D /* Category.json */; };
-		5B77EFD22BA14695001CCB6D /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFD02BA14691001CCB6D /* CoordinatorTests.swift */; };
 		5B77EFD52BA151F3001CCB6D /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFD42BA151F3001CCB6D /* EmptyView.swift */; };
 		5B77EFD72BA15214001CCB6D /* EmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFD62BA15213001CCB6D /* EmptyViewModel.swift */; };
 		5B77EFDE2BA15C10001CCB6D /* EmptyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B77EFDD2BA15C10001CCB6D /* EmptyViewModelTests.swift */; };
@@ -122,7 +121,6 @@
 		5B77EFC82BA0F70B001CCB6D /* ItemComponentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComponentViewModel.swift; sourceTree = "<group>"; };
 		5B77EFCB2BA143F3001CCB6D /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
 		5B77EFCD2BA14541001CCB6D /* Category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Category.json; sourceTree = "<group>"; };
-		5B77EFD02BA14691001CCB6D /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		5B77EFD42BA151F3001CCB6D /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		5B77EFD62BA15213001CCB6D /* EmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewModel.swift; sourceTree = "<group>"; };
 		5B77EFDD2BA15C10001CCB6D /* EmptyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewModelTests.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				5B77EFDC2BA15BF8001CCB6D /* JSON */,
-				5B77EFDB2BA15BCB001CCB6D /* Coordinator */,
 				5B77EFDA2BA15BB9001CCB6D /* DataProvider */,
 				5B77EFD92BA15BB0001CCB6D /* ViewModels */,
 				5B77EFD82BA15BA3001CCB6D /* Components */,
@@ -357,14 +354,6 @@
 				5BA92BB92AF5C2A800D9B6D2 /* DataProviderTest.swift */,
 			);
 			path = DataProvider;
-			sourceTree = "<group>";
-		};
-		5B77EFDB2BA15BCB001CCB6D /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				5B77EFD02BA14691001CCB6D /* CoordinatorTests.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		5B77EFDC2BA15BF8001CCB6D /* JSON */ = {
@@ -548,7 +537,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA92BBC2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift in Sources */,
-				5B77EFD22BA14695001CCB6D /* CoordinatorTests.swift in Sources */,
 				5B5B52382BBD813B00AC441A /* TimerViewModelTests.swift in Sources */,
 				5B77EFDE2BA15C10001CCB6D /* EmptyViewModelTests.swift in Sources */,
 				5BA92BBA2AF5C2A800D9B6D2 /* DataProviderTest.swift in Sources */,
