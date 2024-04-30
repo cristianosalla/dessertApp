@@ -1,6 +1,6 @@
 import SwiftUI
 
-class ItemComponentViewModel: ItemComponentViewModelProtocol {
+class ItemComponentViewModel: ObservableObject {
     
     var url: String
     var text: String

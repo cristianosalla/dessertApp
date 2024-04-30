@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-class EmptyViewModel: EmptyViewModelProtocol {
+class EmptyViewModel: ObservableObject {
     
     
     var alertText: String { "Couldn't load list of desserts." }

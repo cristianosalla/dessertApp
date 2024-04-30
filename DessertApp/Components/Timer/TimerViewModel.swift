@@ -2,8 +2,7 @@ import Combine
 import SwiftUI
 import Foundation
 
-
-class TimerViewModel: TimerViewModelProtocol {
+class TimerViewModel: ObservableObject {
   
     @Published var isRunning: Bool = false
     @Published var progress: Double = 0.0

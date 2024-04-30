@@ -1,6 +1,6 @@
 import Foundation
 
-class PlayButtonViewModel: PlayButtonViewModelProtocol {
+class PlayButtonViewModel: ObservableObject {
     
     var title: String
     var url: String

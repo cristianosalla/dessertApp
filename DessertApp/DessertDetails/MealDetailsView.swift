@@ -6,7 +6,6 @@ struct MealDetailsView: View {
     private var coordinator: Coordinator
     
     @State private var isPresentWebView = false
-    @State private var timerView = TimerView()
     
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
@@ -33,7 +32,7 @@ struct MealDetailsView: View {
             }.navigationBarTitle(Text(String()), displayMode: .inline)
             if viewModel.showTimer {
                 Spacer()
-                timerView
+                timerView()
                     .frame(maxHeight: .infinity, alignment: .topTrailing)
                     .shadow(radius: 3)
                     .padding()
@@ -54,7 +53,13 @@ struct MealDetailsView: View {
         Task {
             await viewModel.fetchDetails()
         }
-    } 
+    }
+    
+    func timerView() -> some View {
+        let viewModel = TimerViewModel()
+        let view = TimerView()
+        return view.environmentObject(viewModel)
+    }
 }
 
 extension MealDetailsView {

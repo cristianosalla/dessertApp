@@ -1,15 +1,14 @@
 import SwiftUI
 
-struct RingAnimationView<ViewModel: TimerViewModelProtocol>: View {
+struct RingAnimationView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: TimerViewModel
     @State var animate = false
     
     let sliderWidth: CGFloat
     let lime = Color(#colorLiteral(red: 0.5563425422, green: 0.9793455005, blue: 0, alpha: 1))
     
-    init(viewModel: ViewModel, sliderWidth: CGFloat) {
-        self.viewModel = viewModel
+    init(sliderWidth: CGFloat) {
         self.sliderWidth = sliderWidth
     }
     

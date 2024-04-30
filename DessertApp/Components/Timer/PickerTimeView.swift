@@ -8,16 +8,15 @@ fileprivate enum Constants {
     static let paddingFactor: CGFloat = 0.1
 }
 
-struct PickerTimeView<ViewModel: TimerViewModelProtocol>: View {
+struct PickerTimeView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: TimerViewModel
     
     let width: CGFloat
     let sliderWidth: CGFloat
     let radius: CGFloat
     
-    init(viewModel: ViewModel, width: CGFloat, sliderWidth: CGFloat, radius: CGFloat) {
-        self.viewModel = viewModel
+    init(width: CGFloat, sliderWidth: CGFloat, radius: CGFloat) {
         self.width = width
         self.sliderWidth = sliderWidth
         self.radius = radius

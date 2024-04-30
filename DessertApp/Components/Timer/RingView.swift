@@ -7,16 +7,14 @@ fileprivate enum Constants {
     static let sliderFactor: CGFloat = 0.1
 }
 
-struct RingView<ViewModel: TimerViewModelProtocol>: View {
+struct RingView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: TimerViewModel
     
     var radius: CGFloat
     var sliderWidth: CGFloat
     
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-
+    init() {
         self.radius = Constants.width * Constants.radiusFactor
         self.sliderWidth = Constants.width * Constants.sliderFactor
     }
@@ -29,9 +27,9 @@ struct RingView<ViewModel: TimerViewModelProtocol>: View {
                 .frame(width: radius * Constants.sizeFactor, height: radius * Constants.sizeFactor, alignment: .center)
                 .overlay {
                     if viewModel.isRunning {
-                        RingAnimationView(viewModel: viewModel, sliderWidth: sliderWidth)
+                        RingAnimationView(sliderWidth: sliderWidth)
                     } else {
-                        PickerTimeView(viewModel: viewModel, width: Constants.width, sliderWidth: sliderWidth, radius: radius)
+                        PickerTimeView(width: Constants.width, sliderWidth: sliderWidth, radius: radius)
                     }
                 }
         }

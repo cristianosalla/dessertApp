@@ -1,23 +1,16 @@
 import SwiftUI
 
-protocol PlayButtonViewModelProtocol: ObservableObject {
-    var title: String { get }
-    var url: String { get }
-    var isPresented: Bool { get set }
-    var iconName: String { get }
-}
-
 fileprivate enum Constants {
     static let width: CGFloat = 100
     static let shadowRadius: CGFloat = 3
     static let opacity: CGFloat = 0.7
 }
 
-struct PlayButtonView<ViewModel: PlayButtonViewModelProtocol>: View {
+struct PlayButtonView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: PlayButtonViewModel
     
-    init(viewModel: ViewModel) {
+    init(viewModel: PlayButtonViewModel) {
         self.viewModel = viewModel
     }
     

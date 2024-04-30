@@ -1,17 +1,11 @@
 import SwiftUI
 
-protocol ItemComponentViewModelProtocol: ObservableObject {
-    var url: String { get }
-    var text: String { get }
-    func getThumb() async throws -> Data
-}
-
-struct ItemComponentView<ViewModel: ItemComponentViewModelProtocol>: View {
-    @ObservedObject var viewModel: ViewModel
+struct ItemComponentView: View {
+    @ObservedObject var viewModel: ItemComponentViewModel
 
     @State var image: UIImage?
     
-    init(viewModel: ViewModel) {
+    init(viewModel: ItemComponentViewModel) {
         self.viewModel = viewModel
     }
     

@@ -11,8 +11,8 @@ fileprivate enum Strings {
     static let matchedId = "icon"
 }
 
-struct PlayPauseButtonView<ViewModel: TimerViewModelProtocol>: View {
-    @ObservedObject var viewModel: ViewModel
+struct PlayPauseButtonView: View {
+    @EnvironmentObject var viewModel: TimerViewModel
     
     @Namespace var namespace
     
