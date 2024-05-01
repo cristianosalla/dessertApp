@@ -36,6 +36,12 @@ class Coordinator {
         return view.environmentObject(viewModel)
     }
     
+    func goToGenerateMeal() -> some View {
+        let viewModel = GenerateMealViewModel(provider: GenerateMealProviderMock(object: Recipe(title: "Hello", ingredients: ["asda", "asdasd"], instructions: ["asdasd", "dasdasd"])))
+        let view = GenerateMealView()
+        return view.environmentObject(viewModel)
+    }
+    
     func goToTabBarView() -> some View {
         let view = TabBarView(coordinator: self)
         return view

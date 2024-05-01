@@ -15,6 +15,12 @@ struct TabBarView: View {
                 .tabItem {
                     Label("Search", systemImage: "list.dash")
                 }
+            
+            coordinator.goToGenerateMeal()
+                .tabItem {
+                    Label("Generate", systemImage: "list.dash")
+                }
+            
         }
     }
 }

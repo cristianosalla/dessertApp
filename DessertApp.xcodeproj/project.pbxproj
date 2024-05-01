@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B207E1D2B22BAC500FDB5F2 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B207E1C2B22BAC500FDB5F2 /* URLSession+Extension.swift */; };
+		5B3221582BD2CFB300A0BD86 /* GenerateMealEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3221572BD2CFB300A0BD86 /* GenerateMealEndpoint.swift */; };
 		5B3E90D72AF2C57000FB7532 /* MealListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90D62AF2C56F00FB7532 /* MealListView.swift */; };
 		5B3E90D92AF2C6B200FB7532 /* MealDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90D82AF2C6B200FB7532 /* MealDetailsView.swift */; };
 		5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90DA2AF2CBB200FB7532 /* DataProvider.swift */; };
@@ -17,17 +18,27 @@
 		5B3E90F12AF404C300FB7532 /* CreamCake.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B3E90F02AF404C200FB7532 /* CreamCake.otf */; };
 		5B3E90F42AF442D000FB7532 /* MealDetailsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90F32AF442D000FB7532 /* MealDetailsImageView.swift */; };
 		5B3E90F62AF442D900FB7532 /* MealDetailsTextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E90F52AF442D900FB7532 /* MealDetailsTextsView.swift */; };
+		5B4299E02BE1FE330020D5FD /* GenerateMealProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4299DF2BE1FE330020D5FD /* GenerateMealProviderMock.swift */; };
+		5B4299E52BE1FEF50020D5FD /* GenerateMealProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4299E32BE1FEEC0020D5FD /* GenerateMealProviderMock.swift */; };
 		5B4755662AFB1A4C00158A4C /* MealListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4755652AFB1A4C00158A4C /* MealListModels.swift */; };
 		5B48A6632BA3B24C002F8337 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A6622BA3B24C002F8337 /* LazyView.swift */; };
 		5B4A056A2BB51C0400E9F0B0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A05692BB51C0400E9F0B0 /* TimerView.swift */; };
 		5B4A56EA2AF2BC34008F3F85 /* MealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A56E92AF2BC34008F3F85 /* MealApp.swift */; };
 		5B4A56EE2AF2BC36008F3F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4A56ED2AF2BC36008F3F85 /* Assets.xcassets */; };
+		5B4CC76E2BD6B6F20053445C /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CC76D2BD6B6F20053445C /* test.json */; };
+		5B4CC7702BD6BAF80053445C /* GenerateMealModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CC76F2BD6BAF80053445C /* GenerateMealModels.swift */; };
+		5B4CC7722BD6F0C10053445C /* GenerateMealProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CC7712BD6F0C10053445C /* GenerateMealProvider.swift */; };
+		5B4CC7772BD6FB8A0053445C /* GenerateMealDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CC7762BD6FB8A0053445C /* GenerateMealDetailsView.swift */; };
+		5B4CC7792BD6FBD20053445C /* GenerateMealDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CC7782BD6FBD20053445C /* GenerateMealDetailsViewModel.swift */; };
+		5B4CC77B2BD705860053445C /* GenerateMealDetailsTextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CC77A2BD705860053445C /* GenerateMealDetailsTextsView.swift */; };
 		5B56C7462BBCE67400935CD9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56C7452BBCE67400935CD9 /* TimerViewModel.swift */; };
 		5B5B52382BBD813B00AC441A /* TimerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B52372BBD813B00AC441A /* TimerViewModelTests.swift */; };
 		5B5FCBFB2B191E5200EF8598 /* MealsDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */; };
 		5B5FCBFC2B191E5200EF8598 /* MealsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B1364502B0BF55A00F974EB /* MealsList.json */; };
 		5B5FCBFD2B191F6600EF8598 /* MealsDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */; };
 		5B5FCBFE2B191F6600EF8598 /* MealsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B1364502B0BF55A00F974EB /* MealsList.json */; };
+		5B60CD272BD34EF3007AB15E /* GenerateMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CD262BD34EF3007AB15E /* GenerateMealView.swift */; };
+		5B60CD2A2BD34F23007AB15E /* GenerateMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60CD292BD34F23007AB15E /* GenerateMealViewModel.swift */; };
 		5B62B7772AF9DEFD00D48633 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62B7762AF9DEFD00D48633 /* TitleView.swift */; };
 		5B6A73DC2BB6740100FC48B7 /* Numbers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A73DB2BB6740100FC48B7 /* Numbers+Extension.swift */; };
 		5B6A73E12BB687AF00FC48B7 /* PickerTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A73E02BB687AF00FC48B7 /* PickerTimeView.swift */; };
@@ -90,6 +101,7 @@
 /* Begin PBXFileReference section */
 		5B1364502B0BF55A00F974EB /* MealsList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealsList.json; sourceTree = "<group>"; };
 		5B207E1C2B22BAC500FDB5F2 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		5B3221572BD2CFB300A0BD86 /* GenerateMealEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealEndpoint.swift; sourceTree = "<group>"; };
 		5B3E90D62AF2C56F00FB7532 /* MealListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListView.swift; sourceTree = "<group>"; };
 		5B3E90D82AF2C6B200FB7532 /* MealDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsView.swift; sourceTree = "<group>"; };
 		5B3E90DA2AF2CBB200FB7532 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -100,6 +112,8 @@
 		5B3E90F02AF404C200FB7532 /* CreamCake.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CreamCake.otf; sourceTree = "<group>"; };
 		5B3E90F32AF442D000FB7532 /* MealDetailsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsImageView.swift; sourceTree = "<group>"; };
 		5B3E90F52AF442D900FB7532 /* MealDetailsTextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsTextsView.swift; sourceTree = "<group>"; };
+		5B4299DF2BE1FE330020D5FD /* GenerateMealProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealProviderMock.swift; sourceTree = "<group>"; };
+		5B4299E32BE1FEEC0020D5FD /* GenerateMealProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealProviderMock.swift; sourceTree = "<group>"; };
 		5B4755652AFB1A4C00158A4C /* MealListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListModels.swift; sourceTree = "<group>"; };
 		5B48A6622BA3B24C002F8337 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		5B4A05692BB51C0400E9F0B0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -107,8 +121,16 @@
 		5B4A56E92AF2BC34008F3F85 /* MealApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealApp.swift; sourceTree = "<group>"; };
 		5B4A56ED2AF2BC36008F3F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B4A56F62AF2BC36008F3F85 /* DessertAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DessertAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B4CC76D2BD6B6F20053445C /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		5B4CC76F2BD6BAF80053445C /* GenerateMealModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealModels.swift; sourceTree = "<group>"; };
+		5B4CC7712BD6F0C10053445C /* GenerateMealProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealProvider.swift; sourceTree = "<group>"; };
+		5B4CC7762BD6FB8A0053445C /* GenerateMealDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealDetailsView.swift; sourceTree = "<group>"; };
+		5B4CC7782BD6FBD20053445C /* GenerateMealDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealDetailsViewModel.swift; sourceTree = "<group>"; };
+		5B4CC77A2BD705860053445C /* GenerateMealDetailsTextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealDetailsTextsView.swift; sourceTree = "<group>"; };
 		5B56C7452BBCE67400935CD9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		5B5B52372BBD813B00AC441A /* TimerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTests.swift; sourceTree = "<group>"; };
+		5B60CD262BD34EF3007AB15E /* GenerateMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealView.swift; sourceTree = "<group>"; };
+		5B60CD292BD34F23007AB15E /* GenerateMealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMealViewModel.swift; sourceTree = "<group>"; };
 		5B62B7762AF9DEFD00D48633 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		5B6A73DB2BB6740100FC48B7 /* Numbers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extension.swift"; sourceTree = "<group>"; };
 		5B6A73E02BB687AF00FC48B7 /* PickerTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTimeView.swift; sourceTree = "<group>"; };
@@ -205,9 +227,26 @@
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
+		5B4299DD2BE1FDFA0020D5FD /* Generate */ = {
+			isa = PBXGroup;
+			children = (
+				5B4299DE2BE1FE0E0020D5FD /* DataProvider */,
+			);
+			path = Generate;
+			sourceTree = "<group>";
+		};
+		5B4299DE2BE1FE0E0020D5FD /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5B4299DF2BE1FE330020D5FD /* GenerateMealProviderMock.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
 		5B4755672AFB2D3B00158A4C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5BF555752BA6B00400133CC5 /* TabBarView.swift */,
 				5B9B41DB2BB8B7BD006903AA /* CheckBoxView.swift */,
 				5B48A6622BA3B24C002F8337 /* LazyView.swift */,
 				5BA62C472BA20ACB0094947D /* WebView.swift */,
@@ -262,11 +301,8 @@
 			children = (
 				5B3E90E92AF401D900FB7532 /* Info.plist */,
 				5B4755672AFB2D3B00158A4C /* Components */,
-				5B3E90E52AF3547900FB7532 /* DataProvider */,
-				5BF555792BA6B02E00133CC5 /* Search */,
-				5B77EFC12BA0F16E001CCB6D /* Category */,
-				5B3E90E22AF3543900FB7532 /* DessertDetails */,
-				5B3E90E32AF3544100FB7532 /* MealList */,
+				5B7019282BD7459B006B9B59 /* List */,
+				5B7019272BD7456A006B9B59 /* Generate */,
 				5B4755682AFB2D4D00158A4C /* Extensions */,
 				5B3E90F22AF4393300FB7532 /* Support Files */,
 			);
@@ -276,12 +312,33 @@
 		5B4A56F92AF2BC36008F3F85 /* DessertAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				5B4299DD2BE1FDFA0020D5FD /* Generate */,
 				5B77EFDC2BA15BF8001CCB6D /* JSON */,
 				5B77EFDA2BA15BB9001CCB6D /* DataProvider */,
 				5B77EFD92BA15BB0001CCB6D /* ViewModels */,
 				5B77EFD82BA15BA3001CCB6D /* Components */,
 			);
 			path = DessertAppTests;
+			sourceTree = "<group>";
+		};
+		5B4CC7752BD6FB770053445C /* GenerateMealDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5B4CC7762BD6FB8A0053445C /* GenerateMealDetailsView.swift */,
+				5B4CC77A2BD705860053445C /* GenerateMealDetailsTextsView.swift */,
+				5B4CC7782BD6FBD20053445C /* GenerateMealDetailsViewModel.swift */,
+			);
+			path = GenerateMealDetails;
+			sourceTree = "<group>";
+		};
+		5B60CD282BD34EFE007AB15E /* GenerateMeal */ = {
+			isa = PBXGroup;
+			children = (
+				5B4CC76F2BD6BAF80053445C /* GenerateMealModels.swift */,
+				5B60CD262BD34EF3007AB15E /* GenerateMealView.swift */,
+				5B60CD292BD34F23007AB15E /* GenerateMealViewModel.swift */,
+			);
+			path = GenerateMeal;
 			sourceTree = "<group>";
 		};
 		5B6A73DF2BB6875F00FC48B7 /* Timer */ = {
@@ -297,6 +354,28 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		5B7019272BD7456A006B9B59 /* Generate */ = {
+			isa = PBXGroup;
+			children = (
+				5BEF6EC52BE092C2008538FF /* DataProvider */,
+				5B60CD282BD34EFE007AB15E /* GenerateMeal */,
+				5B4CC7752BD6FB770053445C /* GenerateMealDetails */,
+			);
+			path = Generate;
+			sourceTree = "<group>";
+		};
+		5B7019282BD7459B006B9B59 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				5B3E90E52AF3547900FB7532 /* DataProvider */,
+				5BF555792BA6B02E00133CC5 /* Search */,
+				5B77EFC12BA0F16E001CCB6D /* Category */,
+				5B3E90E22AF3543900FB7532 /* DessertDetails */,
+				5B3E90E32AF3544100FB7532 /* MealList */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		5B77EFC12BA0F16E001CCB6D /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +389,6 @@
 		5B77EFCA2BA0F7ED001CCB6D /* ListItemComponent */ = {
 			isa = PBXGroup;
 			children = (
-				5BF555752BA6B00400133CC5 /* TabBarView.swift */,
 				5B77EFC62BA0F704001CCB6D /* ItemComponentView.swift */,
 				5B77EFC82BA0F70B001CCB6D /* ItemComponentViewModel.swift */,
 			);
@@ -362,6 +440,7 @@
 				5BDEE7EA2B0BFC7F008E4815 /* MealsDetails.json */,
 				5B1364502B0BF55A00F974EB /* MealsList.json */,
 				5B77EFCD2BA14541001CCB6D /* Category.json */,
+				5B4CC76D2BD6B6F20053445C /* test.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -373,6 +452,16 @@
 				5BA62C492BA212420094947D /* PlayButtonView.swift */,
 			);
 			path = PlayButton;
+			sourceTree = "<group>";
+		};
+		5BEF6EC52BE092C2008538FF /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5B3221572BD2CFB300A0BD86 /* GenerateMealEndpoint.swift */,
+				5B4CC7712BD6F0C10053445C /* GenerateMealProvider.swift */,
+				5B4299E32BE1FEEC0020D5FD /* GenerateMealProviderMock.swift */,
+			);
+			path = DataProvider;
 			sourceTree = "<group>";
 		};
 		5BF555792BA6B02E00133CC5 /* Search */ = {
@@ -480,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B5FCBFB2B191E5200EF8598 /* MealsDetails.json in Resources */,
+				5B4CC76E2BD6B6F20053445C /* test.json in Resources */,
 				5B77EFCE2BA14541001CCB6D /* Category.json in Resources */,
 				5B5FCBFC2B191E5200EF8598 /* MealsList.json in Resources */,
 			);
@@ -493,29 +583,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BCE8FD22BB4723C0082A044 /* RingView.swift in Sources */,
+				5B4299E52BE1FEF50020D5FD /* GenerateMealProviderMock.swift in Sources */,
 				5B3E90DD2AF2CBDD00FB7532 /* MealDetailsModels.swift in Sources */,
 				5BA62C482BA20ACB0094947D /* WebView.swift in Sources */,
 				5BF555762BA6B00400133CC5 /* TabBarView.swift in Sources */,
+				5B4CC7722BD6F0C10053445C /* GenerateMealProvider.swift in Sources */,
+				5B60CD2A2BD34F23007AB15E /* GenerateMealViewModel.swift in Sources */,
 				5B9B41DE2BBA42BA006903AA /* PlayPauseButtonView.swift in Sources */,
 				5B3E90DF2AF2D08800FB7532 /* MealListViewModel.swift in Sources */,
 				5B77EFD52BA151F3001CCB6D /* EmptyView.swift in Sources */,
 				5B3E90D72AF2C57000FB7532 /* MealListView.swift in Sources */,
+				5B60CD272BD34EF3007AB15E /* GenerateMealView.swift in Sources */,
 				5B207E1D2B22BAC500FDB5F2 /* URLSession+Extension.swift in Sources */,
 				5B77EFC92BA0F70B001CCB6D /* ItemComponentViewModel.swift in Sources */,
 				5B4A56EA2AF2BC34008F3F85 /* MealApp.swift in Sources */,
 				5BF5557B2BA6B1F000133CC5 /* SearchViewModel.swift in Sources */,
 				5B6A73E32BB687E600FC48B7 /* RingAnimationView.swift in Sources */,
 				5B3E90E12AF2E32A00FB7532 /* MealDetailsViewModel.swift in Sources */,
+				5B4CC7702BD6BAF80053445C /* GenerateMealModels.swift in Sources */,
 				5B77EFD72BA15214001CCB6D /* EmptyViewModel.swift in Sources */,
 				5B3E90DB2AF2CBB200FB7532 /* DataProvider.swift in Sources */,
 				5B6A73E12BB687AF00FC48B7 /* PickerTimeView.swift in Sources */,
 				5B77EFC02BA0F169001CCB6D /* CategoryView.swift in Sources */,
 				5BA62C4A2BA212420094947D /* PlayButtonView.swift in Sources */,
 				5B9B41DC2BB8B7BD006903AA /* CheckBoxView.swift in Sources */,
+				5B4CC77B2BD705860053445C /* GenerateMealDetailsTextsView.swift in Sources */,
 				5B3E90D92AF2C6B200FB7532 /* MealDetailsView.swift in Sources */,
 				5B77EFC32BA0F26D001CCB6D /* CategoryViewModel.swift in Sources */,
+				5B3221582BD2CFB300A0BD86 /* GenerateMealEndpoint.swift in Sources */,
 				5BA92BC02AF5ED6800D9B6D2 /* Font+Extenstion.swift in Sources */,
 				5B6A73DC2BB6740100FC48B7 /* Numbers+Extension.swift in Sources */,
+				5B4CC7792BD6FBD20053445C /* GenerateMealDetailsViewModel.swift in Sources */,
 				5B77EFC72BA0F704001CCB6D /* ItemComponentView.swift in Sources */,
 				5B77EFBE2BA0EA9D001CCB6D /* Coordinator.swift in Sources */,
 				5BF555782BA6B02600133CC5 /* SearchView.swift in Sources */,
@@ -524,6 +622,7 @@
 				5B4755662AFB1A4C00158A4C /* MealListModels.swift in Sources */,
 				5B56C7462BBCE67400935CD9 /* TimerViewModel.swift in Sources */,
 				5B87A8D72BA9FD7A007E9E73 /* PlayButtonViewModel.swift in Sources */,
+				5B4CC7772BD6FB8A0053445C /* GenerateMealDetailsView.swift in Sources */,
 				5B3E90F62AF442D900FB7532 /* MealDetailsTextsView.swift in Sources */,
 				5B4A056A2BB51C0400E9F0B0 /* TimerView.swift in Sources */,
 				5B62B7772AF9DEFD00D48633 /* TitleView.swift in Sources */,
@@ -536,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4299E02BE1FE330020D5FD /* GenerateMealProviderMock.swift in Sources */,
 				5BA92BBC2AF5EAFB00D9B6D2 /* MealDetailsViewModelTests.swift in Sources */,
 				5B5B52382BBD813B00AC441A /* TimerViewModelTests.swift in Sources */,
 				5B77EFDE2BA15C10001CCB6D /* EmptyViewModelTests.swift in Sources */,
